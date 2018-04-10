@@ -1,0 +1,58 @@
+        <!-- This is the menu bar -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark" ng-init="checkifloggedin()">
+            
+            <!-- this is a place to put the title of the page, or a logo -->
+          <a class="navbar-brand" href="index.html">Great soccer players</a>
+          
+          <!-- definition of the buton you see if the screen is too small and you can't fit the full menu -->
+          <!-- make sure the data-target and aria-controls match the div with the content you want to show -->
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        
+            <!-- the id should match the data-target and aria-controls for the navbar-toggler above if you want this to show up on small screens when they expand the menu -->
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            
+            <!-- this is where we define menu items -->
+            <!-- mr-auto makes it so the next element will be aligned on the right side -->
+            <ul class="navbar-nav mr-auto">
+                
+                <!-- active only if menuHighlight is equal to 0 -->
+              <li class="nav-item" ng-class="{'active' : (menuHighlight == 0)}">
+                <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+              </li>
+              
+              <!-- menu item for adding players, active if menuHighlight is equal to 1 -->
+              <li class="nav-item" ng-class="{'active' : (menuHighlight == 1)}">
+                <a class="nav-link" href="newplayer.html">Add player</a>
+              </li>
+              
+              <!-- menu item for adding accounts, active if menuHighlight is equal to 2 -->
+              <li class="nav-item" ng-class="{'active' : (menuHighlight == 2)}" ng-show="isloggedin">
+                <a class="nav-link" href="newaccount.html">Add account</a>
+              </li>              
+              
+            </ul>
+
+
+            <!-- search -->
+            <!-- for search to work we need to properly define query and queryBy in the controller -->
+            <form class="form-inline">
+              <input class="form-control mr-sm-2" ng-model="query[queryBy]" type="search" placeholder="Search" aria-label="Search">
+            </form>
+
+            <!-- log in / log out -->
+            <ul class="navbar-nav">
+              <!-- menu item for logging in, active if menuHighlight is equal to 3 -->
+              <li class="nav-item" ng-class="{'active' : (menuHighlight == 3)}" ng-show="!isloggedin">
+                <a class="nav-link" href="login.html">Log in</a>
+              </li>
+              
+              <li class="nav-item" ng-show="isloggedin">
+                <a class="nav-link" href="" ng-click="logout()">Log out</a>
+              </li>                              
+
+            </ul>
+            
+          </div>
+        </nav>
