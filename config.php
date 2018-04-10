@@ -9,8 +9,8 @@ $Host = $_SERVER['SERVER_NAME'];
 $imagesDir = "images/";
 
 // DB connection (from  mysql_db_info file).
-$DBUser = "hourcade";
-$DBName = "db_hourcade";
+$DBUser = "abmorris";
+$DBName = "db_abmorris";
 $DBHost = "dbdev.cs.uiowa.edu";
-$DBPassword = "Z4H7yorrKWW3";
+$DBPassword = "w6.wwN4=sjvt";
 ?>
