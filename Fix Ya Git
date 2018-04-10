@@ -105,3 +105,5 @@ drwxr-s---. 2 bzaputil Webdev-Service 4096 Apr  5 19:24 Thursday Meetings
 [bzaputil@serv42 Capstone_8]$ ls
 README.md  secretMessage.txt  SECRETSINSIDE.txt  Thursday Meetings
 [bzaputil@serv42 Capstone_8]$ 
+
+ chmod go+r *
