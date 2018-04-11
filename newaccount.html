@@ -1,0 +1,68 @@
+<!doctype html>
+
+<!-- ng-app="soccer" defines the angular app that we are using. The name is defined under soccer.module.js -->
+<html lang="en" ng-app="soccer">
+<head>
+    <!-- this is what shows up in the tabs in your browser and if you bookmark the page -->
+    <title>Add Account - Great soccer players</title>
+
+    <!-- These are the links to bootstrap code -->
+    <!-- we got the links from http://getbootstrap.com/docs/4.0/getting-started/introduction/ -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+    
+    <!-- link to angular -->
+    <!-- you can download it from https://angularjs.org/ then you need to upload it to the webdev server. -->
+    <script src="angular.min.js"></script>
+    
+    <!-- angular code we wrote -->
+    <!-- soccer.module.js is where we define the angular app called 'soccer'. We use the name of the app in the html element at the top of the file -->
+    <script src="soccer.module.js"></script>
+    <!-- data.soccer.controller.js is where we are getting the data from. It defines a controller under the 'soccer' app called 'dataControl', and data is under $scope.data -->
+    <script src="data.soccer.controller.js"></script>
+    <!-- soccer.filter.js enables us to display html code -->
+    <script src="soccer.filter.js"></script>
+</head>
+<body>
+    <!-- we are defining the angular controller that we will use in this chunk of html defined by the div as 'dataControl' from data.soccer.controller.js -->
+    <div class="container" ng-controller="dataControl">
+        
+        <!-- header -->
+        <div ng-include ng-init="menuHighlight = 2;" src="'header.html'"></div>
+        
+        
+        <!-- form for entering new account -->
+        <div class="row">
+            
+              
+            <form  name="newAccountForm" novalidate>
+                
+                <!-- username for account -->
+                <div class="form-group" ng-class="{ 'text-danger': newAccountForm.username.$invalid && newAccountForm.username.$touched, 'text-success': !newAccountForm.username.$invalid && newAccountForm.username.$touched }">
+                    <label class="form-control-label" for="username">Username (at least 2 characters long): </label>
+                    <input type="text" class="form-control" ng-class="{ 'is-invalid': newAccountForm.username.$invalid && newAccountForm.username.$touched, 'is-valid': !newAccountForm.username.$invalid && newAccountForm.username.$touched }" name="username" ng-model="account.username" ng-minlength="2" id="username" required/>
+                    <div ng-show="newAccountForm.username.$invalid && newAccountForm.username.$touched" >The username must be at least two characters long</div>
+                </div>
+                
+                <!-- password for account -->
+                <div class="form-group" ng-class="{ 'text-danger': newAccountForm.password.$invalid && newAccountForm.password.$touched, 'text-success': !newAccountForm.password.$invalid && newAccountForm.password.$touched }">
+                    <label class="form-control-label" for="password">Password (at least 6 characters long; may not include anything related to hawkeyes): </label>
+                    <input type="password" class="form-control" ng-class="{ 'is-invalid': newAccountForm.password.$invalid && newAccountForm.password.$touched, 'is-valid': !newAccountForm.password.$invalid && newAccountForm.password.$touched }" name="password" ng-model="account.password" ng-minlength="6" id="password" required/>
+                    <div ng-show="newAccountForm.password.$invalid && newAccountForm.password.$touched" >The password must be at least six characters long</div>
+                </div>
+                
+                <!-- newAccount is a function in the controller. account refers to the word we used under ng-model in the input fields -->
+                <button class="btn btn-default" ng-click="newAccount(account)" ng-disabled="newAccountForm.$invalid">Add account</button>
+            </form>
+            
+        
+        </div> <!-- close row -->
+        
+        <!-- Footer -->
+        <div ng-include src="'footer.html'"></div>
+        
+    </div>
+</body>
+</html>
