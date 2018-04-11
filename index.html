@@ -26,11 +26,18 @@
     <script src="soccer.filter.js"></script>
 </head>
 <body>
+    
+
     <!-- we are defining the angular controller that we will use in this chunk of html defined by the div as 'dataControl' from data.soccer.controller.js -->
     <div class="container" ng-controller="dataControl">
+
         
         <!-- header -->
         <div ng-include ng-init="menuHighlight = 0;" src="'header.html'"></div>
+                    
+                    <div>Welcome to The University of Iowa Tutoring Website!</div>                    
+                    <div>Click here to login</div>
+                    <a href="login.html" class="btn btn-info" role="button">Log in</a>
         
         <div class="row">
                 <!-- Card for all players -->
@@ -39,6 +46,7 @@
                 <!-- | filter:query is used to filter the data based on the text entered in the input field above with ng-model="query[queryBy]", and using $scope.query and $score.queryBy variables defined in the controller -->
                 <!-- players in ng-repeat="player in data.players | filter:query" comes from $response['value']['players'] = $players; -->
                 <div class="card m-1" style="width: 18rem" ng-repeat="player in data.players | filter:query">
+                    
                     
                     <div ng-init="setEditMode(false, player);"></div>
                     
@@ -114,7 +122,6 @@
         </div>
         
         <!-- Footer -->
-        <div ng-include src="'footer.html'"></div>
         
     </div>
 </body>
