@@ -40,7 +40,7 @@ if ($isComplete) {
     
     if (!isset($password) || (strlen($password) < 6)) {
         $isComplete = false;
-        $errorMessage .= "Please enter a password with at least six characters. ";
+        $errorMessage .= "Please enter a password with at least six characters!! ";
     }  
 }
 
