@@ -16,8 +16,8 @@ $data = json_decode(file_get_contents('php://input'), true);
 // get each piece of data
 
 // 
-$username = $data['username'];
-$password = $data['password'];
+$HAWKID = $data['HAWKID'];
+$PASSWORD = $data['PASSWORD'];
 
 // set up variables to handle errors
 // is complete will be false if we find any problems when checking on the data
@@ -26,26 +26,16 @@ $isComplete = true;
 // error message we'll send back to angular if we run into any problems
 $errorMessage = "";
 
-// check if they are logged in
-session_start();
-if (!isset($_SESSION['username'])) {
-    // if the session variable username is not set, then the user is not logged in and should not add an account
-    $isComplete = false;
-    $errorMessage .= "User is not logged in.";
-}
-
-
-
 //
 // Validation
 //
 if ($isComplete) {
     // check if username meets criteria
-    if (!isset($username) || (strlen($username) < 2)) {
+    if (!isset($HAWKID) || (strlen($HAWKID) < 2)) {
         $isComplete = false;
         $errorMessage .= "Please enter a username with at least two characters. ";
     } else {
-        $username = makeStringSafe($db, $username);
+        $HAWKID = makeStringSafe($db, $HAWKID);
     }
     
     if (!isset($password) || (strlen($password) < 6)) {
@@ -57,7 +47,7 @@ if ($isComplete) {
 // check if we already have a username that matches the one the user entered
 if ($isComplete) {
     // set up a query to check if this username is in the database already
-    $query = "SELECT id FROM account WHERE username='$username'";
+    $query = "SELECT HAWKID FROM USERTABLE WHERE HAWKID='$HAWKID'";
     
     // we need to run the query
     $result = queryDB($query, $db);
@@ -66,28 +56,24 @@ if ($isComplete) {
     if (nTuples($result) > 0) {
         // if we get at least one record back it means the username is taken
         $isComplete = false;
-        $errorMessage .= "The username $username is already taken. Please select a different username. ";
+        $errorMessage .= "The username $HAWKID is already taken. Please select a different username. ";
     }
 }
 
 // if we got this far and $isComplete is true it means we should add the player to the database
 if ($isComplete) {
     // create a hashed version of the password
-    $hashedpass = crypt($password, getSalt());
+    $HASHED_PSSWRD = crypt($PASSWORD, getSalt());
     
     // we will set up the insert statement to add this new record to the database
-    $insertquery = "INSERT INTO account(username, hashedpass) VALUES ('$username', '$hashedpass')";
+    $insertquery = "INSERT INTO USERTABLE(HAWKID, HASHED_PSSWRD) VALUES ('$HAWKID', '$HASHED_PSSWRD')";
     
     // run the insert statement
     queryDB($insertquery, $db);
-    
-    // get the id of the account we just entered
-    $accountid = mysqli_insert_id($db);
-    
+
     // send a response back to angular
     $response = array();
     $response['status'] = 'success';
-    $response['id'] = $accountid;
     header('Content-Type: application/json');
     echo(json_encode($response));    
 } else {
