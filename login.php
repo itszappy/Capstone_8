@@ -4,16 +4,16 @@
     
     // get data from form
     $data = json_decode(file_get_contents('php://input'), true);
-    $username = $data['HAWKID'];
-	$password = $data['HASHED_PSSWRD'];
+    $username = $data['username'];
+    $password = $data['password'];
     
    // connect to the database
-    $db = connectDB($DBHost, $DBUser, $DBPassword, $DBName);
+    $db = connectDB($DBHost, $DBUser, $DBPassword, $DBName);    
     
     // check for required fields
     $isComplete = true;
     $errorMessage = "";
- 
+    
     // check if username meets criteria
     if (!isset($username) || (strlen($username) < 2)) {
         $isComplete = false;
@@ -26,11 +26,11 @@
         $isComplete = false;
         $errorMessage .= "Please enter a password with at least six characters. ";
     }      
-
+	
     if ($isComplete) {   
     
         // get the hashed password from the user with the email that got entered
-        $query = "SELECT HAWKID, HASHED_PSSWRD FROM USERTABLE WHERE HAWKID='$username';";
+        $query = "SELECT id, hashedpass FROM account WHERE username='$username';";
         $result = queryDB($query, $db);
         
         if (nTuples($result) == 0) {
@@ -39,12 +39,12 @@
             $isComplete = false;
         }
     }
- 
+    
     if ($isComplete) {            
         // there is an account that corresponds to the email that the user entered
 		// get the hashed password for that account
 		$row = nextTuple($result);
-		$hashedpass = $row['HASHED_PSSWRD'];
+		$hashedpass = $row['hashedpass'];
 		$id = $row['id'];
 		
 		// compare entered password to the password on the database
@@ -57,14 +57,14 @@
             $isComplete = false;
         }
     }
-        
+         
     if ($isComplete) {   
         // password was entered correctly
         
         // start a session
         // if the session variable 'username' is set, then we assume that the user is logged in
         session_start();
-        $_SESSION['HAWKID'] = $username;
+        $_SESSION['username'] = $username;
 		$_SESSION['accountid'] = $id;
         
         // send response back
