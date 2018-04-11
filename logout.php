@@ -2,9 +2,9 @@
     // log user out by unsetting session variable called email, and destroying the session
     
     session_start();
-    if (isset($_SESSION['username'])) {
+    if (isset($_SESSION['HAWKID'])) {
         // unsetting the username variable makes it so we assume that we are not logged in
-        unset($_SESSION['username']);
+        unset($_SESSION['HAWKID']);
     }
     session_destroy();
     
