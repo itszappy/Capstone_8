@@ -3,7 +3,7 @@
 <html ng-app="soccer">
 <head>
     <!-- this is what shows up in the tabs in your browser and if you bookmark the page -->
-    <title>Log in - Capstone 8</title>
+    <title>Log into Capstone 8</title>
 
     <!-- These are the links to bootstrap code -->
     <!-- we got the links from http://getbootstrap.com/docs/4.0/getting-started/introduction/ -->
@@ -51,20 +51,20 @@
         <form name="accountForm" novalidate>
         
             <!-- username for account -->
-            <div class="form-group" ng-class="{ 'text-danger': accountForm.HAWKID.$invalid && accountForm.HAWKID.$touched, 'text-success': !accountForm.HAWKID.$invalid && accountForm.HAWKID.$touched }">
-                <label class="form-control-label" for="HAWKID">Hawk ID (at least 2 characters long): </label>
-                <input type="text" class="form-control" ng-class="{ 'is-invalid': accountForm.username.$invalid && accountForm.HAWKID.$touched, 'is-valid': !accountForm.HAWKID.$invalid && accountForm.HAWKID.$touched }" name="HAWKID" ng-model="USERTABLE.HAWKID" ng-minlength="2" id="HAWKID" required/>
-                <div ng-show="accountForm.HAWKID.$invalid && accountForm.HAWKID.$touched" >The username must be at least two characters long</div>
+            <div class="form-group" ng-class="{ 'text-danger': accountForm.username.$invalid && accountForm.username.$touched, 'text-success': !accountForm.username.$invalid && accountForm.username.$touched }">
+                <label class="form-control-label" for="username">Username (at least 2 characters long): </label>
+                <input type="text" class="form-control" ng-class="{ 'is-invalid': accountForm.username.$invalid && accountForm.username.$touched, 'is-valid': !accountForm.username.$invalid && accountForm.username.$touched }" name="username" ng-model="account.username" ng-minlength="2" id="username" required/>
+                <div ng-show="accountForm.username.$invalid && accountForm.username.$touched" >The username must be at least two characters long</div>
             </div>
             
             <!-- password for account -->
-            <div class="form-group" ng-class="{ 'text-danger': accountForm.HASHED_PSSWRD.$invalid && accountForm.HASHED_PSSWRD.$touched, 'text-success': !accountForm.HASHED_PSSWRD.$invalid && accountForm.HASHED_PSSWRD.$touched }">
-                <label class="form-control-label" for="HASHED_PSSWRD">Password (at least 6 characters long; may not include anything related to hawkeyes): </label>
-                <input type="password" class="form-control" ng-class="{ 'is-invalid': accountForm.HASHED_PSSWRD.$invalid && accountForm.HASHED_PSSWRD.$touched, 'is-valid': !accountForm.HASHED_PSSWRD.$invalid && accountForm.HASHED_PSSWRD.$touched }" name="HASHED_PSSWRD" ng-model="USERTABLE.HASHED_PSSWRD" ng-minlength="6" id="HASHED_PSSWRD" required/>
-                <div ng-show="accountForm.HASHED_PSSWRD.$invalid && accountForm.HASHED_PSSWRD.$touched" >The password must be at least six characters long</div>
+            <div class="form-group" ng-class="{ 'text-danger': accountForm.password.$invalid && accountForm.password.$touched, 'text-success': !accountForm.password.$invalid && accountForm.password.$touched }">
+                <label class="form-control-label" for="password">Password (at least 6 characters long; may not include anything related to hawkeyes): </label>
+                <input type="password" class="form-control" ng-class="{ 'is-invalid': accountForm.password.$invalid && accountForm.password.$touched, 'is-valid': !accountForm.password.$invalid && accountForm.password.$touched }" name="password" ng-model="account.password" ng-minlength="6" id="password" required/>
+                <div ng-show="accountForm.password.$invalid && accountForm.password.$touched" >The password must be at least six characters long</div>
             </div>
         
-            <button class="btn btn-default" ng-click="login(USERTABLE)" ng-disabled="accountForm.$invalid">Log in</button>
+            <button class="btn btn-default" ng-click="login(account)" ng-disabled="accountForm.$invalid">Log in</button>
         </form>
     </div>
 </div>
