@@ -86,10 +86,10 @@ CREATE TABLE SESSIONTABLE (
 
 	);
 
-INSERT INTO USERTABLE (HAWKID, HASHED_PSSWRD, FIRSTNAME, LASTNAME, ISADMIN, USERROLE, EMAIL, PHONE) VALUES ('pat', '123456', 'patrick', 'markmann', 'T', 'a', 'patrick-markmann@uiowa.edu', '123456789');
+INSERT INTO USERTABLE (HAWKID, HASHED_PSSWRD, FIRSTNAME, LASTNAME, ISADMIN, USERROLE, EMAIL, PHONE) VALUES ('pat', '123456', 'patrick', 'markmann', 'True', 'a', 'patrick-markmann@uiowa.edu', '123456789');
 
-INSERT INTO USERTABLE (HAWKID, HASHED_PSSWRD, FIRSTNAME, LASTNAME, ISADMIN, USERROLE, EMAIL, PHONE) VALUES ('joe', 'joesmith', 'joe', 'smith', 'F', 's', 'joe-smith@uiowa.edu', '987654321');
+INSERT INTO USERTABLE (HAWKID, HASHED_PSSWRD, FIRSTNAME, LASTNAME, ISADMIN, USERROLE, EMAIL, PHONE) VALUES ('joe', 'joesmith', 'joe', 'smith', 'False', 's', 'joe-smith@uiowa.edu', '987654321');
 
-INSERT INTO USERTABLE (HAWKID, HASHED_PSSWRD, FIRSTNAME, LASTNAME, ISADMIN, USERROLE, EMAIL, PHONE) VALUES ('bob', 'bobjohnson', 'bob', 'johnson', 'F', 't', 'bob-johnson@uiowa.edu', '111222333');
+INSERT INTO USERTABLE (HAWKID, HASHED_PSSWRD, FIRSTNAME, LASTNAME, ISADMIN, USERROLE, EMAIL, PHONE) VALUES ('bob', 'bobjohnson', 'bob', 'johnson', 'False', 't', 'bob-johnson@uiowa.edu', '111222333');
 
 
