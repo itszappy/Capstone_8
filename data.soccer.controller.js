@@ -19,24 +19,7 @@
                 $scope.data = response.data.value;
             }
                    );
-        /*
-        $scope.data = {
-            "players":[
-                {"name":"Lionel Messi", "country":"Argentina", "club":"FC Barcelona", "video":"<iframe src='https://www.youtube.com/embed/E2MBCa_OFsY' frameborder='0' allow='autoplay; encrypted-media' allowfullscreen></iframe>", "videoid":"E2MBCa_OFsY"},
-                {"name":"Neymar Jr.", "country":"Brazil", "club":"Paris Saint Germain", "video":"<iframe src='https://www.youtube.com/embed/E2MBCa_OFsY' frameborder='0' allow='autoplay; encrypted-media' allowfullscreen></iframe>", "videoid":"E2MBCa_OFsY"},
-                {"name":"Gianluigi Buffon", "country":"Italy", "club":"Juventus", "video":"<iframe src='https://www.youtube.com/embed/U0XSU0wNiNw' frameborder='0' allow='autoplay; encrypted-media' allowfullscreen></iframe>", "videoid":"U0XSU0wNiNw"},
-                {"name":"Diego Godin", "country":"Uruguay", "club":"Atletico Madrid", "video":"<iframe src='https://www.youtube.com/embed/E2MBCa_OFsY' frameborder='0' allow='autoplay; encrypted-media' allowfullscreen></iframe>", "videoid":"E2MBCa_OFsY"}
-            ]
-        };
-        */
-        
-        
-        /*
-         *    Code for search bar
-         *    With queryBy you can say which attribute you want to search under. For example if it is "name" it will only search under names. If you want to search under everything, then use "$"
-         *    We are assuming there is an input element with an ng-model="query[queryBy]"
-         *    We are also assuming that you are filtering through this query when you get data under ng-repeat
-         */
+       
         $scope.query = {};
         $scope.queryBy = "$";
             
@@ -170,46 +153,6 @@
                         // successful
                         // send user back to home page
                         $window.location.href = "index.html";
-                    }
-               } else {
-                    alert('unexpected error');
-               }
-            });                        
-        };
-        
-        //Tried to make a second login function to land in a different html page
-        $scope.loginTutor = function(accountDetails) {
-          var accountupload = angular.copy(accountDetails);
-          
-          $http.post("login.php", accountupload)
-            .then(function (response) {
-               if (response.status == 200) {
-                    if (response.data.status == 'error') {
-                        alert('error: ' + response.data.message);
-                    } else {
-                        // successful
-                        // send user back to home page
-                        $window.location.href = "student.html";
-                    }
-               } else {
-                    alert('unexpected error');
-               }
-            });                        
-        };
-        
-        //Same comment as above idk if this will work though
-        $scope.loginStudent = function(USERTABLEDetails) {
-          var USERTABLEupload = angular.copy(USERTABLEDetails);
-          
-          $http.post("login.php", USERTABLEupload)
-            .then(function (response) {
-               if (response.status == 200) {
-                    if (response.data.status == 'error') {
-                        alert('error: ' + response.data.message);
-                    } else {
-                        // successful
-                        // send user back to home page
-                        $window.location.href = "student.html";
                     }
                } else {
                     alert('unexpected error');
