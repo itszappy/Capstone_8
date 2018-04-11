@@ -177,6 +177,46 @@
             });                        
         };
         
+        //Tried to make a second login function to land in a different html page
+        $scope.loginTutor = function(accountDetails) {
+          var accountupload = angular.copy(accountDetails);
+          
+          $http.post("login.php", accountupload)
+            .then(function (response) {
+               if (response.status == 200) {
+                    if (response.data.status == 'error') {
+                        alert('error: ' + response.data.message);
+                    } else {
+                        // successful
+                        // send user back to home page
+                        $window.location.href = "student.html";
+                    }
+               } else {
+                    alert('unexpected error');
+               }
+            });                        
+        };
+        
+        //Same comment as above idk if this will work though
+        $scope.loginStudent = function(USERTABLEDetails) {
+          var USERTABLEupload = angular.copy(USERTABLEDetails);
+          
+          $http.post("login.php", USERTABLEupload)
+            .then(function (response) {
+               if (response.status == 200) {
+                    if (response.data.status == 'error') {
+                        alert('error: ' + response.data.message);
+                    } else {
+                        // successful
+                        // send user back to home page
+                        $window.location.href = "student.html";
+                    }
+               } else {
+                    alert('unexpected error');
+               }
+            });                        
+        };
+        
         
         // function to log the user out
         $scope.logout = function() {
