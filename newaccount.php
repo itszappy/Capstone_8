@@ -38,7 +38,7 @@ if ($isComplete) {
         $HAWKID = makeStringSafe($db, $HAWKID);
     }
     
-    if (!isset($password) || (strlen($password) < 6)) {
+    if (!isset($PASSWORD) || (strlen($PASSWORD) < 6)) {
         $isComplete = false;
         $errorMessage .= "Please enter a password with at least six characters!! ";
     }  
