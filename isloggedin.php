@@ -2,19 +2,19 @@
 //log user out by unsetting session variabled called email, destroying the session
 
     session_start();
-    if (isset($_SESSION['username'])) {
+    if (isset($_SESSION['HAWKID'])) {
         $isloggedin = true;
-        $username = $_SESSION['username'];
+        $HAWKID = $_SESSION['HAWKID'];
         
     } else {
         $isloggedin = false;
-        $username = "not logged in ";
+        $HAWKID = "not logged in ";
     }
     
     $response = array();
     $response['status'] = 'success';
     $response['loggedin'] = $isloggedin;
-    $response['username'] = $username;
+    $response['HAWKID'] = $HAWKID;
     header('Content-Type: application/json');
     echo(json_encode($response));
     
