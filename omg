@@ -1,0 +1,109 @@
+Last login: Mon Apr  9 20:09:14 on ttys000
+Baileys-MacBook-Pro:~ bzaputil$ ssh bzaputil@webdev.cs.uiowa.edu
+bzaputil@webdev.cs.uiowa.edu's password: 
+Last login: Thu Apr  5 20:23:29 2018 from 172.31.29.174
+                           *** Warning *** 
+Unauthorized use of this system is strictly prohibited. This system is
+subject to authorized monitoring to ensure proper functioning and
+performance, to protect against unauthorized uses, and to verify the
+presence and performance of applicable security features.  Use of this
+system constitutes agreement to such monitoring and agreement to abide by
+all University of Iowa information technology policies and applicable state
+and federal laws. If monitoring reveals possible evidence of criminal
+activity, the University of Iowa may provide such evidence to law
+enforcement officials.
+
+-------------------------------------------------------------------
+
+Disk quotas for user bzaputil (uid 2031319): 
+     Filesystem   space   quota   limit   grace   files   quota   limit   grace
+clasnetappvm.iowa.uiowa.edu:/homedirs
+                   248K  30618M  30720M              29   4295m   4295m        
+clasnetappvm.iowa.uiowa.edu:/homepage
+                     4K   1639M   2048M               2   4295m   4295m        
+
+-------------------------------------------------------------------
+
+[bzaputil@serv42 ~]$ cd web
+[bzaputil@serv42 web]$ cd Capstone_8
+[bzaputil@serv42 Capstone_8]$ chmod 777 -r .
+chmod: cannot access ‘777’: No such file or directory
+chmod: .: new permissions are -wxrwsrwx, not -wx-ws-wx
+[bzaputil@serv42 Capstone_8]$ ls
+ls: cannot open directory .: Permission denied
+[bzaputil@serv42 Capstone_8]$ cd Capstone_8
+-bash: cd: Capstone_8: No such file or directory
+[bzaputil@serv42 Capstone_8]$ ls -l
+ls: cannot open directory .: Permission denied
+[bzaputil@serv42 Capstone_8]$ ls
+ls: cannot open directory .: Permission denied
+[bzaputil@serv42 Capstone_8]$ cd ..
+[bzaputil@serv42 web]$ ls -l
+total 240
+-rw-r-----. 1 bzaputil Webdev-Service 169374 Jan 23 10:06 angular.min.js
+lrwxrwxrwx. 1 bzaputil Webdev-Service     22 Jan 18 09:52 bzaputil -> /webdev/user/bzaputil/
+drwxr-s---. 2 bzaputil Webdev-Service   4096 Apr  5 19:04 capstone
+d-wxrwsrwx. 4 bzaputil Webdev-Service   4096 Apr  5 20:41 Capstone_8
+drwxrwsrwx. 2 bzaputil Webdev-Service   4096 Feb 22 11:42 classnotes
+-rw-r-----. 1 bzaputil Webdev-Service    312 Feb  1 10:38 config.php
+-rwxrwxrwx. 1 bzaputil Webdev-Service    218 Feb  1 10:41 db.sh
+-rw-r-----. 1 bzaputil Webdev-Service   7717 Feb  1 10:39 dbutils.php
+-r--------. 1 bzaputil Webdev-Service      0 Apr  9 20:11 error_log
+drwxrws---. 2 bzaputil Webdev-Service   4096 Jan 23 09:54 examples
+drwxr-sr-x. 2 bzaputil Webdev-Service   4096 Jan 24 17:37 hw1
+drwxr-s---. 2 bzaputil Webdev-Service   4096 Jan 27 23:15 hw2
+drwxrwsrwx. 2 bzaputil Webdev-Service   4096 Feb 18 19:54 hw3
+drwxrwsrwx. 2 bzaputil Webdev-Service   4096 Feb 21 17:49 hw4
+drwxrwsrwx. 2 bzaputil Webdev-Service   4096 Feb 22 10:01 hw5
+drwxrwsrwx. 2 bzaputil Webdev-Service   4096 Mar  1 10:12 hw6
+-rw-r--r--. 1 bzaputil Webdev-Service      0 Jan 25 09:46 index.html
+-rw-------. 1 bzaputil Webdev-Service    131 Jan 12 09:07 mysql_db_info
+-rw-------. 1 bzaputil Webdev-Service    113 Jan 12 09:07 psql_db_info
+-r--------. 1 bzaputil Webdev-Service      0 Feb 23 12:00 ssl_error_log
+drwxr-s---. 3 bzaputil Webdev-Service   4096 Jan 12 09:07 tomcat7
+lrwxrwxrwx. 1 bzaputil Webdev-Service     22 Jan 18 09:51 web -> /webdev/user/bzaputil/
+-r--r-----. 1 bzaputil Webdev-Service      0 Apr  9 20:11 webdev.cs.uiowa.edu.edu-ssl-error.log
+-r--r-----. 1 bzaputil Webdev-Service      0 Feb 23 12:11 webdev.cs.uiowa.edu-ssl-access.log
+[bzaputil@serv42 web]$ cd ~
+[bzaputil@serv42 ~]$ cd web
+[bzaputil@serv42 web]$ ls -l
+total 240
+-rw-r-----. 1 bzaputil Webdev-Service 169374 Jan 23 10:06 angular.min.js
+lrwxrwxrwx. 1 bzaputil Webdev-Service     22 Jan 18 09:52 bzaputil -> /webdev/user/bzaputil/
+drwxr-s---. 2 bzaputil Webdev-Service   4096 Apr  5 19:04 capstone
+d-wxrwsrwx. 4 bzaputil Webdev-Service   4096 Apr  5 20:41 Capstone_8
+drwxrwsrwx. 2 bzaputil Webdev-Service   4096 Feb 22 11:42 classnotes
+-rw-r-----. 1 bzaputil Webdev-Service    312 Feb  1 10:38 config.php
+-rwxrwxrwx. 1 bzaputil Webdev-Service    218 Feb  1 10:41 db.sh
+-rw-r-----. 1 bzaputil Webdev-Service   7717 Feb  1 10:39 dbutils.php
+-r--------. 1 bzaputil Webdev-Service      0 Apr  9 20:11 error_log
+drwxrws---. 2 bzaputil Webdev-Service   4096 Jan 23 09:54 examples
+drwxr-sr-x. 2 bzaputil Webdev-Service   4096 Jan 24 17:37 hw1
+drwxr-s---. 2 bzaputil Webdev-Service   4096 Jan 27 23:15 hw2
+drwxrwsrwx. 2 bzaputil Webdev-Service   4096 Feb 18 19:54 hw3
+drwxrwsrwx. 2 bzaputil Webdev-Service   4096 Feb 21 17:49 hw4
+drwxrwsrwx. 2 bzaputil Webdev-Service   4096 Feb 22 10:01 hw5
+drwxrwsrwx. 2 bzaputil Webdev-Service   4096 Mar  1 10:12 hw6
+-rw-r--r--. 1 bzaputil Webdev-Service      0 Jan 25 09:46 index.html
+-rw-------. 1 bzaputil Webdev-Service    131 Jan 12 09:07 mysql_db_info
+-rw-------. 1 bzaputil Webdev-Service    113 Jan 12 09:07 psql_db_info
+-r--------. 1 bzaputil Webdev-Service      0 Feb 23 12:00 ssl_error_log
+drwxr-s---. 3 bzaputil Webdev-Service   4096 Jan 12 09:07 tomcat7
+lrwxrwxrwx. 1 bzaputil Webdev-Service     22 Jan 18 09:51 web -> /webdev/user/bzaputil/
+-r--r-----. 1 bzaputil Webdev-Service      0 Apr  9 20:11 webdev.cs.uiowa.edu.edu-ssl-error.log
+-r--r-----. 1 bzaputil Webdev-Service      0 Feb 23 12:11 webdev.cs.uiowa.edu-ssl-access.log
+[bzaputil@serv42 web]$ chmod u+r Capstone_8
+[bzaputil@serv42 web]$ cd Capstone_8
+[bzaputil@serv42 Capstone_8]$ ls
+README.md  secretMessage.txt  SECRETSINSIDE.txt  Thursday Meetings
+[bzaputil@serv42 Capstone_8]$ ls -l
+total 12
+-rw-r-----. 1 bzaputil Webdev-Service   77 Apr  5 19:24 README.md
+-rw-r-----. 1 bzaputil Webdev-Service  267 Apr  5 20:41 secretMessage.txt
+-rw-r-----. 1 bzaputil Webdev-Service   30 Apr  5 20:19 SECRETSINSIDE.txt
+drwxr-s---. 2 bzaputil Webdev-Service 4096 Apr  5 19:24 Thursday Meetings
+[bzaputil@serv42 Capstone_8]$ ls
+README.md  secretMessage.txt  SECRETSINSIDE.txt  Thursday Meetings
+[bzaputil@serv42 Capstone_8]$ 
+
+ chmod go+r *
