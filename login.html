@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html ng-app="soccer">
+<html ng-app="capstone">
 <head>
     <!-- this is what shows up in the tabs in your browser and if you bookmark the page -->
     <title>Log into Capstone 8</title>
@@ -14,15 +14,15 @@
     
     <!-- link to angular -->
     <!-- you can download it from https://angularjs.org/ then you need to upload it to the webdev server. -->
-    <script src="angular.min.js"></script>
+    <script src="js/angular.min.js"></script>
     
     <!-- angular code we wrote -->
-    <!-- soccer.module.js is where we define the angular app called 'soccer'. We use the name of the app in the html element at the top of the file -->
-    <script src="soccer.module.js"></script>
-    <!-- data.soccer.controller.js is where we are getting the data from. It defines a controller under the 'soccer' app called 'dataControl', and data is under $scope.data -->
-    <script src="data.soccer.controller.js"></script>
-    <!-- soccer.filter.js enables us to display html code -->
-    <script src="soccer.filter.js"></script>
+    <!-- capstone.module.js is where we define the angular app called 'capstone'. We use the name of the app in the html element at the top of the file -->
+    <script src="js/capstone.module.js"></script>
+    <!-- data.capstone.controller.js is where we are getting the data from. It defines a controller under the 'capstone' app called 'dataControl', and data is under $scope.data -->
+    <script src="js/data.capstone.controller.js"></script>
+    <!-- capstone.filter.js enables us to display html code -->
+    <script src="js/capstone.filter.js"></script>
 
 </head>
 
@@ -35,7 +35,7 @@
 
     
 <!-- header -->
-        <div ng-include ng-init="menuHighlight = 3;" src="'header.html'"></div>
+        <div ng-include ng-init="menuHighlight = 3;" src="'html/header.html'"></div>
 
 <div class="row">
     <div class="col-xs-12">
