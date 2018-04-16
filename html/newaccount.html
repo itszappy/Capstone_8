@@ -1,10 +1,10 @@
 <!doctype html>
 
 <!-- ng-app="soccer" defines the angular app that we are using. The name is defined under soccer.module.js -->
-<html lang="en" ng-app="soccer">
+<html lang="en" ng-app="capstone">
 <head>
     <!-- this is what shows up in the tabs in your browser and if you bookmark the page -->
-    <title> Capstone_8 </title>
+    <title> Create a new account!  </title>
 
     <!-- These are the links to bootstrap code -->
     <!-- we got the links from http://getbootstrap.com/docs/4.0/getting-started/introduction/ -->
@@ -15,22 +15,22 @@
     
     <!-- link to angular -->
     <!-- you can download it from https://angularjs.org/ then you need to upload it to the webdev server. -->
-    <script src="angular.min.js"></script>
+    <script src="js/angular.min.js"></script>
     
     <!-- angular code we wrote -->
     <!-- soccer.module.js is where we define the angular app called 'soccer'. We use the name of the app in the html element at the top of the file -->
-    <script src="soccer.module.js"></script>
+    <script src="js/capstone.module.js"></script>
     <!-- data.soccer.controller.js is where we are getting the data from. It defines a controller under the 'soccer' app called 'dataControl', and data is under $scope.data -->
-    <script src="data.soccer.controller.js"></script>
+    <script src="js/data.capstone.controller.js"></script>
     <!-- soccer.filter.js enables us to display html code -->
-    <script src="soccer.filter.js"></script>
+    <script src="js/capstone.filter.js"></script>
 </head>
 <body>
     <!-- we are defining the angular controller that we will use in this chunk of html defined by the div as 'dataControl' from data.soccer.controller.js -->
     <div class="container" ng-controller="dataControl">
         
         <!-- header -->
-        <div ng-include ng-init="menuHighlight = 2;" src="'header.html'"></div>
+        <div ng-include ng-init="menuHighlight = 2;" src="'html/header.html'"></div>
         
         
         <!-- form for entering new account -->
@@ -61,7 +61,7 @@
         </div> <!-- close row -->
         
         <!-- Footer -->
-        <div ng-include src="'footer.html'"></div>
+        <div ng-include src="'html/footer.html'"></div>
         
     </div>
 </body>
