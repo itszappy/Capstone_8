@@ -1,11 +1,11 @@
 /*
- * Controller where we get the data on soccer players
+ * Controller where we get the data on capstone stuff
  */
 (function () {
     'use strict';
     
-    // the 'soccer' part comes from the name of the app we created in soccer.module.js
-    var myApp = angular.module("soccer");
+    // the 'capstone' part comes from the name of the app we created in capstone.module.js
+    var myApp = angular.module("capstone");
     
     // 'dataControl' is used in the html file when defning the ng-controller attribute
     myApp.controller("dataControl", function($scope, $http, $window) {
