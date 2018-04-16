@@ -4,6 +4,6 @@
 */
 (function() {
     'use strict';
-    angular.module("soccer", []);
+    angular.module("capstone", []);
 }
 )();
