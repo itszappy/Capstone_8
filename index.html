@@ -1,7 +1,7 @@
 <!doctype html>
 
-<!-- ng-app="soccer" defines the angular app that we are using. The name is defined under soccer.module.js -->
-<html lang="en" ng-app="soccer">
+<!-- ng-app="capstone" defines the angular app that we are using. The name is defined under casptone.module.js -->
+<html lang="en" ng-app="capstone">
 <head>
     <!-- this is what shows up in the tabs in your browser and if you bookmark the page -->
     <title>Capstone 8</title>
@@ -18,17 +18,17 @@
     <script src="angular.min.js"></script>
     
     <!-- angular code we wrote -->
-    <!-- soccer.module.js is where we define the angular app called 'soccer'. We use the name of the app in the html element at the top of the file -->
-    <script src="soccer.module.js"></script>
-    <!-- data.soccer.controller.js is where we are getting the data from. It defines a controller under the 'soccer' app called 'dataControl', and data is under $scope.data -->
-    <script src="data.soccer.controller.js"></script>
-    <!-- soccer.filter.js enables us to display html code -->
-    <script src="soccer.filter.js"></script>
+    <!-- capstone.module.js is where we define the angular app called 'capstone'. We use the name of the app in the html element at the top of the file -->
+    <script src="js/capstone.module.js"></script>
+    <!-- data.capstone.controller.js is where we are getting the data from. It defines a controller under the 'capstone' app called 'dataControl', and data is under $scope.data -->
+    <script src="js/data.capstone.controller.js"></script>
+    <!-- capstone.filter.js enables us to display html code -->
+    <script src="js/capstone.filter.js"></script>
 </head>
 <body>
     
 
-    <!-- we are defining the angular controller that we will use in this chunk of html defined by the div as 'dataControl' from data.soccer.controller.js -->
+    <!-- we are defining the angular controller that we will use in this chunk of html defined by the div as 'dataControl' from data.capstone.controller.js -->
     <div class="container" ng-controller="dataControl">
 
         
@@ -41,7 +41,7 @@
         
         <div class="row">
                 <!-- Card for all players -->
-                <!-- We are getting our data from $scope.data in data.soccer.controller.js. The JSON object we get has the data under "players" -->
+                <!-- We are getting our data from $scope.data in data.capstone.controller.js. The JSON object we get has the data under "players" -->
                 <!-- We are defining each "row" of data as player -->
                 <!-- | filter:query is used to filter the data based on the text entered in the input field above with ng-model="query[queryBy]", and using $scope.query and $score.queryBy variables defined in the controller -->
                 <!-- players in ng-repeat="player in data.players | filter:query" comes from $response['value']['players'] = $players; -->
@@ -60,7 +60,7 @@
                     
                         <div class="card-body">
                             <div class="embed-responsive embed-responsive-16by9">
-                                <!-- trustHtml is the filter that enables html to be put out. the name is defined under soccer.filter.js -->
+                                <!-- trustHtml is the filter that enables html to be put out. the name is defined under capstone.filter.js -->
                                 <span ng-bind-html="player.videoshow | trustHtml"></span>
                             </div>
                             <p>country: {{player.country}}</p>
