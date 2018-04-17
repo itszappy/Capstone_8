@@ -63,7 +63,7 @@
                     } else if (response.data.role == 'p') {
                         $window.location.href = "Teacher_Landing.html";
                     }
-               } else {
+               } if (response.status == 500) {
                     alert('unexpected error');
                }
             });                        
