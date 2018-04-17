@@ -54,13 +54,13 @@
                if (response.status == 200) {
                     if (response.data.status == 'error') {
                         alert('error: ' + response.data.message);
-                    } if (response.data.role == 'a') {
+                    } else if (response.data.role == 'a') {
                         $window.location.href = "Admin_Landing.html";
-                    } if (response.data.role == 's') {
+                    } else if (response.data.role == 's') {
                         $window.location.href = "Student_Landing.html";
-                    } if (response.data.role == 't') {
+                    } else if (response.data.role == 't') {
                         $window.location.href = "Tutor_Landing.html";
-                    } if (response.data.role == 'p') {
+                    } else if (response.data.role == 'p') {
                         $window.location.href = "Teacher_Landing.html";
                     }
                } else {
