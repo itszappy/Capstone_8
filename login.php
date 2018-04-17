@@ -27,29 +27,7 @@
         $errorMessage .= "Please enter a password with at least six characters. ";
     }
     
-	
-    //query the role
-    if ($isComplete) {
-        $role_query = "SELECT * FROM USERTABLE WHERE HAWKID = '$HAWKID';";
-        $role_result = queryB($role_query,$db);
-        
-        if (nTuples($role_result) == 0) {
-            $errorMessage .= "Role is invalid. Try again dipshit.";
-            $isComplete = false;
-        }
-    }
-    
-    //Check it
-    if ($isComplete) {
-        $role_row = nextTuple($role_result);
-        $role = $role_row['USERROLE'];
-        
-        if($role == 0) {
-            $errorMessage = "God I hate you so much.";
-            $isComplete = false;
-        }
-    }
-    
+	        
     if ($isComplete) {   
     
         // get the hashed password from the user with the email that got entered
@@ -63,6 +41,7 @@
         }
     }
     
+         
     //check the password
     if ($isComplete) {            
         // there is an account that corresponds to the email that the user entered
@@ -81,6 +60,30 @@
             $isComplete = false;
         }
     }
+    
+    
+    //query the role
+    if ($isComplete) {
+        $role_query = "SELECT * FROM USERTABLE WHERE HAWKID = '$HAWKID';";
+        $role_result = queryDB($role_query,$db);
+        
+        if (nTuples($role_result) == 0) {
+            $errorMessage .= "Role is invalid. Try again dipshit.";
+            $isComplete = false;
+        }
+    }
+    
+    //Check it
+    if ($isComplete) {
+        $role_row = nextTuple($role_result);
+        $role = $role_row['USERROLE'];
+        
+        if($role == null) {
+            $errorMessage = "God I hate you so much.";
+            $isComplete = false;
+        }
+    }
+    
          
     if ($isComplete) {   
         // password was entered correctly

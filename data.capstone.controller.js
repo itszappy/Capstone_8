@@ -54,19 +54,19 @@
                if (response.status == 200) {
                     if (response.data.status == 'error') {
                         alert('error: ' + response.data.message);                  
-                    } else if (response.data.role == 'a') {
+                    } if (response.data.role == 'a') {
                         $window.location.href = "Admin_Landing.html";
-                    } else if (response.data.role == 's') {
+                    } if (response.data.role == 's') {
                         $window.location.href = "Student_Landing.html";
-                    } else if (response.data.role == 't') {
+                    } if (response.data.role == 't') {
                         $window.location.href = "Tutor_Landing.html";
-                    } else if (response.data.role == 'p') {
+                    } if (response.data.role == 'p') {
                         $window.location.href = "Teacher_Landing.html";
-                    } else if (reponse.status == 500) {
+                    } if (reponse.status == 500) {
                         alert("erro 500");
                     }
                     
-               } if (response.status == 500) {
+               } else {
                     alert('unexpected error');
                }
             });                        
