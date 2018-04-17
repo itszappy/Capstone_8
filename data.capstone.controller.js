@@ -13,7 +13,7 @@
         // define data for the app
         // in the html code we will refer to data.players. The data part comes from $scope.data, the players part comes from the JSON object below
         
-        $http.get('getplayers.php')
+        $http.get('getusers.php')
             .then(function(response) {
                 // response.data.value has value come from the getplayers.php file $response['value']['players'] = $players;
                 $scope.data = response.data.value;
