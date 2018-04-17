@@ -44,7 +44,7 @@
         $role_row = nextTuple($role_result);
         $role = $role_row['USERROLE'];
         
-        if($role == null) {
+        if($role == 0) {
             $errorMessage = "God I hate you so much.";
             $isComplete = false;
         }
