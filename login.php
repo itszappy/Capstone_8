@@ -30,7 +30,7 @@
 	
     //query the role
     if ($isComplete) {
-        $role_query = "SELECT USERROLE FROM USERTABLE WHERE HAWKID='$HAWKID';";
+        $role_query = "SELECT * FROM USERTABLE WHERE HAWKID = '$HAWKID';";
         $role_result = queryB($role_query,$db);
         
         if (nTuples($role_result) == 0) {
@@ -39,7 +39,7 @@
         }
     }
     
-    
+    //Check it
     if ($isComplete) {
         $role_row = nextTuple($role_result);
         $role = $role_row['USERROLE'];
