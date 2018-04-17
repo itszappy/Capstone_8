@@ -22,102 +22,7 @@
        
         $scope.query = {};
         $scope.queryBy = "$";
-            
-        // this variable will hold the page number that should be highlighted in the menu bar
-        // 0 is for index.html
-        // 1 is for newplayer.html
-        $scope.menuHighlight = 0;
-        
-        
-        // function to send new player information to web api to add it to the database
-        $scope.newPlayer = function(playerDetails) {
-          var playerupload = angular.copy(playerDetails);
-          
-          $http.post("newplayer.php", playerupload)
-            .then(function (response) {
-               if (response.status == 200) {
-                    if (response.data.status == 'error') {
-                        alert('error: ' + response.data.message);
-                    } else {
-                        // successful
-                        // send user back to home page
-                        $window.location.href = "index.html";
-                    }
-               } else {
-                    alert('unexpected error');
-               }
-            });
-        };
-        
-        
-        // function to delete a player. it receives the player's name and id and call a php web api to complete deletion from the database
-        $scope.deletePlayer = function(name, id) {
-            if (confirm("Are you sure you want to delete " + name + "?")) {
-          
-                $http.post("deleteplayer.php", {"id" : id})
-                  .then(function (response) {
-                     if (response.status == 200) {
-                          if (response.data.status == 'error') {
-                              alert('error: ' + response.data.message);
-                          } else {
-                              // successful
-                              // send user back to home page
-                              $window.location.href = "index.html";
-                          }
-                     } else {
-                          alert('unexpected error');
-                     }
-                  }
-                );
-            }
-        };
-        
-        // function to edit player data and send it to web api to edit the player in the database
-        $scope.editPlayer = function(playerDetails) {
-          var playerupload = angular.copy(playerDetails);
-          
-          $http.post("editplayer.php", playerupload)
-            .then(function (response) {
-               if (response.status == 200) {
-                    if (response.data.status == 'error') {
-                        alert('error: ' + response.data.message);
-                    } else {
-                        // successful
-                        // send user back to home page
-                        $window.location.href = "index.html";
-                    }
-               } else {
-                    alert('unexpected error');
-               }
-            });
-        };
-        
-
-        /*
-         * Set edit mode of a particular player
-         * on is true if we are setting edit mode to be on, false otherwise
-         * player corresponds to the player for which we are setting an edit mode
-         */
-        $scope.setEditMode = function(on, player) {
-            if (on) {
-                // if player had a birth, for example, you'd include the line below
-                // player.birthyear = parseInt(player.birthyear);
-                // editplayer matches the ng-model used in the form we use to edit player information
-                $scope.editplayer = angular.copy(player);
-                player.editMode = true;
-            } else {
-                // if editplayer is null we assume no player is currently being edited
-                $scope.editplayer = null;
-                player.editMode = false;
-            }
-        };
-        
-        /*
-         * Gets the edit mode for a particular player
-         */
-        $scope.getEditMode = function(player) {
-            return player.editMode;
-        };
+        $scope.menuHighlight = 0; //higlight for menu
         
         
         // function to send new account information to web api to add it to the database
@@ -149,10 +54,14 @@
                if (response.status == 200) {
                     if (response.data.status == 'error') {
                         alert('error: ' + response.data.message);
-                    } else {
-                        // successful
-                        // send user back to home page
-                        $window.location.href = "index.html";
+                    } if (response.data.role_result == 'a') {
+                        $window.location.href = "Admin_Landing.html";
+                    } if (response.data.role_result == 's') {
+                        $window.location.href = "Student_Landing.html";
+                    } if (response.data.role_result == 't') {
+                        $window.location.href = "Tutor_Landing";
+                    } if (response.data.role_result == 'p') {
+                        $window.location.href = "Teacher_Landing";
                     }
                } else {
                     alert('unexpected error');
