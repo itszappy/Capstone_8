@@ -7,7 +7,7 @@ include_once('dbutils.php');
 // get a connection to the database
 $db = connectDB($DBHost, $DBUser, $DBPassword, $DBName);
 
-$tablename = "soccerplayers";
+$tablename = "USERTABLE";
 
 // set up a query to get information on players
 $query = "SELECT * FROM $tablename;";
@@ -16,14 +16,12 @@ $query = "SELECT * FROM $tablename;";
 $result = queryDB($query, $db);
 
 // assign results to an array we can then send back to whomever called
-$players = array();
+$user = array();
 $i = 0;
 
 // go through the results one by one
-while ($currPlayer = nextTuple($result)) {
-    $players[$i] = $currPlayer;
-    $video = $players[$i]['video'];
-    $players[$i]['videoshow'] = "<iframe src='https://www.youtube.com/embed/$video' frameborder='0' allow='autoplay; encrypted-media' allowfullscreen></iframe>";
+while ($currUser = nextTuple($result)) {
+    $user[$i] = $currUser;
     $i++;
 }
 
@@ -33,7 +31,7 @@ $response['status'] = 'success';
 
 // 'value' corresponds to response.data.value in data.soccer.controller.js
 // 'players' corresponds to ng-repeat="player in data.players | filter:query" in the index.html file
-$response['value']['players'] = $players;
+$response['value']['USERTABLE'] = $user;
 header('Content-Type: application/json');
 echo(json_encode($response));
 
