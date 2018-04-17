@@ -18,6 +18,12 @@ $data = json_decode(file_get_contents('php://input'), true);
 // 
 $HAWKID = $data['HAWKID'];
 $PASSWORD = $data['PASSWORD'];
+$FIRSTNAME = $data['FIRSTNAME'];
+$LASTNAME = $data['LASTNAME'];
+$ISADMIN = $data['ISADMIN'];
+$USERROLE = $data['USERROLE'];
+$EMAIL = $data['EMAIL'];
+$PHONE = $data['PHONE'];
 
 // set up variables to handle errors
 // is complete will be false if we find any problems when checking on the data
@@ -41,6 +47,31 @@ if ($isComplete) {
     if (!isset($PASSWORD) || (strlen($PASSWORD) < 6)) {
         $isComplete = false;
         $errorMessage .= "Please enter a password with at least six characters!! ";
+    }
+    
+        if (!isset($FIRSTNAME) || (strlen($FIRSTNAME) < 2)) {
+        $isComplete = false;
+        $errorMessage .= "Please enter a first name with at least 2 characters!! ";
+    }
+    
+        if (!isset($LASTNAME) || (strlen($LASTNAME) < 2)) {
+        $isComplete = false;
+        $errorMessage .= "Please enter a last name with at least two characters!! ";
+    }
+    
+        if (!isset($USERROLE) || (strlen($USERROLE) != 1)) {
+        $isComplete = false;
+        $errorMessage .= "Please enter a role with only one character!! ";
+    }
+    
+        if (!isset($EMAIL) || (strlen($EMAIL) < 6)) {
+        $isComplete = false;
+        $errorMessage .= "Please enter an email with at least six characters!! ";
+    }
+    
+        if (!isset($PHONE) || (strlen($PHONE) < 9)) {
+        $isComplete = false;
+        $errorMessage .= "Please enter a phone number with at least 9 characters!! ";
     }  
 }
 
@@ -56,9 +87,70 @@ if ($isComplete) {
     if (nTuples($result) > 0) {
         // if we get at least one record back it means the username is taken
         $isComplete = false;
-        $errorMessage .= "The username $HAWKID is already taken. Please select a different username. ";
+        $errorMessage .= "The hawk id $HAWKID is already taken. Please select a different username. ";
     }
 }
+
+if ($isComplete) {
+    // set up a query to check if this username is in the database already
+    $query = "SELECT FIRSTNAME FROM USERTABLE WHERE FIRSTNAME='$FIRSTNAME'";
+    
+    // we need to run the query
+    $result = queryDB($query, $db);
+    
+    // check on the number of records returned
+    if (nTuples($result) > 0) {
+        // if we get at least one record back it means the username is taken
+        $isComplete = false;
+        $errorMessage .= "The first name $FIRSTNAME is already taken. Please select a different firstname. ";
+    }
+}
+
+if ($isComplete) {
+    // set up a query to check if this username is in the database already
+    $query = "SELECT LASTNAME FROM USERTABLE WHERE LASTNAME='$LASTNAME'";
+    
+    // we need to run the query
+    $result = queryDB($query, $db);
+    
+    // check on the number of records returned
+    if (nTuples($result) > 0) {
+        // if we get at least one record back it means the username is taken
+        $isComplete = false;
+        $errorMessage .= "The last name $LASTNAME is already taken. Please select a different last name. ";
+    }
+}
+
+if ($isComplete) {
+    // set up a query to check if this username is in the database already
+    $query = "SELECT EMAIL FROM USERTABLE WHERE EMAIL='$EMAIL'";
+    
+    // we need to run the query
+    $result = queryDB($query, $db);
+    
+    // check on the number of records returned
+    if (nTuples($result) > 0) {
+        // if we get at least one record back it means the username is taken
+        $isComplete = false;
+        $errorMessage .= "The email $EMAIL is already taken. Please select a different email. ";
+    }
+}
+
+if ($isComplete) {
+    // set up a query to check if this username is in the database already
+    $query = "SELECT PHONE FROM USERTABLE WHERE PHONE='$PHONE'";
+    
+    // we need to run the query
+    $result = queryDB($query, $db);
+    
+    // check on the number of records returned
+    if (nTuples($result) > 0) {
+        // if we get at least one record back it means the username is taken
+        $isComplete = false;
+        $errorMessage .= "The phone number $PHONE is already taken. Please select a different phone number. ";
+    }
+}
+
 
 // if we got this far and $isComplete is true it means we should add the player to the database
 if ($isComplete) {
@@ -66,7 +158,7 @@ if ($isComplete) {
     $HASHED_PSSWRD = crypt($PASSWORD, getSalt());
     
     // we will set up the insert statement to add this new record to the database
-    $insertquery = "INSERT INTO USERTABLE(HAWKID, HASHED_PSSWRD) VALUES ('$HAWKID', '$HASHED_PSSWRD')";
+    $insertquery = "INSERT INTO USERTABLE(HAWKID, HASHED_PSSWRD, FIRSTNAME, LASTNAME, ISADMIN, USERROLE, EMAIL, PHONE) VALUES ('$HAWKID', '$HASHED_PSSWRD', '$FIRSTNAME', '$LASTNAME', '$ISADMIN', '$USERROLE', '$EMAIL', '$PHONE')";
     
     // run the insert statement
     queryDB($insertquery, $db);
