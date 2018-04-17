@@ -39,6 +39,17 @@
         }
     }
     
+    
+    if ($isComplete) {
+        $role_row = nextTuple($role_result);
+        $role = $role_row['USERROLE'];
+        
+        if($role == null) {
+            $errorMessage = "God I hate you so much.";
+            $isComplete = false;
+        }
+    }
+    
     if ($isComplete) {   
     
         // get the hashed password from the user with the email that got entered
