@@ -94,7 +94,7 @@
         $response = array();
         $response['status'] = 'success';
 		$response['message'] = 'logged in';
-        $response['role_result'] = $role_result;
+        $response['role'] = $role;
         header('Content-Type: application/json');
         echo(json_encode($response));
     } else {
