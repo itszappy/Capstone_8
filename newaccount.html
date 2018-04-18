@@ -43,14 +43,54 @@
                 <div class="form-group" ng-class="{ 'text-danger': newAccountForm.HAWKID.$invalid && newAccountForm.HAWKID.$touched, 'text-success': !newAccountForm.HAWKID.$invalid && newAccountForm.HAWKID.$touched }">
                     <label class="form-control-label" for="HAWKID">Username (at least 2 characters long): </label>
                     <input type="text" class="form-control" ng-class="{ 'is-invalid': newAccountForm.HAWKID.$invalid && newAccountForm.HAWKID.$touched, 'is-valid': !newAccountForm.HAWKID.$invalid && newAccountForm.HAWKID.$touched }" name="HAWKID" ng-model="account.HAWKID" ng-minlength="2" id="HAWKID" required/>
-                    <div ng-show="newAccountForm.HAWKID.$invalid && newAccountForm.HAWKID.$touched" >The username must be at least two characters long</div>
+                    <div ng-show="newAccountForm.HAWKID.$invalid && newAccountForm.HAWKID.$touched" >The username must be at least 2 characters long</div>
                 </div>
                 
                 <!-- password for account -->
                 <div class="form-group" ng-class="{ 'text-danger': newAccountForm.PASSWORD.$invalid && newAccountForm.PASSWORD.$touched, 'text-success': !newAccountForm.PASSWORD.$invalid && newAccountForm.PASSWORD.$touched }">
                     <label class="form-control-label" for="PASSWORD">Password (at least 6 characters long; may not include anything related to hawkeyes): </label>
                     <input type="password" class="form-control" ng-class="{ 'is-invalid': newAccountForm.PASSWORD.$invalid && newAccountForm.PASSWORD.$touched, 'is-valid': !newAccountForm.PASSWORD.$invalid && newAccountForm.PASSWORD.$touched }" name="PASSWORD" ng-model="account.PASSWORD" ng-minlength="6" id="PASSWORD" required/>
-                    <div ng-show="newAccountForm.PASSWORD.$invalid && newAccountForm.PASSWORD.$touched" >The password must be at least six characters long</div>
+                    <div ng-show="newAccountForm.PASSWORD.$invalid && newAccountForm.PASSWORD.$touched" >The password must be at least 6 characters long</div>
+                </div>
+                
+                <!-- first name for account-->
+                
+                <div class="form-group" ng-class="{ 'text-danger': newAccountForm.FIRSTNAME.$invalid && newAccountForm.FIRSTNAME.$touched, 'text-success': !newAccountForm.FIRSTNAME.$invalid && newAccountForm.FIRSTNAME.$touched }">
+                    <label class="form-control-label" for="FIRSTNAME">First Name:  </label>
+                    <input type="FIRSTNAME" class="form-control" ng-class="{ 'is-invalid': newAccountForm.FIRSTNAME.$invalid && newAccountForm.FIRSTNAME.$touched, 'is-valid': !newAccountForm.FIRSTNAME.$invalid && newAccountForm.FIRSTNAME.$touched }" name="FIRSTNAME" ng-model="account.FIRSTNAME" ng-minlength="2" id="FIRSTNAME" required/>
+                    <div ng-show="newAccountForm.FIRSTNAME.$invalid && newAccountForm.FIRSTNAME.$touched" >The first name must be at least 2 characters long</div>
+                </div>
+                
+                <!-- last name for account-->
+                
+                <div class="form-group" ng-class="{ 'text-danger': newAccountForm.LASTNAME.$invalid && newAccountForm.LASTNAME.$touched, 'text-success': !newAccountForm.LASTNAME.$invalid && newAccountForm.LASTNAME.$touched }">
+                    <label class="form-control-label" for="LASTNAME">Last Name:  </label>
+                    <input type="LASTNAME" class="form-control" ng-class="{ 'is-invalid': newAccountForm.LASTNAME.$invalid && newAccountForm.LASTNAME.$touched, 'is-valid': !newAccountForm.LASTNAME.$invalid && newAccountForm.LASTNAME .$touched }" name="LASTNAME" ng-model="account.LASTNAME" ng-minlength="2" id="LASTNAME" required/>
+                    <div ng-show="newAccountForm.LASTNAME.$invalid && newAccountForm.LASTNAME.$touched" >The Last Name must be at least 2 characters long</div>
+                </div>
+                
+                <!-- User Role for account-->
+                
+                <div class="form-group" ng-class="{ 'text-danger': newAccountForm.USERROLE.$invalid && newAccountForm.USERROLE.$touched, 'text-success': !newAccountForm.USERROLE.$invalid && newAccountForm.USERROLE.$touched }">
+                    <label class="form-control-label" for="USERROLE">User Role:  </label>
+                    <input type="USERROLE" class="form-control" ng-class="{ 'is-invalid': newAccountForm.USERROLE.$invalid && newAccountForm.USERROLE.$touched, 'is-valid': !newAccountForm.USERROLE.$invalid && newAccountForm.USERROLE .$touched }" name="USERROLE" ng-model="account.USERROLE" ng-minlength="1" id="USERROLE" required/>
+                    <div ng-show="newAccountForm.USERROLE.$invalid && newAccountForm.USERROLE.$touched" >The User Role must be only 1 character long</div>
+                </div>
+                
+                <!-- Email for account-->
+                
+                <div class="form-group" ng-class="{ 'text-danger': newAccountForm.EMAIL.$invalid && newAccountForm.EMAIL.$touched, 'text-success': !newAccountForm.EMAIL.$invalid && newAccountForm.EMAIL.$touched }">
+                    <label class="form-control-label" for="EMAIL">User Email:  </label>
+                    <input type="EMAIL" class="form-control" ng-class="{ 'is-invalid': newAccountForm.EMAIL.$invalid && newAccountForm.EMAIL.$touched, 'is-valid': !newAccountForm.EMAIL.$invalid && newAccountForm.EMAIL .$touched }" name="EMAIL" ng-model="account.EMAIL" ng-minlength="6" id="EMAIL" required/>
+                    <div ng-show="newAccountForm.EMAIL.$invalid && newAccountForm.EMAIL.$touched" >The User's Email must be 9 characters long</div>
+                </div>
+                
+                 <!-- Phone Number for account-->
+                
+                <div class="form-group" ng-class="{ 'text-danger': newAccountForm.PHONE.$invalid && newAccountForm.PHONE.$touched, 'text-success': !newAccountForm.PHONE.$invalid && newAccountForm.PHONE.$touched }">
+                    <label class="form-control-label" for="PHONE">User Phone Number:  </label>
+                    <input type="PHONE" class="form-control" ng-class="{ 'is-invalid': newAccountForm.PHONE.$invalid && newAccountForm.PHONE.$touched, 'is-valid': !newAccountForm.PHONE.$invalid && newAccountForm.PHONE .$touched }" name="PHONE" ng-model="account.PHONE" ng-minlength="10" id="PHONE" required/>
+                    <div ng-show="newAccountForm.PHONE.$invalid && newAccountForm.PHONE.$touched" >The User's phone number must be 10 digits</div>
                 </div>
                 
                 <!-- newAccount is a function in the controller. account refers to the word we used under ng-model in the input fields -->
