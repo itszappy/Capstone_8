@@ -69,9 +69,9 @@ if ($isComplete) {
         $errorMessage .= "Please enter an email with at least six characters!! ";
     }
     
-        if (!isset($PHONE) || (strlen($PHONE) < 9)) {
+        if (!isset($PHONE) || (strlen($PHONE) < 10)) {
         $isComplete = false;
-        $errorMessage .= "Please enter a phone number with at least 9 characters!! ";
+        $errorMessage .= "Please enter a phone number with at least 10 characters!! ";
     }  
 }
 
