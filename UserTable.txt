@@ -1,0 +1,29 @@
+------------+--------------------------------------------------------------+------------+-------------+---------+----------+-------------------------+------------+
+| HAWKID     | HASHED_PSSWRD                                                | FIRSTNAME  | LASTNAME    | ISADMIN | USERROLE | EMAIL                   | PHONE      |
++------------+--------------------------------------------------------------+------------+-------------+---------+----------+-------------------------+------------+
+| adanover   | $2a$12$NVpl06l8ry6h7Nzg5QY4oefEpONxM0JzQ8iocYRHr7MGgx4Qo453m | Ashley     | Danover     |         | s        | ashleydanover@gmail.com |        456 |
+| amorris    | $2a$12$f0OVrB1FgcZa2KAsYrQDtO/9derPxF1PWa1NBac6uMVPb0I6rJjjy | Abby       | Morris      |         | s        | amorris@uiowa.edu       | 2147483647 |
+| arangel    | $2a$12$H9p9GGsVYZlBjRTWRO1T3OiIF6P7WLy25BmGEJgP.duZZEEQE2VBi | Andres     | Rangel      |         | s        | arangel@uiowa.edu       | 2147483647 |
+| asegre     | $2a$12$oR2GHR2wxy.6.H40w6bjrOHrUkb65AK9VZSE9JLFQZQ08M66YeLra | Alberto    | Segre       |         | p        | asegre@uiowa.edu        | 2147483647 |
+| awolmutt   | $2a$12$Z/G21iBWMN.2YbRlfwfK0.l/ovJ0PgLDfuX3uBtGquH/pvfD2ulCS | Aaron      | Wolmutt     |         | s        | awolmutt@uiowa.edu      | 2147483647 |
+| bzaputil   | $2a$12$WTQKpzk9NNoPL3OQ2OLZQejTANnYIvxP2.nPWZ5/dTXSh7n1IB.JO | Bailey     | Zaputil     |         | s        | bzaputil@uiowa.edu      | 2147483647 |
+| cgitzlaff  | $2a$12$AbhjkoK3JWPccbJ/vm1A/urMuJmSYPCsQdbACt4oi2QRhDUqtS3AW | Cameron    | Gitzlaff    |         | s        | cgitzlaff@uiowa.edu     | 2147483647 |
+| cmurphy    | $2a$12$byQUkQaODmGpxqvX9JKQuuvf5CfwoADIUj8Dcdm1zH7No6qZGHs9e | Conlan     | Murphy      |         | s        | cmurphy@uiowa.edu       | 2147483647 |
+| jdubois    | $2a$12$UDRYyUcQmAdTK9x6fA/RpuMIJyrDW.3jkxCjTYhrteFypb3BvMWTO | Johnathan  | Dubois      |         | s        | jdubois@uiowa.edu       | 2147483647 |
+| jphourcade | $2a$12$52qSS50xhGmVgjFAmIT5Z.9oJmPr7mkxCofHWnZwxxGo2u3K1EAq. | Juan Pablo | Hourcade    |         | p        | jphourcade@uiowa.edu    | 2147483647 |
+| kbillings  | $2a$12$cJSorILPYFIRyRtOfjN44OqMm.hWQ0SrQd.uprpM7bEVl73kr2S.C | Kaisha     | Billings    |         | s        | kbillings@uiowa.edu     | 2147483647 |
+| kenokian   | $2a$12$juu7OlmQ/hzXLyUEF9HVb.tZtyjmD1CFBAEF.1J2gdhCHkWreGN/6 | Ken        | Enokian     |         | s        | kokian@uiowa.edu        | 2147483647 |
+| klang      | $2a$12$JTMklbsMD12vmePsPAcLv.JPzZGaeY.QXgHehwrIhlnq3ckdLQSyq | Kyler      | Lang        |         | s        | klang@uiowa.edu         | 2147483647 |
+| kmerschman | $2a$12$McsSPqAz8UD6fgpGgJQsrevamaNpaoPVar3rnQ7de0PWHNXxGss5a | Keaton     | Merschman   |         | s        | kmerschman@uiowa.edu    | 2147483647 |
+| lbecker    | $2a$12$YraRDCiTfJNEppF0Oa5p7.MwO844vgr45xRwjDdJlnSZX2lq8O/bi | Leah       | Becker      |         | s        | leahbecker@uiowa.edu    | 1345453234 |
+| lpollard   | $2a$12$/IhdLQzVEMIDSLlWUsERzuGwcx5CeLmNFf6/qxbqv8tn9QPYOlMHG | Lillian    | Pollard     |         | s        | lpollard@uiowa.edu      | 2147483647 |
+| mmarkopoul | $2a$12$3VLhx0.oXAVH1E.WBLik5ORo2VoAVSmI0iAl8ONqP0Pj0Q5FsGUDS | Michael    | Markopoulos |         | s        | mmarkopoulos@uiowa.edu  | 2147483647 |
+| npranger   | $2a$12$ZROn1lb061j.tXYNhJc3cuklUiWCLGM2h6xBDUc4fWosrUgLcny62 | Nathan     | Pranger     |         | s        | npranger@uiowa.edu      | 2147483647 |
+| onauman    | $2a$12$xIS0CVaWHVvIDaM//zccZeHrl27dA.XMl5LprEy64fYZcpisHPTo. | Olivia     | Nauman      |         | s        | onauman@uiowa.edu       | 2147483647 |
+| pmarkmann  | $2a$12$dCW6iN0bcfSQ0eH66hEBB.lUsbvVSF/AiezoJizXSjuNx0wuUBnGO | Patrick    | Markmann    |         | s        | pmarkmann@uiowa.edu     | 2147483647 |
+| ppatel     | $2a$12$Nt/JlJI/PYyLhURTUVAy9ObfoGn7NTBVyjgeo6VuUU0yXnpPQ5LuS | Pranav     | Patel       |         | s        | ppatel@uiowa.edu        | 2147483647 |
+| rbartlett  | $2a$12$66urSA4zvERTcwbAIVkcQut3VGy6ab.L0SgQM38NVJR1qG9MA6hIq | Rachel     | Bartlett    |         | s        | rbartlett@uiowa.edu     | 2147483647 |
+| smartinez  | $2a$12$BXjWrkRDE/5a/duc1/2G5OCVomy9QbH252rocD/hOxjaFItaVhJ/q | Samantha   | Martinez    |         | s        | smartinez@uiowa.edu     | 2147483647 |
+| sniebuhr   | $2a$12$l/fVTszjA0NM3bruemzpv.rPVRGnBR6i71iAwtb8.XNubdkKaXFOy | Shelby     | Niebuhr     |         | s        | sniebuhr@uiwa.edu       | 2147483647 |
+| tmesserly  | $2a$12$9sB6v6Lz7iBbGuNd/7I.4u/3Et2/XTb6fD1qz25NResxQ2DM7M5xi | Tram       | Messerly    |         | s        | tmesserly@uiowa.edu     | 2147483647 |
+| zkrueger   | $2a$12$A2yPbeL5su./Hwq.1vk0d.NbRTFUImMqWjzkUP7aOBLMZjvY5mI9W | Zach       | Krueger     |         | s        | zkrueger@uiowa.edu      | 2147483647 |
