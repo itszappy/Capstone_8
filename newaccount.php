@@ -69,9 +69,9 @@ if ($isComplete) {
         $errorMessage .= "Please enter an email with at least six characters!! ";
     }
     
-        if (!isset($PHONE) || (strlen($PHONE) < 10)) {
+        if (!isset($PHONE) || (strlen($PHONE) < 9)) {
         $isComplete = false;
-        $errorMessage .= "Please enter a phone number with at least 10 characters!! ";
+        $errorMessage .= "Please enter a phone number with at least 9 characters!! ";
     }  
 }
 
@@ -91,65 +91,6 @@ if ($isComplete) {
     }
 }
 
-if ($isComplete) {
-    // set up a query to check if this username is in the database already
-    $query = "SELECT FIRSTNAME FROM USERTABLE WHERE FIRSTNAME='$FIRSTNAME'";
-    
-    // we need to run the query
-    $result = queryDB($query, $db);
-    
-    // check on the number of records returned
-    if (nTuples($result) > 0) {
-        // if we get at least one record back it means the username is taken
-        $isComplete = false;
-        $errorMessage .= "The first name $FIRSTNAME is already taken. Please select a different firstname. ";
-    }
-}
-
-if ($isComplete) {
-    // set up a query to check if this username is in the database already
-    $query = "SELECT LASTNAME FROM USERTABLE WHERE LASTNAME='$LASTNAME'";
-    
-    // we need to run the query
-    $result = queryDB($query, $db);
-    
-    // check on the number of records returned
-    if (nTuples($result) > 0) {
-        // if we get at least one record back it means the username is taken
-        $isComplete = false;
-        $errorMessage .= "The last name $LASTNAME is already taken. Please select a different last name. ";
-    }
-}
-
-if ($isComplete) {
-    // set up a query to check if this username is in the database already
-    $query = "SELECT EMAIL FROM USERTABLE WHERE EMAIL='$EMAIL'";
-    
-    // we need to run the query
-    $result = queryDB($query, $db);
-    
-    // check on the number of records returned
-    if (nTuples($result) > 0) {
-        // if we get at least one record back it means the username is taken
-        $isComplete = false;
-        $errorMessage .= "The email $EMAIL is already taken. Please select a different email. ";
-    }
-}
-
-if ($isComplete) {
-    // set up a query to check if this username is in the database already
-    $query = "SELECT PHONE FROM USERTABLE WHERE PHONE='$PHONE'";
-    
-    // we need to run the query
-    $result = queryDB($query, $db);
-    
-    // check on the number of records returned
-    if (nTuples($result) > 0) {
-        // if we get at least one record back it means the username is taken
-        $isComplete = false;
-        $errorMessage .= "The phone number $PHONE is already taken. Please select a different phone number. ";
-    }
-}
 
 
 // if we got this far and $isComplete is true it means we should add the player to the database
