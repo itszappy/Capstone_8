@@ -1,4 +1,18 @@
 
+
+h1 { 
+    display: block;
+    font-size: 1em;
+    font-family: sans-serif;
+    font-color: white;
+    margin-top: 0.67em;
+    margin-bottom: 0.67em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+}
+
+
 /* this is for the index login header*/
 .black_box {
   background-color: black;
@@ -10,14 +24,3 @@
   padding: 20px;
 }
 
-h1 { 
-    display: block;
-    font-size: 3em;
-    font-family: sans-serif;
-    font-color: white;
-    margin-top: 0.67em;
-    margin-bottom: 0.67em;
-    margin-left: 0;
-    margin-right: 0;
-    font-weight: bold;
-}
