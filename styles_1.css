@@ -10,4 +10,14 @@
   padding: 20px;
 }
 
-
+h1 { 
+    display: block;
+    font-size: 3em;
+    font-family: sans-serif;
+    font-color: white;
+    margin-top: 0.67em;
+    margin-bottom: 0.67em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+}
