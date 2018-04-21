@@ -42,7 +42,7 @@ INSERT INTO USERTABLE (HAWKID, HASHED_PSSWRD, FIRSTNAME, LASTNAME, ISADMIN, USER
 INSERT INTO COURSE (COURSEID, STUDENTHAWKID, TUTORHAWKID, PROFESSORHAWKID) VALUES (00001020, "pmarkmann", "bjohnson", "krector");
                                                                                                                                                                                                        
 -- Enter Student Data
-INSERT INTO STUDENT (STUDENTHAWKID, COURSEID, SEMESTER BUDGET) VALUES ("pmarkmann", 00001020, 15);
+INSERT INTO STUDENT (STUDENTHAWKID, COURSEID, SEMESTERBUDGET) VALUES ("pmarkmann", 00001020, 15);
 
 -- Enter Tutor Data
 INSERT INTO TUTOR (TUTORHAWKID, COURSEID, HOURSPERWEEK) VALUES ("bjohnson", "00001020", "20");
