@@ -15,32 +15,3 @@ h1 {
     font-weight: bold;
 }
 
-
-/* this is for the index login header*/
-.black_box {
-  background-color: black;
-  position: absolute;
-  height: 50%;
-  width: 30%;
-  left: 10%;
-  top: 10%;
-  padding: 20px;
-}
-
-/* The sidenav */
-.sidenav {
-  height: 100%;
-  width: 200px;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  background-color: #111;
-  overflow-x: hidden;
-  padding-top: 20px;
-}
-
-/* Page content */
-.main {
-  margin-left: 200px; /* Same as the width of the sidenav */
-}
