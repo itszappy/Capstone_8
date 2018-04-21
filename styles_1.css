@@ -15,3 +15,15 @@ h1 {
     font-weight: bold;
 }
 
+
+/* this is for the index login header*/
+.black_box {
+  background-color: black;
+  position: absolute;
+  height: 50%;
+  width: 30%;
+  left: 10%;
+  top: 10%;
+  padding: 20px;
+}
+
