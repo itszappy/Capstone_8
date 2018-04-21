@@ -24,104 +24,24 @@
     <script src="data.capstone.controller.js"></script>
     <!-- capstone.filter.js enables us to display html code -->
     <script src="capstone.filter.js"></script>
+    <script src="styles_1.css"</script>
+    
 </head>
 <body style= "background-image:url(https://hawkeyesports.com/images/2016/7/6/Tigerhawk.jpg)" />
     
-
+    
     <!-- we are defining the angular controller that we will use in this chunk of html defined by the div as 'dataControl' from data.capstone.controller.js -->
     <div class="container" ng-controller="dataControl">
 
+        <div class="black_box">
         
-        <!-- header -->
-        <div ng-include ng-init="menuHighlight = 0;" src="'header.html'"></div>
-                    
-                    <div style ="font-family:Times New Roman;color:white;font-size:250%;" > Welcome to The University of Iowa Tutoring Website!</div>                    
-                    <div style ="font-family:Times New Roman;color:white;font-size:150%;">Click here to login</div>
-                    <a href="login.html" class="btn btn-info" role="button">Log in</a>
-    
-        <div class="row">
-                <!-- Card for all players -->
-                <!-- We are getting our data from $scope.data in data.capstone.controller.js. The JSON object we get has the data under "players" -->
-                <!-- We are defining each "row" of data as player -->
-                <!-- | filter:query is used to filter the data based on the text entered in the input field above with ng-model="query[queryBy]", and using $scope.query and $score.queryBy variables defined in the controller -->
-                <!-- players in ng-repeat="player in data.players | filter:query" comes from $response['value']['players'] = $players; -->
-                <div class="card m-1" style="width: 18rem" ng-repeat="player in data.players | filter:query">
-                    
-                    
-                    <div ng-init="setEditMode(false, player);"></div>
-                    
-                    
-                    <!-- R E A D    M O D E -->
-                    <div ng-if="!getEditMode(player)">
-                        <!-- if we are here, it means that we are not in edit mode -->
-                        <div class="card-header">
-                            {{player.name}}
-                        </div>
-                    
-                        <div class="card-body">
-                            <div class="embed-responsive embed-responsive-16by9">
-                                <!-- trustHtml is the filter that enables html to be put out. the name is defined under capstone.filter.js -->
-                                <span ng-bind-html="player.videoshow | trustHtml"></span>
-                            </div>
-                            <p>country: {{player.country}}</p>
-                            <p>club: {{player.club}}</p>
-                            <button class="btn btn-primary" ng-click="setEditMode(true, player)" ng-disabled="editplayer != null" ng-show="isloggedin">Edit</button>
-                            <button class="btn btn-primary" ng-click="deletePlayer(player.name, player.id)" ng-show="isloggedin">Delete</button>
-                        </div>
-                    </div>
-                    
-                    
-                    <!-- E D I T    M O D E -->                    
-                    <div ng-if="getEditMode(player)">
-                        <!-- edit mode -->
-                        
-                        <form  name="newPlayerForm" novalidate>
-                        
-                            <div class="card-header">
-                                <!-- name of the player -->
-                                <div class="form-group" ng-class="{ 'text-danger': newPlayerForm.name.$invalid && newPlayerForm.name.$touched, 'text-success': !newPlayerForm.name.$invalid && newPlayerForm.name.$touched }">
-                                    <label class="form-control-label" for="name">name: </label>
-                                    <input type="text" class="form-control" ng-class="{ 'is-invalid': newPlayerForm.name.$invalid && newPlayerForm.name.$touched, 'is-valid': !newPlayerForm.name.$invalid && newPlayerForm.name.$touched }" name="name" ng-model="editplayer.name" ng-minlength="2" id="name" required/>
-                                    <div ng-show="newPlayerForm.name.$invalid && newPlayerForm.name.$touched" >The player's name must be at least two characters long</div>
-                                </div>
-                            </div>
-                            
-                            <div class="card-body">
-                                <!-- country of the player -->
-                                <!-- ng-class sets up the style for this element. You'll find a format of 'style': condition, 'style2': condition2 -->
-                                <!-- notice in ng-class we are using the name of the form, and the name of the input element in the codition statements -->
-                                <div class="form-group" ng-class="{ 'text-danger': newPlayerForm.country.$invalid && newPlayerForm.country.$touched, 'text-success': !newPlayerForm.country.$invalid && newPlayerForm.country.$touched}">
-                                    <label>country: </label>
-                                    <input type="text" class="form-control" ng-class="{ 'is-invalid': newPlayerForm.country.$invalid && newPlayerForm.country.$touched, 'is-valid': !newPlayerForm.country.$invalid && newPlayerForm.country.$touched}" name="country" ng-model="editplayer.country" ng-minlength="2" required/>
-                                    <p ng-show="newPlayerForm.country.$invalid && newPlayerForm.country.$touched" >The player's country must be at least two characters long</p>
-                                </div>                
-
-                                <!-- club of the player -->
-                                <div class="form-group" ng-class="{ 'text-danger': newPlayerForm.club.$invalid && newPlayerForm.club.$touched, 'text-success': !newPlayerForm.club.$invalid && newPlayerForm.club.$touched}">
-                                    <label>club: </label>
-                                    <input type="text" class="form-control" ng-class="{ 'is-invalid': newPlayerForm.club.$invalid && newPlayerForm.club.$touched, 'is-valid': !newPlayerForm.club.$invalid && newPlayerForm.club.$touched}" name="club" ng-model="editplayer.club" ng-minlength="2" required/>
-                                    <p ng-show="newPlayerForm.club.$invalid && newPlayerForm.club.$touched" >The player's club must be at least two characters long</p>
-                                </div>
-                                
-                                <!-- video of the player -->
-                                <div class="form-group" ng-class="{ 'text-danger': newPlayerForm.video.$invalid && newPlayerForm.video.$touched, 'text-success': !newPlayerForm.video.$invalid && newPlayerForm.video.$touched}">
-                                    <label>video id form youtube: </label>
-                                    <input type="text" class="form-control" ng-class="{ 'is-invalid': newPlayerForm.video.$invalid && newPlayerForm.video.$touched, 'is-valid': !newPlayerForm.video.$invalid && newPlayerForm.video.$touched}" name="video" ng-model="editplayer.video" ng-minlength="2" />
-                                    <p ng-show="newPlayerForm.video.$invalid && newPlayerForm.video.$touched" >The player's video must be at least two characters long</p>
-                                </div>
-
-
-                                <button class="btn btn-primary" ng-click="editPlayer(editplayer)">Save</button>
-                                <button class="btn btn-primary" ng-click="setEditMode(false, player)">Cancel</button>
-                            </div>
-                        
-                        </form>
-                    </div>                    
-                    
-                </div>
+             <div style ="font-family:Times New Roman;color:white;font-size:250%;" > Welcome to The University of Iowa Tutoring Website!</div>                    
+             <div style ="font-family:Times New Roman;color:white;font-size:150%;">Click here to login</div>
+             <a href="login.html" class="btn btn-info" role="button">Log in</a>
+             
         </div>
-        
-        <!-- Footer -->
+    
+      
         
     </div>
 </body>
