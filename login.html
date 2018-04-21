@@ -44,13 +44,8 @@
   <div class="main">
     <h2>Sidenav Example</h2>
     <p>This sidenav is always shown.</p>
-  </div>
-
-<!-- form to enter new pizzas -->
-  <div class="row">
-      <div class="col-xs-12">
-          
-          <form name="accountForm" novalidate>
+    
+    <form name="accountForm" novalidate>
           
               <!-- username for account -->
               <div class="form-group" ng-class="{ 'text-danger': accountForm.HAWKID.$invalid && accountForm.HAWKID.$touched, 'text-success': !accountForm.HAWKID.$invalid && accountForm.HAWKID.$touched }">
@@ -67,8 +62,11 @@
               </div>
           
               <button class="btn btn-default" ng-click="login(account)" ng-disabled="accountForm.$invalid">Log in</button>
-          </form>
-      </div>
+     </form>
+  </div>
+
+          
+</div>
   </div>
 </div>
 
