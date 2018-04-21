@@ -1,8 +1,10 @@
+<!doctype html>
+        
         <!-- This is the menu bar -->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark" ng-init="checkifloggedin()">
             
             <!-- this is a place to put the title of the page, or a logo -->
-          <a class="navbar-brand" href="index.html">Capstone 8</a>
+          <a class="navbar-brand" href="index.html" style ="font-family:Times New Roman;color:white;font-size:250%;">Capstone 8</a>
           
           <!-- definition of the buton you see if the screen is too small and you can't fit the full menu -->
           <!-- make sure the data-target and aria-controls match the div with the content you want to show -->
@@ -19,7 +21,7 @@
                 
                 <!-- active only if menuHighlight is equal to 0 -->
               <li class="nav-item" ng-class="{'active' : (menuHighlight == 0)}">
-                <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="index.html" style ="font-family:Times New Roman;color:white;font-size:150%;">Home <span class="sr-only">(current)</span></a>
               </li>
               
                            
@@ -37,11 +39,11 @@
             <ul class="navbar-nav">
               <!-- menu item for logging in, active if menuHighlight is equal to 3 -->
               <li class="nav-item" ng-class="{'active' : (menuHighlight == 3)}" ng-show="!isloggedin">
-                <a class="nav-link" href="login.html">Log in</a>
+                <a class="nav-link" href="login.html" style ="font-family:Times New Roman;color:white;font-size:150%;">Log in</a>
               </li>
               
               <li class="nav-item" ng-show="isloggedin">
-                <a class="nav-link" href="" ng-click="logout()">Log out</a>
+                <a class="nav-link" href="" ng-click="logout()" style ="font-family:Times New Roman;color:white;font-size:150%;">Log out</a>
               </li>                              
 
             </ul>

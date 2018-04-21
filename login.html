@@ -26,7 +26,7 @@
 
 </head>
 
-<body>
+<body style= "background-image:url(https://hawkeyesports.com/images/2016/7/6/Tigerhawk.jpg)" />
     
     
 <!-- Content -->
@@ -34,12 +34,12 @@
 
 
     
-<!-- header -->
-        <div ng-include ng-init="menuHighlight = 3;" src="'header.html'"></div>
+<!-- header 
+        <div ng-include ng-init="menuHighlight = 3;" src="'header.html'"></div>-->
 
 <div class="row">
     <div class="col-xs-12">
-        <h1>Log in</h1>
+        <h1 style ="font-family:Times New Roman;color:white;font-size:350%;">Log in</h1>
     </div>    
 </div>
 
@@ -52,14 +52,14 @@
         
             <!-- username for account -->
             <div class="form-group" ng-class="{ 'text-danger': accountForm.HAWKID.$invalid && accountForm.HAWKID.$touched, 'text-success': !accountForm.HAWKID.$invalid && accountForm.HAWKID.$touched }">
-                <label class="form-control-label" for="HAWKID">Username (at least 2 characters long): </label>
+                <label class="form-control-label" for="HAWKID" style = "font-family:Times New Roman;color:white;font-size:150%;">Username (at least 2 characters long): </label>
                 <input type="text" class="form-control" ng-class="{ 'is-invalid': accountForm.HAWKID.$invalid && accountForm.HAWKID.$touched, 'is-valid': !accountForm.HAWKID.$invalid && accountForm.HAWKID.$touched }" name="HAWKID" ng-model="account.HAWKID" ng-minlength="2" id="HAWKID" required/>
                 <div ng-show="accountForm.HAWKID.$invalid && accountForm.HAWKID.$touched" >The username must be at least two characters long</div>
             </div>
             
             <!-- password for account -->
             <div class="form-group" ng-class="{ 'text-danger': accountForm.PASSWORD.$invalid && accountForm.PASSWORD.$touched, 'text-success': !accountForm.PASSWORD.$invalid && accountForm.PASSWORD.$touched }">
-                <label class="form-control-label" for="PASSWORD">Password (at least 6 characters long; may not include anything related to hawkeyes): </label>
+                <label class="form-control-label" for="PASSWORD" style ="font-family:Times New Roman;color:white;font-size:150%;">Password (at least 6 characters long; may not include anything related to hawkeyes): </label>
                 <input type="password" class="form-control" ng-class="{ 'is-invalid': accountForm.PASSWORD.$invalid && accountForm.PASSWORD.$touched, 'is-valid': !accountForm.PASSWORD.$invalid && accountForm.PASSWORD.$touched }" name="PASSWORD" ng-model="account.PASSWORD" ng-minlength="6" id="PASSWORD" required/>
                 <div ng-show="accountForm.PASSWORD.$invalid && accountForm.PASSWORD.$touched" >The password must be at least six characters long</div>
             </div>
