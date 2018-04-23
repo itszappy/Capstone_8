@@ -1,10 +1,9 @@
-<!doctype html>
+<!DOCTYPE html>
 
-<!-- ng-app="soccer" defines the angular app that we are using. The name is defined under soccer.module.js -->
 <html lang="en" ng-app="capstone">
 <head>
     <!-- this is what shows up in the tabs in your browser and if you bookmark the page -->
-    <title> Capstone Tutor </title>
+    <title>Welcome to Capstone8</title>
 
     <!-- These are the links to bootstrap code -->
     <!-- we got the links from http://getbootstrap.com/docs/4.0/getting-started/introduction/ -->
@@ -18,26 +17,122 @@
     <script src="angular.min.js"></script>
     
     <!-- angular code we wrote -->
-    <!-- soccer.module.js is where we define the angular app called 'soccer'. We use the name of the app in the html element at the top of the file -->
+    <!-- capstone.module.js is where we define the angular app called 'capstone'. We use the name of the app in the html element at the top of the file -->
     <script src="capstone.module.js"></script>
-    <!-- data.soccer.controller.js is where we are getting the data from. It defines a controller under the 'soccer' app called 'dataControl', and data is under $scope.data -->
+    <!-- data.capstone.controller.js is where we are getting the data from. It defines a controller under the 'capstone' app called 'dataControl', and data is under $scope.data -->
     <script src="data.capstone.controller.js"></script>
-    <!-- soccer.filter.js enables us to display html code -->
+    <!-- capstone.filter.js enables us to display html code -->
     <script src="capstone.filter.js"></script>
+ 
+    <link rel="stylesheet" href="styles_1.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
 </head>
+
 <body>
-    <!-- we are defining the angular controller that we will use in this chunk of html defined by the div as 'dataControl' from data.soccer.controller.js -->
-    <div class="container" ng-controller="dataControl">
 
-        <!-- header -->
-        <div ng-include ng-init="menuHighlight = 2;" src="'header.html'"></div>
+<div ng-controller="dataControl" ng-include ng-init="menuHighlight = 2;" src="'Admin_Header.html'"></div>
 
-            <div>This is a Tutor's Landing Page</div>
+<div class="sidenav">
+  <div style="text-align: center;"><img src="quickherky.png" alt="hawkeye" style="width:100px;height:100px;"></div>
+  <a href="index.html">Capstone_8</a>
+  <a href="#">About</a>
+  <a href="#">Account</a>
+  <a href="Tutor_Scheduling.html">Schedule</a>
+   <a href="#">Materials</a>
+</div>
+
+<!-- Content -->
+
+
+  <div class="main">
+    <div class="container">
+      
+    <h2>Welcome, Tutor</h2>
+    <p>What would you like to do today?</p>
+    
+    <div class="row">
             
-    </div> <!-- close row -->
-        
-        <!-- Footer -->
-        <div ng-include src="'footer.html'"></div>
-        
+            <!-- Card for all players -->
+            <!-- WE are getting our data from $scope.data in data.soccer.controller.js. the JSON object we get has the data under "players"-->
+            <!--WE are defining each row of data as player-->
+            <div class="card m-1" style="width: 28rem" ng-repeat="movie in data.movies | filter:query">
+                
+                <div ng-init="setEditMode(false, movie);"></div>
+                    
+                <div ng-if="!getEditMode(movie)">
+                        <!-- if we are here, it means that we are not in edit mode -->
+                    <div class="card-header">
+                        {{movie.title}}
+                    </div>
+                    
+                    
+                <div class="card-body">
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <span ng-bind-html="movie.video | trustHtml"></span>
+                    </div>
+                    <p>Director: {{movie.director}}</p>
+                    <p>Year Released: {{movie.yearRelease}}</p>
+                    <button class="btn btn-dark" ng-click="setEditMode(true, movie)" ng-disabled="editmovie != null">Edit</button>
+                    <button class="btn btn-dark" ng-click="deleteMovie(movie.title, movie.id)">Delete</button>
+                </div>       
+            </div>
+            
+            <div ng-if="getEditMode(movie)">
+                <!-- edit mode -->
+                <div>
+                    <form  name="newMovieForm" novalidate>
+                        <div class="card-body">
+                            
+                             <div class="form-group" ng-class="{ 'text-danger': newMovieForm.title.$invalid && newMovieForm.title.$touched, 'text-success': !newMovieForm.title.$invalid && newMovieForm.title.$touched }">
+                                <label class="form-control-label" for="title"> Title: </label>
+                                <input type="text" class="form-control" ng-class="{ 'is-invalid': newMovieForm.title.$invalid && newMovieForm.title.$touched, 'is-valid': !newMovieForm.title.$invalid && newMovieForm.title.$touched }" name="title" ng-model="editmovie.title" ng-minlength="2" id="title" required/>
+                                <div ng-show="newMovieForm.title.$invalid && newMovieForm.title.$touched" >The movie's title must be at least two characters long</div>
+                            </div>
+                        
+                            <!-- director of the movie -->
+                            <!-- ng-class sets up the style for this element. You'll find a format of 'style': condition, 'style2': condition2 -->
+                            <!-- notice in ng-class we are using the name of the form, and the name of the input element in the codition statements -->
+                            <div class="form-group" ng-class="{ 'text-danger': newMovieForm.director.$invalid && newMovieForm.director.$touched, 'text-success': !newMovieForm.director.$invalid && newMovieForm.director.$touched}">
+                                <label>Director:  </label>
+                                <input type="text" class="form-control" ng-class="{ 'is-invalid': newMovieForm.director.$invalid && newMovieForm.director.$touched, 'is-valid': !newMovieForm.director.$invalid && newMovieForm.director.$touched}" name="director" ng-model="editmovie.director" ng-minlength="2" required/>
+                                <p ng-show="newMovieForm.country.$invalid && newMovieForm.country.$touched" >The movie's director must be at least two characters long</p>
+                            </div>                
+                    
+                            <!-- Release year of movie-->
+                            <div class="form-group" ng-class="{ 'text-danger': newMovieForm.yearRelease.$invalid && newMovieForm.yearRelease.$touched, 'text-success': !newMovieForm.yearRelease.$invalid && newMovieForm.yearRelease.$touched}">
+                                <label>Year of Release: </label>
+                                <input type="text" class="form-control" ng-class="{ 'is-invalid': newMovieForm.yearRelease.$invalid && newMovieForm.yearRelease.$touched, 'is-valid': !newMovieForm.yearRelease.$invalid && newMovieForm.yearRelease.$touched}" name="yearRelease" ng-model="editmovie.yearRelease" ng-minlength="2" required/>
+                                <p ng-show="newMovieForm.yearRelease.$invalid && newMovieForm.yearRelease.$touched" >The player's yearRelease must be at least two characters long</p>
+                            </div>
+                            
+                            <!-- Movie Video-->
+                            <div class="form-group" ng-class="{ 'text-danger': newMovieForm.video.$invalid && newMovieForm.video.$touched, 'text-success': !newMovieForm.video.$invalid && newMovieForm.video.$touched}">
+                                <label>Youtube:  </label>
+                                <input type="text" class="form-control" ng-class="{ 'is-invalid': newMovieForm.video.$invalid && newMovieForm.video.$touched, 'is-valid': !newMovieForm.video.$invalid && newMovieForm.video.$touched}" name="video" ng-model="editmovie.video" ng-minlength="2" required/>
+                                <p ng-show="newMovieForm.video.$invalid && newMovieForm.video.$touched" >The player's video must be at least two characters long</p>
+                            </div>
+                        
+                        
+                            <button button class="btn btn-dark" ng-click="editMovie(editmovie)">Save</button>
+                            <button button class="btn btn-dark" ng-click="setEditMode(false, movie)">Cancel</button>
+                        </div>
+                        
+                    </form>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+    
+    </div>
+    
+  </div>
+
+          
+</div>
+  </div>
+</div>
+
 </body>
 </html>
