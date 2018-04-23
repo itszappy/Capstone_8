@@ -63,7 +63,7 @@
                     } if (response.data.role == 'p') {
                         $window.location.href = "Teacher_Landing.html";
                     } if (reponse.status == 500) {
-                        alert("erro 500");
+                        alert("error 500");
                     }
                     
                } else {

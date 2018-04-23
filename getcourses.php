@@ -7,21 +7,21 @@ include_once('dbutils.php');
 // get a connection to the database
 $db = connectDB($DBHost, $DBUser, $DBPassword, $DBName);
 
-$HAWKID = $_SESSION['HAWKID'];
+$COURSE = "COURSE";
 
 // set up a query to get information on players
-$query = "SELECT * FROM USERTABLE WHERE HAWKID = '$HAWKID';";
+$query = "SELECT * FROM $COURSE;";
 
 // run the query to get info on players
 $result = queryDB($query, $db);
 
 // assign results to an array we can then send back to whomever called
-$user = array();
+$course = array();
 $i = 0;
 
 // go through the results one by one
-while ($currUser = nextTuple($result)) {
-    $user[$i] = $currUser;
+while ($currCourse = nextTuple($result)) {
+    $course[$i] = $currCourse;
     $i++;
 }
 
@@ -31,7 +31,7 @@ $response['status'] = 'success';
 
 // 'value' corresponds to response.data.value in data.soccer.controller.js
 // 'players' corresponds to ng-repeat="player in data.players | filter:query" in the index.html file
-$response['value']['usersession'] = $usersession;
+$response['value']['COURSE'] = $course;
 header('Content-Type: application/json');
 echo(json_encode($response));
 

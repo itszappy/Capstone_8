@@ -10,6 +10,35 @@ h1 {
     margin-left: 0;
     margin-right: 0;
     font-weight: bold;
+    
+}
+
+
+h2 { 
+    display: block;
+    font-size: 2em;
+    font-family: sans-serif;
+    color: black;
+    margin-top: 0.67em;
+    margin-bottom: 0.2em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+    text-align: center;
+}
+
+
+p { 
+    display: block;
+    text-align: center;
+    font-size: 1em;
+    font-family: sans-serif;
+    color: black;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: lighter;
 }
 
 
@@ -28,8 +57,14 @@ h1 {
 
 body {
     font-family: "Lato", sans-serif;
-    background-color: white;
+    background-color: #F0F0F0;
 }
+
+
+.navbar {
+    background-color: #111;
+}
+
 
 .sidenav {
     height: 100%;
@@ -46,7 +81,7 @@ body {
 .sidenav a {
     padding: 6px 6px 6px 32px;
     text-decoration: none;
-    font-size: 25px;
+    font-size: 20px;
     color: #818181;
     display: block;
 }

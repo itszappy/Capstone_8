@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 
-<html ng-app="capstone">
+<html lang="en" ng-app="capstone">
 <head>
     <!-- this is what shows up in the tabs in your browser and if you bookmark the page -->
-    <title>Log into Capstone 8</title>
+    <title>Welcome to Capstone8</title>
 
     <!-- These are the links to bootstrap code -->
     <!-- we got the links from http://getbootstrap.com/docs/4.0/getting-started/introduction/ -->
@@ -32,6 +32,7 @@
 <body>
 
 <div class="sidenav">
+  <div style="text-align: center;"><img src="quickherky.png" alt="hawkeye" style="width:100px;height:100px;"></div>
   <a href="index.html">Capstone_8</a>
   <a href="#">About</a>
   <a href="#">Services</a>
@@ -42,29 +43,87 @@
 <!-- Content -->
 
   <div class="main">
-    <div class="container" ng-controller="dataControl">  
+    <div class="container" ng-controller="dataControl">
+      
     <h2>Sidenav Example</h2>
     <p>This sidenav is always shown.</p>
     
+    <div class="row">
+            
+            <!-- Card for all players -->
+            <!-- WE are getting our data from $scope.data in data.soccer.controller.js. the JSON object we get has the data under "players"-->
+            <!--WE are defining each row of data as player-->
+            <div class="card m-1" style="width: 28rem" ng-repeat="movie in data.movies | filter:query">
+                
+                <div ng-init="setEditMode(false, movie);"></div>
+                    
+                <div ng-if="!getEditMode(movie)">
+                        <!-- if we are here, it means that we are not in edit mode -->
+                    <div class="card-header">
+                        {{movie.title}}
+                    </div>
+                    
+                    
+                <div class="card-body">
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <span ng-bind-html="movie.video | trustHtml"></span>
+                    </div>
+                    <p>Director: {{movie.director}}</p>
+                    <p>Year Released: {{movie.yearRelease}}</p>
+                    <button class="btn btn-dark" ng-click="setEditMode(true, movie)" ng-disabled="editmovie != null">Edit</button>
+                    <button class="btn btn-dark" ng-click="deleteMovie(movie.title, movie.id)">Delete</button>
+                </div>       
+            </div>
+            
+            <div ng-if="getEditMode(movie)">
+                <!-- edit mode -->
+                <div>
+                    <form  name="newMovieForm" novalidate>
+                        <div class="card-body">
+                            
+                             <div class="form-group" ng-class="{ 'text-danger': newMovieForm.title.$invalid && newMovieForm.title.$touched, 'text-success': !newMovieForm.title.$invalid && newMovieForm.title.$touched }">
+                                <label class="form-control-label" for="title"> Title: </label>
+                                <input type="text" class="form-control" ng-class="{ 'is-invalid': newMovieForm.title.$invalid && newMovieForm.title.$touched, 'is-valid': !newMovieForm.title.$invalid && newMovieForm.title.$touched }" name="title" ng-model="editmovie.title" ng-minlength="2" id="title" required/>
+                                <div ng-show="newMovieForm.title.$invalid && newMovieForm.title.$touched" >The movie's title must be at least two characters long</div>
+                            </div>
+                        
+                            <!-- director of the movie -->
+                            <!-- ng-class sets up the style for this element. You'll find a format of 'style': condition, 'style2': condition2 -->
+                            <!-- notice in ng-class we are using the name of the form, and the name of the input element in the codition statements -->
+                            <div class="form-group" ng-class="{ 'text-danger': newMovieForm.director.$invalid && newMovieForm.director.$touched, 'text-success': !newMovieForm.director.$invalid && newMovieForm.director.$touched}">
+                                <label>Director:  </label>
+                                <input type="text" class="form-control" ng-class="{ 'is-invalid': newMovieForm.director.$invalid && newMovieForm.director.$touched, 'is-valid': !newMovieForm.director.$invalid && newMovieForm.director.$touched}" name="director" ng-model="editmovie.director" ng-minlength="2" required/>
+                                <p ng-show="newMovieForm.country.$invalid && newMovieForm.country.$touched" >The movie's director must be at least two characters long</p>
+                            </div>                
+                    
+                            <!-- Release year of movie-->
+                            <div class="form-group" ng-class="{ 'text-danger': newMovieForm.yearRelease.$invalid && newMovieForm.yearRelease.$touched, 'text-success': !newMovieForm.yearRelease.$invalid && newMovieForm.yearRelease.$touched}">
+                                <label>Year of Release: </label>
+                                <input type="text" class="form-control" ng-class="{ 'is-invalid': newMovieForm.yearRelease.$invalid && newMovieForm.yearRelease.$touched, 'is-valid': !newMovieForm.yearRelease.$invalid && newMovieForm.yearRelease.$touched}" name="yearRelease" ng-model="editmovie.yearRelease" ng-minlength="2" required/>
+                                <p ng-show="newMovieForm.yearRelease.$invalid && newMovieForm.yearRelease.$touched" >The player's yearRelease must be at least two characters long</p>
+                            </div>
+                            
+                            <!-- Movie Video-->
+                            <div class="form-group" ng-class="{ 'text-danger': newMovieForm.video.$invalid && newMovieForm.video.$touched, 'text-success': !newMovieForm.video.$invalid && newMovieForm.video.$touched}">
+                                <label>Youtube:  </label>
+                                <input type="text" class="form-control" ng-class="{ 'is-invalid': newMovieForm.video.$invalid && newMovieForm.video.$touched, 'is-valid': !newMovieForm.video.$invalid && newMovieForm.video.$touched}" name="video" ng-model="editmovie.video" ng-minlength="2" required/>
+                                <p ng-show="newMovieForm.video.$invalid && newMovieForm.video.$touched" >The player's video must be at least two characters long</p>
+                            </div>
+                        
+                        
+                            <button button class="btn btn-dark" ng-click="editMovie(editmovie)">Save</button>
+                            <button button class="btn btn-dark" ng-click="setEditMode(false, movie)">Cancel</button>
+                        </div>
+                        
+                    </form>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
     
-    <form name="accountForm" novalidate>
-          
-              <!-- username for account -->
-              <div class="form-group" ng-class="{ 'text-danger': accountForm.HAWKID.$invalid && accountForm.HAWKID.$touched, 'text-success': !accountForm.HAWKID.$invalid && accountForm.HAWKID.$touched }">
-                  <label class="form-control-label" for="HAWKID" style = "font-family:Times New Roman;color:white;font-size:150%;">Username (at least 2 characters long): </label>
-                  <input type="text" class="form-control" ng-class="{ 'is-invalid': accountForm.HAWKID.$invalid && accountForm.HAWKID.$touched, 'is-valid': !accountForm.HAWKID.$invalid && accountForm.HAWKID.$touched }" name="HAWKID" ng-model="account.HAWKID" ng-minlength="2" id="HAWKID" required/>
-                  <div ng-show="accountForm.HAWKID.$invalid && accountForm.HAWKID.$touched" >The username must be at least two characters long</div>
-              </div>
-              
-              <!-- password for account -->
-              <div class="form-group" ng-class="{ 'text-danger': accountForm.PASSWORD.$invalid && accountForm.PASSWORD.$touched, 'text-success': !accountForm.PASSWORD.$invalid && accountForm.PASSWORD.$touched }">
-                  <label class="form-control-label" for="PASSWORD" style ="font-family:Times New Roman;color:white;font-size:150%;">Password (at least 6 characters long; may not include anything related to hawkeyes): </label>
-                  <input type="password" class="form-control" ng-class="{ 'is-invalid': accountForm.PASSWORD.$invalid && accountForm.PASSWORD.$touched, 'is-valid': !accountForm.PASSWORD.$invalid && accountForm.PASSWORD.$touched }" name="PASSWORD" ng-model="account.PASSWORD" ng-minlength="6" id="PASSWORD" required/>
-                  <div ng-show="accountForm.PASSWORD.$invalid && accountForm.PASSWORD.$touched" >The password must be at least six characters long</div>
-              </div>
-          
-              <button class="btn btn-default" ng-click="login(account)" ng-disabled="accountForm.$invalid">Log in</button>
-     </form>
+    </div>
+    
   </div>
 
           
