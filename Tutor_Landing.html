@@ -45,20 +45,12 @@
 <!--header-->
 <div ng-include ng-init="menuHighlight = 2;" src="'Admin_Header.html'"></div>
 
-            <div class="row-1">
-            <h2>Welcome, Tutor </h2>
-            <p>What would you like to do today?</p>
-            </div>
-
-    
-    </div>
-    
-  </div>
-
-          
+<div class="row-1" ng-repeat="user in data.userarray">
+<h2>Welcome, Tutor {{user.FIRSTNAME}}</h2>
+<p>What would you like to do today?</p>
 </div>
-  </div>
-</div>
+
+
 
 </body>
 </html>
