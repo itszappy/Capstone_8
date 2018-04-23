@@ -25,97 +25,81 @@
     <script src="capstone.filter.js"></script>
  
     <link rel="stylesheet" href="styles_1.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
+  
 </head>
 
 <body>
 
-<div ng-controller="dataControl" ng-include ng-init="menuHighlight = 2;" src="'Admin_Header.html'"></div>
-
-<div class="sidenav">
+ <div class="sidenav">
   <div style="text-align: center;"><img src="quickherky.png" alt="hawkeye" style="width:100px;height:100px;"></div>
-  <a href="index.html">Capstone_8</a>
+  <a href="https://webdev.cs.uiowa.edu/~bzaputil/Capstone_8/Tutor_Landing.html">Capstone_8</a>
   <a href="#">About</a>
   <a href="#">Account</a>
-  <a href="#">Schedule</a>
+  <a href="Tutor_Scheduling.html">Schedules</a>
    <a href="#">Materials</a>
 </div>
+ 
+<!--- keep these together, but separate-->
+<div class="container" ng-controller="dataControl"> 
+<!--header-->
+<div ng-include ng-init="menuHighlight = 2;" src="'Admin_Header.html'"></div>
 
-<!-- Content -->
-
-
-  <div class="main">
-    <div class="container">
+            <div class="row-1">
       
-    <h2>Schedule your available hours</h2>
-    <p>Fill out the form for your tutoring sessions. Students will be able to see the hours and sign up.</p>
-    <br>
-    <br>
+          <h2>Schedule your available hours</h2>
+          <p>Fill out the form for your tutoring sessions. Students will be able to see the hours and sign up.</p>
+          <br>
+          <br>
     
     <!-- form for entering new account -->
         <div class="container">
           <div class="row">
             
               
-            <form  name="newAccountForm" novalidate>
+            <form  name="newSlotForm" novalidate>
                 
-                <!-- username for account -->
-                <div class="form-group" ng-class="{ 'text-danger': newAccountForm.HAWKID.$invalid && newAccountForm.HAWKID.$touched, 'text-success': !newAccountForm.HAWKID.$invalid && newAccountForm.HAWKID.$touched }">
-                    <label class="form-control-label" for="HAWKID"> <p>Username (at least 2 characters long): </p></label>
-                    <input type="text" class="form-control" ng-class="{ 'is-invalid': newAccountForm.HAWKID.$invalid && newAccountForm.HAWKID.$touched, 'is-valid': !newAccountForm.HAWKID.$invalid && newAccountForm.HAWKID.$touched }" name="HAWKID" ng-model="account.HAWKID" ng-minlength="2" id="HAWKID" required/>
-                    <div ng-show="newAccountForm.HAWKID.$invalid && newAccountForm.HAWKID.$touched" >The username must be at least 2 characters long</div>
+                <!-- fill in slot date -->
+                <div class="form-group" ng-class="{ 'text-danger': newSlotForm.SLOTDATE.$invalid && newSlotForm.SLOTDATE.$touched, 'text-success': !newSlotForm.SLOTDATE.$invalid && newSlotForm.SLOTDATE.$touched }">
+                    <label class="form-control-label" for="SLOTDATE"> <p> Date </p></label>
+                    <input type="date" class="form-control" ng-class="{ 'is-invalid': newSlotForm.SLOTDATE.$invalid && newSlotForm.SLOTDATE.$touched, 'is-valid': !newSlotForm.SLOTDATE.$invalid && newSlotForm.SLOTDATE.$touched }" name="SLOTDATE" ng-model="account.SLOTDATE" ng-minlength="2" id="SLOTDATE" required/>
+                    <div ng-show="newSlotForm.SLOTDATE.$invalid && newSlotForm.SLOTDATE.$touched" >Make sure to complete date</div>
                 </div>
                 
-                <!-- password for account -->
-                <div class="form-group" ng-class="{ 'text-danger': newAccountForm.PASSWORD.$invalid && newAccountForm.PASSWORD.$touched, 'text-success': !newAccountForm.PASSWORD.$invalid && newAccountForm.PASSWORD.$touched }">
-                    <label class="form-control-label" for="PASSWORD">Password (at least 6 characters long; may not include anything related to hawkeyes): </label>
-                    <input type="password" class="form-control" ng-class="{ 'is-invalid': newAccountForm.PASSWORD.$invalid && newAccountForm.PASSWORD.$touched, 'is-valid': !newAccountForm.PASSWORD.$invalid && newAccountForm.PASSWORD.$touched }" name="PASSWORD" ng-model="account.PASSWORD" ng-minlength="6" id="PASSWORD" required/>
-                    <div ng-show="newAccountForm.PASSWORD.$invalid && newAccountForm.PASSWORD.$touched" >The password must be at least 6 characters long</div>
+                <!-- fill in slot start time-->
+                <div class="form-group" ng-class="{ 'text-danger': newSlotForm.SLOTSTART.$invalid && newSlotForm.SLOTSTART.$touched, 'text-success': !newSlotForm.SLOTSTART.$invalid && newSlotForm.SLOTSTART.$touched }">
+                    <label class="form-control-label" for="SLOTSTART"><p> Start Time</p> </label>
+                    <input type="time" class="form-control" ng-class="{ 'is-invalid': newSlotForm.SLOTSTART.$invalid && newSlotForm.SLOTSTART.$touched, 'is-valid': !newSlotForm.SLOTSTART.$invalid && newSlotForm.SLOTSTART.$touched }" name="SLOTSTART" ng-model="account.SLOTSTART" ng-minlength="6" id="SLOTSTART" required/>
+                    <div ng-show="newSlotForm.SLOTSTART.$invalid && newSlotForm.SLOTSTART.$touched" >Completely fill slot start time</div>
                 </div>
                 
-                <!-- first name for account-->
+                <!-- fill in slot end time-->
                 
-                <div class="form-group" ng-class="{ 'text-danger': newAccountForm.FIRSTNAME.$invalid && newAccountForm.FIRSTNAME.$touched, 'text-success': !newAccountForm.FIRSTNAME.$invalid && newAccountForm.FIRSTNAME.$touched }">
-                    <label class="form-control-label" for="FIRSTNAME">First Name:  </label>
-                    <input type="FIRSTNAME" class="form-control" ng-class="{ 'is-invalid': newAccountForm.FIRSTNAME.$invalid && newAccountForm.FIRSTNAME.$touched, 'is-valid': !newAccountForm.FIRSTNAME.$invalid && newAccountForm.FIRSTNAME.$touched }" name="FIRSTNAME" ng-model="account.FIRSTNAME" ng-minlength="2" id="FIRSTNAME" required/>
-                    <div ng-show="newAccountForm.FIRSTNAME.$invalid && newAccountForm.FIRSTNAME.$touched" >The first name must be at least 2 characters long</div>
+                <div class="form-group" ng-class="{ 'text-danger': newSlotForm.SLOTEND.$invalid && newSlotForm.SLOTEND.$touched, 'text-success': !newSlotForm.SLOTEND.$invalid && newSlotForm.SLOTEND.$touched }">
+                    <label class="form-control-label" for="SLOTEND"> <p> End Time</p></label>
+                    <input type="time" class="form-control" ng-class="{ 'is-invalid': newSlotForm.SLOTEND.$invalid && newSlotForm.SLOTEND.$touched, 'is-valid': !newSlotForm.SLOTEND.$invalid && newSlotForm.SLOTEND.$touched }" name="SLOTEND" ng-model="account.SLOTEND" ng-minlength="2" id="SLOTEND" required/>
+                    <div ng-show="newSlotForm.SLOTEND.$invalid && newSlotForm.SLOTEND.$touched" >Completely fill out slot end time</div>
                 </div>
                 
-                <!-- last name for account-->
+                <!-- fill in location-->
                 
-                <div class="form-group" ng-class="{ 'text-danger': newAccountForm.LASTNAME.$invalid && newAccountForm.LASTNAME.$touched, 'text-success': !newAccountForm.LASTNAME.$invalid && newAccountForm.LASTNAME.$touched }">
-                    <label class="form-control-label" for="LASTNAME">Last Name:  </label>
-                    <input type="LASTNAME" class="form-control" ng-class="{ 'is-invalid': newAccountForm.LASTNAME.$invalid && newAccountForm.LASTNAME.$touched, 'is-valid': !newAccountForm.LASTNAME.$invalid && newAccountForm.LASTNAME .$touched }" name="LASTNAME" ng-model="account.LASTNAME" ng-minlength="2" id="LASTNAME" required/>
-                    <div ng-show="newAccountForm.LASTNAME.$invalid && newAccountForm.LASTNAME.$touched" >The Last Name must be at least 2 characters long</div>
+                <div class="form-group" ng-class="{ 'text-danger': newSlotForm.LOCATION.$invalid && newSlotForm.LOCATION.$touched, 'text-success': !newSlotForm.LOCATION.$invalid && newSlotForm.LOCATION.$touched }">
+                    <label class="form-control-label" for="LOCATION"> <p> Location </p></label>
+                    <input type="text" class="form-control" ng-class="{ 'is-invalid': newSlotForm.LOCATION.$invalid && newSlotForm.LOCATION.$touched, 'is-valid': !newSlotForm.LOCATION.$invalid && newSlotForm.LOCATION .$touched }" name="LOCATION" ng-model="account.LOCATION" ng-minlength="2" id="LOCATION" required/>
+                    <div ng-show="newSlotForm.LOCATION.$invalid && newSlotForm.LOCATION.$touched" >Location must be at least 2 letters long</div>
                 </div>
                 
-                <!-- User Role for account-->
+                <!-- fill in course it is for *make this a dropdown?*-->
                 
-                <div class="form-group" ng-class="{ 'text-danger': newAccountForm.USERROLE.$invalid && newAccountForm.USERROLE.$touched, 'text-success': !newAccountForm.USERROLE.$invalid && newAccountForm.USERROLE.$touched }">
-                    <label class="form-control-label" for="USERROLE">User Role:  </label>
-                    <input type="USERROLE" class="form-control" ng-class="{ 'is-invalid': newAccountForm.USERROLE.$invalid && newAccountForm.USERROLE.$touched, 'is-valid': !newAccountForm.USERROLE.$invalid && newAccountForm.USERROLE .$touched }" name="USERROLE" ng-model="account.USERROLE" ng-minlength="1" id="USERROLE" required/>
-                    <div ng-show="newAccountForm.USERROLE.$invalid && newAccountForm.USERROLE.$touched" >The User Role must be only 1 character long</div>
+                <div class="form-group" ng-class="{ 'text-danger': newSlotForm.USERROLE.$invalid && newSlotForm.USERROLE.$touched, 'text-success': !newSlotForm.USERROLE.$invalid && newSlotForm.USERROLE.$touched }">
+                    <label class="form-control-label" for="USERROLE"> <p> Course Number </p></label>
+                    <input type="USERROLE" class="form-control" ng-class="{ 'is-invalid': newSlotForm.USERROLE.$invalid && newSlotForm.USERROLE.$touched, 'is-valid': !newSlotForm.USERROLE.$invalid && newSlotForm.USERROLE .$touched }" name="USERROLE" ng-model="account.USERROLE" ng-minlength="1" id="USERROLE" required/>
+                    <div ng-show="newSlotForm.USERROLE.$invalid && newSlotForm.USERROLE.$touched" >Make sure to complete the course number</div>
                 </div>
                 
-                <!-- Email for account-->
-                
-                <div class="form-group" ng-class="{ 'text-danger': newAccountForm.EMAIL.$invalid && newAccountForm.EMAIL.$touched, 'text-success': !newAccountForm.EMAIL.$invalid && newAccountForm.EMAIL.$touched }">
-                    <label class="form-control-label" for="EMAIL">User Email:  </label>
-                    <input type="EMAIL" class="form-control" ng-class="{ 'is-invalid': newAccountForm.EMAIL.$invalid && newAccountForm.EMAIL.$touched, 'is-valid': !newAccountForm.EMAIL.$invalid && newAccountForm.EMAIL .$touched }" name="EMAIL" ng-model="account.EMAIL" ng-minlength="6" id="EMAIL" required/>
-                    <div ng-show="newAccountForm.EMAIL.$invalid && newAccountForm.EMAIL.$touched" >The User's Email must be 9 characters long</div>
-                </div>
-                
-                 <!-- Phone Number for account-->
-                
-                <div class="form-group" ng-class="{ 'text-danger': newAccountForm.PHONE.$invalid && newAccountForm.PHONE.$touched, 'text-success': !newAccountForm.PHONE.$invalid && newAccountForm.PHONE.$touched }">
-                    <label class="form-control-label" for="PHONE">User Phone Number:  </label>
-                    <input type="PHONE" class="form-control" ng-class="{ 'is-invalid': newAccountForm.PHONE.$invalid && newAccountForm.PHONE.$touched, 'is-valid': !newAccountForm.PHONE.$invalid && newAccountForm.PHONE .$touched }" name="PHONE" ng-model="account.PHONE" ng-minlength="10" id="PHONE" required/>
-                    <div ng-show="newAccountForm.PHONE.$invalid && newAccountForm.PHONE.$touched" >The User's phone number must be 10 digits</div>
-                </div>
+                              
                 
                 <!-- newAccount is a function in the controller. account refers to the word we used under ng-model in the input fields -->
-                <button class="btn btn-default" ng-click="newAccount(account)" ng-disabled="newAccountForm.$invalid">Add account</button>
+                <button class="btn btn-default" ng-click="newSlot(slot)" ng-disabled="newSlotForm.$invalid">Add Slot</button>
             </form>
             
           </div>

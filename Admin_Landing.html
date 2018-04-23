@@ -25,35 +25,31 @@
     <script src="capstone.filter.js"></script>
  
     <link rel="stylesheet" href="styles_1.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+   
 
 </head>
 
 <body>
 
-<div ng-controller="dataControl" ng-include src="'Admin_Header.html'"></div>
-
-
-<div class="sidenav">
+ <div class="sidenav">
   <div style="text-align: center;"><img src="quickherky.png" alt="hawkeye" style="width:100px;height:100px;"></div>
-  <a href="index.html">Capstone_8</a>
+  <a href="https://webdev.cs.uiowa.edu/~bzaputil/Capstone_8/Admin_Landing.html">Capstone_8</a>
   <a href="#">About</a>
-  <a href="#">Accounts</a>
+  <a href="https://webdev.cs.uiowa.edu/~bzaputil/Capstone_8/newaccount.html">Accounts</a>
   <a href="#">Schedules</a>
    <a href="#">Materials</a>
 </div>
+ 
+<!--- keep these together, but separate-->
+<div class="container" ng-controller="dataControl"> 
+<!--header-->
+<div ng-include ng-init="menuHighlight = 2;" src="'Admin_Header.html'"></div>
 
-<!-- Content -->
-
-
-  <div class="main">
-    <div class="container">
-        <h2>Welcome, Admin </h2>
-        <p>What would you like to do today?</p>
-    </div>
-</div>
-
-
+            <div class="row-1">
+              
+            <h2>Welcome, Admin </h2>
+            <p>What would you like to do today?</p>
+            </div>
 
 
 </body>

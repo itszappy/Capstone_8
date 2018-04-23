@@ -8,7 +8,7 @@
         
     } else {
         $isloggedin = false;
-        //$HAWKID = "not logged in ";
+        $HAWKID = "not logged in ";
     }
     
     $response = array();

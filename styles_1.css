@@ -66,6 +66,7 @@ body {
 }
 
 
+
 .sidenav {
     height: 100%;
     width: 200px;
@@ -75,7 +76,8 @@ body {
     left: 0;
     background-color: #111;
     overflow-x: hidden;
-    padding-top: 20px;
+    padding-top: 10px;
+    padding-left:10px;
 }
 
 .sidenav a {
@@ -97,4 +99,8 @@ body {
 @media screen and (max-height: 450px) {
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}
+}
+
+.container {
+  padding-left: 40px;
 }
