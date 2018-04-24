@@ -48,10 +48,10 @@ if ($isComplete) {
 // check if we already have a username that matches the one the user entered
 if ($isComplete) {
     // set up a query to check if this username is in the database already
-    $query = "SELECT * FROM SLOTS WHERE SLOTDATE='$SLOTDATE'";
+    $slotquery = "SELECT * FROM SLOTS WHERE SLOTDATE='$SLOTDATE'";
     
     // we need to run the query
-    $result = queryDB($query, $db);
+    $result = queryDB($slotquery, $db);
     
     // check on the number of records returned
     if (nTuples($result) > 0) {
@@ -67,10 +67,10 @@ if ($isComplete) {
 if ($isComplete) {
     
     // we will set up the insert statement to add this new record to the database
-    $insertquery = "INSERT INTO SLOTS(SLOTDATE, SLOTSTART, SLOTEND, TUTORHAWKID, STUDENTHAWKID, COURSEID, LOCATION) VALUES ('$SLOTDATE', '$SLOTSTART', '$SLOTEND', '$STUDENTHAWKID', '$TUTORHAWKID', '$COURSEID', '$LOCATION')";
+    $slotquery = "INSERT INTO SLOTS(SLOTDATE, SLOTSTART, SLOTEND, TUTORHAWKID, STUDENTHAWKID, COURSEID, LOCATION) VALUES ('$SLOTDATE', '$SLOTSTART', '$SLOTEND', '$STUDENTHAWKID', '$TUTORHAWKID', '$COURSEID', '$LOCATION')";
     
     // run the insert statement
-    queryDB($insertquery, $db);
+    queryDB($slotquery, $db);
 
     // send a response back to angular
     $response = array();
