@@ -47,12 +47,7 @@ if ($isComplete) {
     } else {
         $HAWKID = makeStringSafe($db, $HAWKID);
     }
-    
-    if (!isset($PASSWORD) || (strlen($PASSWORD) < 6)) {
-        $isComplete = false;
-        $errorMessage .= "Please enter a password with at least six characters!! ";
-    }
-    
+     
         if (!isset($FIRSTNAME) || (strlen($FIRSTNAME) < 2)) {
         $isComplete = false;
         $errorMessage .= "Please enter a first name with at least 2 characters!! ";
@@ -85,21 +80,13 @@ if ($isComplete) {
 	//we need to run the query. 
 	$result = queryDB($query, $db);
 	
-	//check on the number of records returned
-	if (nTuples($result) > 0) {
-		//if we get at least 1 record back, it means the player is already in the database, so we have a duplicate.
-		$isComplete = false;
-		$errorMessage .= "A user with the hawkID $HAWKID already exists" ;
-
-
-	}
 
 }
 
 
 if ($isComplete) {
 	//we willl setup the insert statement to add this new record to the database
-	$updatequery = "UPDATE USERTABLE SET HAWKID='$HAWKID', FIRSTNAME='$FIRSTNAME', LASTNAME='$LASTNAME', USERROLE='$USERROLE',EMAIL='$EMAIL', PHONE='$PHONE' WHERE HAWKID=$HAWKID";
+	$updatequery = "UPDATE USERTABLE SET HAWKID='$HAWKID', FIRSTNAME='$FIRSTNAME', LASTNAME='$LASTNAME', USERROLE='$USERROLE',EMAIL='$EMAIL', PHONE='$PHONE' WHERE HAWKID='$HAWKID'";
 
 	//run the insert statement
 	queryDB($updatequery, $db);

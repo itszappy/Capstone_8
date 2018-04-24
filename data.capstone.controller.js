@@ -161,7 +161,7 @@
                     } else {
                         // successful
                         // send user back to home page
-                        $window.location.href = "Admin_Landing.html";
+                        $window.location.href = "Admin_Profile.html";
                     }
                } else {
                     alert('unexpected error');
