@@ -68,7 +68,7 @@
                 <!-- fill in slot start time-->
                 <div class="form-group" ng-class="{ 'text-danger': newSlotForm.SLOTSTART.$invalid && newSlotForm.SLOTSTART.$touched, 'text-success': !newSlotForm.SLOTSTART.$invalid && newSlotForm.SLOTSTART.$touched }">
                     <label class="form-control-label" for="SLOTSTART"><p> Start Time</p> </label>
-                    <input type="time" class="form-control" ng-class="{ 'is-invalid': newSlotForm.SLOTSTART.$invalid && newSlotForm.SLOTSTART.$touched, 'is-valid': !newSlotForm.SLOTSTART.$invalid && newSlotForm.SLOTSTART.$touched }" name="SLOTSTART" ng-model="account.SLOTSTART" ng-minlength="6" id="SLOTSTART" required/>
+                    <input type="time" class="form-control" ng-class="{ 'is-invalid': newSlotForm.SLOTSTART.$invalid && newSlotForm.SLOTSTART.$touched, 'is-valid': !newSlotForm.SLOTSTART.$invalid && newSlotForm.SLOTSTART.$touched }" name="SLOTSTART" ng-model="account.SLOTSTART" ng-minlength="2" id="SLOTSTART" required/>
                     <div ng-show="newSlotForm.SLOTSTART.$invalid && newSlotForm.SLOTSTART.$touched" >Completely fill slot start time</div>
                 </div>
                 
