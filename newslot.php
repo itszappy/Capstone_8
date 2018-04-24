@@ -48,7 +48,7 @@ if ($isComplete) {
 // check if we already have a username that matches the one the user entered
 if ($isComplete) {
     // set up a query to check if this username is in the database already
-    $slotquery = "SELECT * FROM SLOTS WHERE SLOTDATE='$SLOTDATE'";
+    $slotquery = "SELECT * FROM SLOTS WHERE SLOTDATE='$SLOTDATE' AND SLOTSTART='$SLOTSTART' AND '$SLOTEND' AND TUTORHAWKID='$HAWKID';";
     
     // we need to run the query
     $result = queryDB($slotquery, $db);
@@ -57,7 +57,7 @@ if ($isComplete) {
     if (nTuples($result) > 0) {
         // if we get at least one record back it means the username is taken
         $isComplete = false;
-        $errorMessage .= "The this date, time and location are already taken. Please select a different date time and location. ";
+        $errorMessage .= "The this date $DATE, time ($SLOTSTART AND $SLOTEND) and location $LOCATION are already taken. Please select a different date time and location. ";
     }
 }
 
@@ -67,10 +67,10 @@ if ($isComplete) {
 if ($isComplete) {
     
     // we will set up the insert statement to add this new record to the database
-    $slotquery = "INSERT INTO SLOTS(SLOTDATE, SLOTSTART, SLOTEND, TUTORHAWKID, STUDENTHAWKID, COURSEID, LOCATION) VALUES ('$SLOTDATE', '$SLOTSTART', '$SLOTEND', NULL, '$TUTORHAWKID', '$COURSEID', '$LOCATION')";
+    $insertslot = "INSERT INTO SLOTS(SLOTDATE, SLOTSTART, SLOTEND, TUTORHAWKID, STUDENTHAWKID, COURSEID, LOCATION) VALUES ('$SLOTDATE', '$SLOTSTART', '$SLOTEND', NULL, '$TUTORHAWKID', '$COURSEID', '$LOCATION')";
     
     // run the insert statement
-    queryDB($slotquery, $db);
+    queryDB($insertslot, $db);
 
     // send a response back to angular
     $response = array();
