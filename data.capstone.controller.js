@@ -109,7 +109,18 @@
             });                        
         };
         
-        
+        $scope.setEditMode = function(on, user) {
+            if (on) {
+                // if player had a birth, for example, you'd include the line below
+                // player.birthyear = parseInt(player.birthyear);
+                //edit movie matches the ng-model used in the form we use to edit movie information 
+                $scope.edituser = angular.copy(user);
+                user.editMode = true;
+            } else {
+                $scope.edituser = null;
+                user.editMode = false;
+            }
+        };
         /*
          * Gets the edit mode for a particular player
          */
