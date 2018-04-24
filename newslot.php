@@ -20,9 +20,11 @@ $data = json_decode(file_get_contents('php://input'), true);
 $SLOTDATE = $data['SLOTDATE'];
 $SLOTSTART = $data['SLOTSTART'];
 $SLOTEND = $data['SLOTEND'];
-$HAWKID = $_SESSION['HAWKID'];
+$TUTORHAWKID = $_SESSION['TUTORHAWKID'];
+$STUDENTHAWKID = $_SESSION['STUDENTHAWKID'];
 $COURSEID = $data['COURSEID'];
 $LOCATION = $data['LOCATION'];
+
 
 
 // set up variables to handle errors
@@ -37,46 +39,26 @@ $errorMessage = "";
 //
 if ($isComplete) {
     // check if slotdate meets criteria
-    if (!isset($SLOTDATE)) {
+        if (!isset($HAWKID) || (strlen($HAWKID) < 2)) {
         $isComplete = false;
-        $errorMessage .= "Date doesn't work";
+        $errorMessage .= "Please enter a hawkid with at least two characters!! ";
+    }
+    
+        if (!isset($COURSEID) || (strlen($COURSEID) != 4)) {
+        $isComplete = false;
+        $errorMessage .= "Please enter a course with four characters.";
+    }
+    
+        if (!isset($LOCATION) || (strlen($LOCATION) < 6)) {
+        $isComplete = false;
+        $errorMessage .= "Please enter a location with at least 2 characters.";
     } 
-    
-    if (!isset($SLOTTIME)) {
-        $isComplete = false;
-        $errorMessage .= "Please enter a password with at least six characters!! ";
-    }
-    
-        if (!isset($FIRSTNAME) || (strlen($FIRSTNAME) < 2)) {
-        $isComplete = false;
-        $errorMessage .= "Please enter a first name with at least 2 characters!! ";
-    }
-    
-        if (!isset($LASTNAME) || (strlen($LASTNAME) < 2)) {
-        $isComplete = false;
-        $errorMessage .= "Please enter a last name with at least two characters!! ";
-    }
-    
-        if (!isset($USERROLE) || (strlen($USERROLE) != 1)) {
-        $isComplete = false;
-        $errorMessage .= "Please enter a role with only one character!! ";
-    }
-    
-        if (!isset($EMAIL) || (strlen($EMAIL) < 6)) {
-        $isComplete = false;
-        $errorMessage .= "Please enter an email with at least six characters!! ";
-    }
-    
-        if (!isset($PHONE) || (strlen($PHONE) < 9)) {
-        $isComplete = false;
-        $errorMessage .= "Please enter a phone number with at least 9 characters!! ";
-    }  
 }
 
 // check if we already have a username that matches the one the user entered
 if ($isComplete) {
     // set up a query to check if this username is in the database already
-    $query = "SELECT HAWKID FROM USERTABLE WHERE HAWKID='$HAWKID'";
+    $query = "SELECT * FROM SLOTS WHERE SLOTDATE='$SLOTDATE'";
     
     // we need to run the query
     $result = queryDB($query, $db);
@@ -85,7 +67,7 @@ if ($isComplete) {
     if (nTuples($result) > 0) {
         // if we get at least one record back it means the username is taken
         $isComplete = false;
-        $errorMessage .= "The hawk id $HAWKID is already taken. Please select a different username. ";
+        $errorMessage .= "The this date, time and location are already taken. Please select a different date time and location. ";
     }
 }
 
@@ -93,11 +75,9 @@ if ($isComplete) {
 
 // if we got this far and $isComplete is true it means we should add the player to the database
 if ($isComplete) {
-    // create a hashed version of the password
-    $HASHED_PSSWRD = crypt($PASSWORD, getSalt());
     
     // we will set up the insert statement to add this new record to the database
-    $insertquery = "INSERT INTO USERTABLE(HAWKID, HASHED_PSSWRD, FIRSTNAME, LASTNAME, ISADMIN, USERROLE, EMAIL, PHONE) VALUES ('$HAWKID', '$HASHED_PSSWRD', '$FIRSTNAME', '$LASTNAME', '$ISADMIN', '$USERROLE', '$EMAIL', '$PHONE')";
+    $insertquery = "INSERT INTO SLOTS(SLOTDATE, SLOTSTART, SLOTEND, TUTORHAWKID, STUDENTHAWKID, COURSEID, LOCATION) VALUES ('$SLOTDATE', '$SLOTSTART', '$SLOTEND', '$STUDENTHAWKID', '$TUTORHAWKID', '$COURSEID', '$LOCATION')";
     
     // run the insert statement
     queryDB($insertquery, $db);
