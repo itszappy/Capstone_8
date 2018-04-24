@@ -12,7 +12,7 @@ $db = connectDB($DBHost, $DBUser, $DBPassword, $DBName);
 // decode the json object
 $data = json_decode(file_get_contents('php://input'), true);
 
-
+session_start();
 // get each piece of data
 
 // 
