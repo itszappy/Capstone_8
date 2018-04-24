@@ -15,7 +15,7 @@ $data = json_decode(file_get_contents('php://input'), true);
 
 // get each piece of data
 
-// 
+start_session();
 //$SLOTID = $data['SLOTID']; this should be generated
 $SLOTDATE = $data['SLOTDATE'];
 $SLOTSTART = $data['SLOTSTART'];
