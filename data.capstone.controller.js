@@ -107,7 +107,36 @@
                     alert('unexpected error');
                }
             });                        
-        };       
+        };
+        
+        
+        /*
+         * Gets the edit mode for a particular player
+         */
+        $scope.getEditMode = function(user) {
+            return user.editMode;
+        };
+        
+        //function to edit movie data and send it to web api to edit the movie in the database
+        $scope.editUser = function(userDetails) {
+          var userupload = angular.copy(userDetails);
+          
+          $http.post("editusers.php", userupload)
+            .then(function (response) {
+               if (response.status == 200) {
+                    if (response.data.status == 'error') {
+                        alert('error: ' + response.data.message);
+                    } else {
+                        // successful
+                        // send user back to home page
+                        $window.location.href = "Admin_Landing.html";
+                    }
+               } else {
+                    alert('unexpected error');
+               }
+            });
+        };
+        
 
         
     });
