@@ -46,7 +46,7 @@
         };
         
         // Function to send slot info to database
-        $scope.newsLot = function(accountDetails) {
+        $scope.newSlot = function(accountDetails) {
           var accountupload = angular.copy(accountDetails);
           
           $http.post("newslot.php", accountupload)
