@@ -63,45 +63,53 @@
 
                 <div class="card-body">
                     <img src="Iowa-Logo-Black_2_e1a087a8-9a96-4f9f-8243-249744d38e79_1800x.jpg" alt="hawkeye" style="width:200px;height:200px;">
-                    <br>
-                    <br>
-                    <p> <b>HawkID: </b> {{user.HAWKID}}</p>
-                    <br>
-                    <p><b>First Name: </b>{{user.FIRSTNAME}}</p>
-                    <br>
-                    <p><b>Last Name: </b> {{user.LASTNAME}}</p>
-                    <br>
-                    <button class="btn btn-dark" ng-click="setEditMode(true, movie)" ng-disabled="editmovie != null">Edit</button>
-                    <button class="btn btn-dark" ng-click="deleteMovie(movie.title, movie.id)">Delete</button>
+                    <br><br>
+                    <p> <b>HawkID: </b> {{user.HAWKID}}</p><br>
+                    <p><b>First Name: </b>{{user.FIRSTNAME}}</p><br>
+                    <p><b>Last Name: </b> {{user.LASTNAME}}</p><br>
+                    <p><b>Email: </b> {{user.EMAIL}}</p> <br>
+                    <p><b>Phone: </b> {{user.PHONE}}</p> <br>
+                    <button class="btn btn-dark" ng-click="setEditMode(true, user)" ng-disabled="edituser != null">Edit</button>
                 </div>       
             </div>
             
             <div ng-if="getEditMode(user)">
                 <!-- edit mode -->
                 <div>
-                    <form  name="newMovieForm" novalidate>
+                    <form  name="newAccountForm" novalidate>
                         <div class="card-body">
-
-                            <!-- director of the movie -->
-                            <!-- ng-class sets up the style for this element. You'll find a format of 'style': condition, 'style2': condition2 -->
-                            <!-- notice in ng-class we are using the name of the form, and the name of the input element in the codition statements -->
-                            <div class="form-group" ng-class="{ 'text-danger': newMovieForm.director.$invalid && newMovieForm.director.$touched, 'text-success': !newMovieForm.director.$invalid && newMovieForm.director.$touched}">
-                                <label>Director:  </label>
-                                <input type="text" class="form-control" ng-class="{ 'is-invalid': newMovieForm.director.$invalid && newMovieForm.director.$touched, 'is-valid': !newMovieForm.director.$invalid && newMovieForm.director.$touched}" name="director" ng-model="editmovie.director" ng-minlength="2" required/>
-                                <p ng-show="newMovieForm.country.$invalid && newMovieForm.country.$touched" >The movie's director must be at least two characters long</p>
-                            </div>                
-                    
-                            <!-- Release year of movie-->
-                            <div class="form-group" ng-class="{ 'text-danger': newMovieForm.yearRelease.$invalid && newMovieForm.yearRelease.$touched, 'text-success': !newMovieForm.yearRelease.$invalid && newMovieForm.yearRelease.$touched}">
-                                <label>Year of Release: </label>
-                                <input type="text" class="form-control" ng-class="{ 'is-invalid': newMovieForm.yearRelease.$invalid && newMovieForm.yearRelease.$touched, 'is-valid': !newMovieForm.yearRelease.$invalid && newMovieForm.yearRelease.$touched}" name="yearRelease" ng-model="editmovie.yearRelease" ng-minlength="2" required/>
-                                <p ng-show="newMovieForm.yearRelease.$invalid && newMovieForm.yearRelease.$touched" >The player's yearRelease must be at least two characters long</p>
-                            </div>
-                            
-
-                        
-                            <button button class="btn btn-dark" ng-click="editMovie(editmovie)">Save</button>
-                            <button button class="btn btn-dark" ng-click="setEditMode(false, movie)">Cancel</button>
+                
+                <div class="form-group" ng-class="{ 'text-danger': newAccountForm.FIRSTNAME.$invalid && newAccountForm.FIRSTNAME.$touched, 'text-success': !newAccountForm.FIRSTNAME.$invalid && newAccountForm.FIRSTNAME.$touched }">
+                    <label class="form-control-label" for="FIRSTNAME">First Name:  </label>
+                    <input type="FIRSTNAME" class="form-control" ng-class="{ 'is-invalid': newAccountForm.FIRSTNAME.$invalid && newAccountForm.FIRSTNAME.$touched, 'is-valid': !newAccountForm.FIRSTNAME.$invalid && newAccountForm.FIRSTNAME.$touched }" name="FIRSTNAME" ng-model="account.FIRSTNAME" ng-minlength="2" id="FIRSTNAME" required/>
+                    <div ng-show="newAccountForm.FIRSTNAME.$invalid && newAccountForm.FIRSTNAME.$touched" >The first name must be at least 2 characters long</div>
+                </div>
+                
+                <!-- last name for account-->
+                
+                <div class="form-group" ng-class="{ 'text-danger': newAccountForm.LASTNAME.$invalid && newAccountForm.LASTNAME.$touched, 'text-success': !newAccountForm.LASTNAME.$invalid && newAccountForm.LASTNAME.$touched }">
+                    <label class="form-control-label" for="LASTNAME">Last Name:  </label>
+                    <input type="LASTNAME" class="form-control" ng-class="{ 'is-invalid': newAccountForm.LASTNAME.$invalid && newAccountForm.LASTNAME.$touched, 'is-valid': !newAccountForm.LASTNAME.$invalid && newAccountForm.LASTNAME .$touched }" name="LASTNAME" ng-model="account.LASTNAME" ng-minlength="2" id="LASTNAME" required/>
+                    <div ng-show="newAccountForm.LASTNAME.$invalid && newAccountForm.LASTNAME.$touched" >The Last Name must be at least 2 characters long</div>
+                </div>
+                
+               <!-- Email for account-->
+                
+                <div class="form-group" ng-class="{ 'text-danger': newAccountForm.EMAIL.$invalid && newAccountForm.EMAIL.$touched, 'text-success': !newAccountForm.EMAIL.$invalid && newAccountForm.EMAIL.$touched }">
+                    <label class="form-control-label" for="EMAIL">User Email:  </label>
+                    <input type="EMAIL" class="form-control" ng-class="{ 'is-invalid': newAccountForm.EMAIL.$invalid && newAccountForm.EMAIL.$touched, 'is-valid': !newAccountForm.EMAIL.$invalid && newAccountForm.EMAIL .$touched }" name="EMAIL" ng-model="account.EMAIL" ng-minlength="6" id="EMAIL" required/>
+                    <div ng-show="newAccountForm.EMAIL.$invalid && newAccountForm.EMAIL.$touched" >The User's Email must be 9 characters long</div>
+                </div>
+                
+                 <!-- Phone Number for account-->
+                
+                <div class="form-group" ng-class="{ 'text-danger': newAccountForm.PHONE.$invalid && newAccountForm.PHONE.$touched, 'text-success': !newAccountForm.PHONE.$invalid && newAccountForm.PHONE.$touched }">
+                    <label class="form-control-label" for="PHONE">User Phone Number:  </label>
+                    <input type="PHONE" class="form-control" ng-class="{ 'is-invalid': newAccountForm.PHONE.$invalid && newAccountForm.PHONE.$touched, 'is-valid': !newAccountForm.PHONE.$invalid && newAccountForm.PHONE .$touched }" name="PHONE" ng-model="account.PHONE" ng-minlength="10" id="PHONE" required/>
+                    <div ng-show="newAccountForm.PHONE.$invalid && newAccountForm.PHONE.$touched" >The User's phone number must be 10 digits</div>
+                </div>
+                <button button class="btn btn-dark" ng-click="editUser(edituser)">Save</button>
+               <button button class="btn btn-dark" ng-click="setEditMode(false, user)">Cancel</button>
                         </div>
                         
                     </form>
