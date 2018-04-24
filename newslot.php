@@ -67,7 +67,7 @@ if ($isComplete) {
 if ($isComplete) {
     
     // we will set up the insert statement to add this new record to the database
-    $insertslot = "INSERT INTO SLOTS(SLOTDATE, SLOTSTART, SLOTEND, TUTORHAWKID, STUDENTHAWKID, COURSEID, LOCATION) VALUES ('$SLOTDATE', '$SLOTSTART', '$SLOTEND', NULL, '$TUTORHAWKID', '$COURSEID', '$LOCATION')";
+    $insertslot = "INSERT INTO SLOTS(SLOTDATE, SLOTSTART, SLOTEND, TUTORHAWKID, STUDENTHAWKID, COURSEID, LOCATION) VALUES ('$SLOTDATE', '$SLOTSTART', '$SLOTEND','$TUTORHAWKID',NULL, '$COURSEID', '$LOCATION')";
     
     // run the insert statement
     queryDB($insertslot, $db);
