@@ -46,10 +46,10 @@
         };
         
         // Function to send slot info to database
-        $scope.newSlot = function(accountDetails) {
-          var accountupload = angular.copy(accountDetails);
+        $scope.newSlot = function(slotDetails) {
+          var slotupload = angular.copy(slotDetails);
           
-          $http.post("newslot.php", accountupload)
+          $http.post("newslot.php", slotupload)
             .then(function (response) {
                if (response.status == 200) {
                     if (response.data.status == 'error') {
