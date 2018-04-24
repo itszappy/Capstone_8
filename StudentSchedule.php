@@ -12,7 +12,7 @@ $tablename = "SLOTS";
 $data = json_decode(file_get_contents('php://input'), true);
 // get each piece of data
 // 'name' matches the name attribute in the form
-$STUDENTHAWKID = $data['Student Hawk ID'];
+$STUDENTHAWKID = $_SESSION['STUDENTHAWKID'];
 
 // set up variables to handle errors
 // is complete will be false if we find any problems when checking on the data
@@ -39,25 +39,11 @@ if ($isComplete) {
     }
 }
 
-// check if the id passed to this api corresponds to an existing record in the database
-if ($isComplete) {
-    // set up a query to check if this player is in the database already
-    $query = "SELECT name FROM soccerplayers WHERE id=$id";
-    
-    // we need to run the query
-    $result = queryDB($query, $db);
-    
-    // check on the number of records returned
-    if (nTuples($result) == 0) {
-        // if we get no results it means the id we got does not correspond to any records in the soccerplayers table
-        $isComplete = false;
-        $errorMessage .= "The id $id does not correspond to any players in the soccerplayers table. ";
-    }
-}
+
 // if we got this far and $isComplete is true it means we should edit the player in the database
 if ($isComplete) {
     // we will set up the insert statement to add this new record to the database
-    $updatequery = "UPDATE slots SET name='$name', country='$country', club='$club', video='$video' WHERE id=$id";
+    $updatequery = "UPDATE SLOTS SET STUDENTHAWKID='$STUDENTHAWKID' WHERE SLOTID='$SLOTID'";
     
     // run the update statement
     queryDB($updatequery, $db);
