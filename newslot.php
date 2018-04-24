@@ -39,16 +39,6 @@ $errorMessage = "";
 //
 if ($isComplete) {
     // check if slotdate meets criteria
-        if (!isset($HAWKID) || (strlen($HAWKID) < 2)) {
-        $isComplete = false;
-        $errorMessage .= "Please enter a hawkid with at least two characters!! ";
-    }
-    
-        if (!isset($COURSEID) || (strlen($COURSEID) != 4)) {
-        $isComplete = false;
-        $errorMessage .= "Please enter a course with four characters.";
-    }
-    
         if (!isset($LOCATION) || (strlen($LOCATION) < 6)) {
         $isComplete = false;
         $errorMessage .= "Please enter a location with at least 2 characters.";
