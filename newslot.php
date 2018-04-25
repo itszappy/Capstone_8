@@ -19,10 +19,13 @@ session_start();
 //$SLOTID = $data['SLOTID']; this should be generated
 $SLOTDATE = $data['SLOTDATE'];
 $SLOTSTART = $data['SLOTSTART'];
+//$SLOTSTART = date("H:i", $data['SLOTSTART']);
 $SLOTEND = $data['SLOTEND'];
+//$SLOTEND = date("H:i", $data['SLOTEND']);
 $TUTORHAWKID = $_SESSION['HAWKID'];
 $STUDENTHAWKID = NULL;
 $COURSEID = $data['COURSEID'];
+$COURSEID = 3;
 $LOCATION = $data['LOCATION'];
 
 
@@ -39,7 +42,7 @@ $errorMessage = "";
 //
 if ($isComplete) {
     // check if slotdate meets criteria
-        if (!isset($LOCATION) || (strlen($LOCATION) < 6)) {
+        if (!isset($LOCATION) || (strlen($LOCATION) < 2)) {
         $isComplete = false;
         $errorMessage .= "Please enter a location with at least 2 characters.";
     } 
@@ -61,13 +64,33 @@ if ($isComplete) {
     }
 }
 
+// check for the tutor's course
+if ($isComplete) {
+    $coursequery = "SELECT COURSEID FROM TUTOR WHERE TUTORHAWKID = '$TUTORHAWKID'";
+    
+    // we need to run the query
+    $result = queryDB($coursequery, $db);
+    
+    // check on the number of records returned
+    if (nTuples($result) > 0) {
+        // get the course they are tutoring
+        $row = nextTuple($result);
+        $COURSEID = $row['COURSEID'];
+        
+    } else {
+        // this tutor has no courses
+        $isComplete = false;
+        $errorMessage .= "You don't have any courses assigned to you. Go talk to Dr. Segre!";
+    }
+}
+
 
 
 // if we got this far and $isComplete is true it means we should add the player to the database
 if ($isComplete) {
     
     // we will set up the insert statement to add this new record to the database
-    $insertslot = "INSERT INTO SLOTS(SLOTDATE, SLOTSTART, SLOTEND, TUTORHAWKID, STUDENTHAWKID, COURSEID, LOCATION) VALUES ('$SLOTDATE', '$SLOTSTART', '$SLOTEND','jsmith',NULL, 0000000001, '$LOCATION')";
+    $insertslot = "INSERT INTO SLOTS(SLOTDATE, SLOTSTART, SLOTEND, TUTORHAWKID, STUDENTHAWKID, COURSEID, LOCATION) VALUES ('$SLOTDATE', '$SLOTSTART', '$SLOTEND','$TUTORHAWKID',NULL, $COURSEID, '$LOCATION')";
     
     // run the insert statement
     queryDB($insertslot, $db);

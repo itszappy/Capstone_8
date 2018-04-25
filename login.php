@@ -92,6 +92,7 @@
         // if the session variable 'username' is set, then we assume that the user is logged in
         session_start();
         $_SESSION['HAWKID'] = $HAWKID;
+        $_SESSION['ROLE'] = $role;
 		      
         // send response back
         $response = array();
