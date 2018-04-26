@@ -7,11 +7,13 @@ include_once('dbutils.php');
 // get a connection to the database
 $db = connectDB($DBHost, $DBUser, $DBPassword, $DBName);
 
+
+session_start();
 $SLOTS = "SLOTS";
 $STUDENTHAWKID = "STUDENTHAWKID";
 
 // set up a query to get information on the slots 
-$slotquery = "SELECT * FROM $SLOTS WHERE $STUDENTHAWKID = NULL;";
+$slotquery = "SELECT * FROM $SLOTS";
 
 // run the query to get info on players
 $slotresult = queryDB($slotquery, $db);
@@ -29,10 +31,7 @@ while ($currSlot = nextTuple($slotresult)) {
 // put together a JSON object to send back the data on the available slots
 $response = array();
 $response['status'] = 'success';
-
-// 'value' corresponds to response.data.value in data.capstone.controller.js
-// 'slots' corresponds to ng-repeat="slot in data.slots"
-$response['value']['slots'] = $slots;
+$response['value']['slotsarray'] = $slotsarray;
 header('Content-Type: application/json');
 echo(json_encode($response));
 
