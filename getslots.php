@@ -13,7 +13,7 @@ $SLOTS = "SLOTS";
 $STUDENTHAWKID = "STUDENTHAWKID";
 
 // set up a query to get information on the slots 
-$slotquery = "SELECT * FROM $SLOTS";
+$slotquery = "SELECT * FROM SLOTS";
 
 // run the query to get info on players
 $slotresult = queryDB($slotquery, $db);
