@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+
+<html lang="en" ng-app="capstone">
+<head>
+    <!-- this is what shows up in the tabs in your browser and if you bookmark the page -->
+    <title>Welcome to Capstone8</title>
+
+    <!-- These are the links to bootstrap code -->
+    <!-- we got the links from http://getbootstrap.com/docs/4.0/getting-started/introduction/ -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+    
+    <!-- link to angular -->
+    <!-- you can download it from https://angularjs.org/ then you need to upload it to the webdev server. -->
+    <script src="angular.min.js"></script>
+    
+    <!-- angular code we wrote -->
+    <!-- capstone.module.js is where we define the angular app called 'capstone'. We use the name of the app in the html element at the top of the file -->
+    <script src="capstone.module.js"></script>
+    <!-- data.capstone.controller.js is where we are getting the data from. It defines a controller under the 'capstone' app called 'dataControl', and data is under $scope.data -->
+    <script src="data.capstone.controller.js"></script>
+    <!-- capstone.filter.js enables us to display html code -->
+    <script src="capstone.filter.js"></script>
+ 
+    <link rel="stylesheet" href="styles_1.css">
+
+
+</head>
+
+<body>
+
+ <div class="sidenav">
+  <div style="text-align: center;"><img src="quickherky.png" alt="hawkeye" style="width:100px;height:100px;"></div>
+  <a href="https://webdev.cs.uiowa.edu/~bzaputil/Capstone_8/Student_Landing.html">Capstone_8</a>
+  <a href="Admin_Profile.html">Profile</a>
+  <a href="Student_Schedule.html">Schedules</a>
+   <a href="#">Materials</a>
+</div>
+
+
+<!--- keep these together, but separate-->
+<!--div class must ALWAYS be container-->
+<div class="container" ng-controller="dataControl"> 
+<!--header-->
+<div ng-include ng-init="menuHighlight = 2;" src="'Admin_Header.html'"></div>
+<div class="main">
+<!-- Content -->
+<div class="row-1" ng-repeat="user in data.userarray">
+<h2>Welcome, {{user.FIRSTNAME}} </h2>
+
+<p>Please select a tutoring session!</p>
+<div class="card m-1" style="width: 28rem" ng-repeat="slot in data.value">
+<div class="card-body">
+<p> <b>SlotID: </b> {{slot.SLOTID}}</p><br>
+<p><b>Date: </b>{{slot.SLOTDATE}}</p><br>
+<p><b>Slot Start: </b> {{slot.SLOTSTART}}</p><br>
+<p><b>Slot End: </b> {{slot.SLOTEND}}</p> <br>
+<p><b>Location: </b> {{slot.location}}</p> <br>
+
+</div>
+  
+</div>
+
+</body>
+</html>

@@ -19,6 +19,14 @@
                 $scope.data = response.data.value;
             }
                    );
+            
+          $http.get("getslots.php")
+            .then(function(response) {
+                // response.data.value has value come from the getslots.php file $response['value']['slots'] = $slots;
+                $scope.data = response.data.value;
+            }
+                   );   
+    
        
         $scope.query = {};
         $scope.queryBy = "$";
