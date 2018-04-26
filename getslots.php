@@ -14,7 +14,7 @@ $STUDENTHAWKID = "STUDENTHAWKID";
 $slotquery = "SELECT * FROM $SLOTS WHERE $STUDENTHAWKID = NULL;";
 
 // run the query to get info on players
-$slotresult = queryDB($query, $db);
+$slotresult = queryDB($slotquery, $db);
 
 // assign results to an array we can then send back to whomever called
 $slotsarray = array();
