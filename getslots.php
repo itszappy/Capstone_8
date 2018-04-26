@@ -7,31 +7,32 @@ include_once('dbutils.php');
 // get a connection to the database
 $db = connectDB($DBHost, $DBUser, $DBPassword, $DBName);
 
-$SLOT = "SLOT";
+$SLOTS = "SLOTS";
+$STUDENTHAWKID = "STUDENTHAWKID";
 
-// set up a query to get information on players
-$query = "SELECT * FROM $SLOT;";
+// set up a query to get information on the slots 
+$slotquery = "SELECT * FROM $SLOTS WHERE $STUDENTHAWKID = NULL;";
 
 // run the query to get info on players
-$result = queryDB($query, $db);
+$slotresult = queryDB($query, $db);
 
 // assign results to an array we can then send back to whomever called
-$slots = array();
+$slotsarray = array();
 $i = 0;
 
 // go through the results one by one
-while ($currSlot = nextTuple($result)) {
-    $slots[$i] = $currSlot;
+while ($currSlot = nextTuple($slotresult)) {
+    $slotsarray[$i] = $currSlot;
     $i++;
 }
 
-// put together a JSON object to send back the data on the players
+// put together a JSON object to send back the data on the available slots
 $response = array();
 $response['status'] = 'success';
 
-// 'value' corresponds to response.data.value in data.soccer.controller.js
-// 'players' corresponds to ng-repeat="player in data.players | filter:query" in the index.html file
-$response['value']['slot'] = $slot;
+// 'value' corresponds to response.data.value in data.capstone.controller.js
+// 'slots' corresponds to ng-repeat="slot in data.slots"
+$response['value']['slots'] = $slots;
 header('Content-Type: application/json');
 echo(json_encode($response));
 
