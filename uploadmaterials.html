@@ -32,18 +32,19 @@
     
  <div class="sidenav">
   <div style="text-align: center;"><img src="quickherky.png" alt="hawkeye" style="width:100px;height:100px;"></div>
-  <a href="Admin_Landing.html">Capstone_8</a>
-  <a href="Admin_Profile.html">Profile</a>
-  <a href="newaccount.html">Accounts</a>
-  <a href="#">Schedules</a>
+  <a href="Teacher_Landing.html">Capstone_8</a>
+  <a href="Teacher_Profile.html">Profile</a>
+  <a href="#">Account</a>
+  <a href="">Schedules</a>
    <a href="#">Materials</a>
 </div>
-
+  
+  
 <!--- keep these together, but separate-->
 <div class="container" ng-controller="dataControl">
 <!--header-->
 <div ng-include ng-init="menuHighlight = 2;" src="'Admin_Header.html'"></div>
-<div class="main">
+
             <div class="row-1" align="center">
             <h2>Problem Sets</h2>
             <p> Upload course materials here </p><br>
@@ -51,10 +52,10 @@
 
         
         <!-- form for entering new account -->
-        <div class="row">
-            
+        <div class="row-2">
+           
               
-            <form  name="uploadMaterialsForm" novalidate>
+            <form name="uploadMaterialsForm" novalidate>
                 
                 <!-- problem set name -->
                 <div class="form-group" ng-class="{ 'text-danger': uploadMaterialsForm.PROBLEMSETNAME.$invalid && uploadMaterialsForm.PROBLEMSETNAME.$touched, 'text-success': !uploadMaterialsForm.PROBLEMSETNAME.$invalid && uploadMaterialsForm.PROBLEMSETNAME.$touched }">
@@ -67,7 +68,7 @@
                 <div class="form-group" ng-class="{ 'text-danger': uploadMaterialsForm.PROBLEMDESC.$invalid && uploadMaterialsForm.PROBLEMDESC.$touched, 'text-success': !uploadMaterialsForm.PROBLEMDESC.$invalid && uploadMaterialsForm.PROBLEMDESC.$touched }">
                     <label class="form-control-label" for="PROBLEMDESC">Problem Set Description</label>
                     <input type="text" class="form-control" ng-class="{ 'is-invalid': uploadMaterialsForm.PROBLEMDESC.$invalid && uploadMaterialsForm.PROBLEMDESC.$touched, 'is-valid': !uploadMaterialsForm.PROBLEMDESC.$invalid && uploadMaterialsForm.PROBLEMDESC.$touched }" name="PROBLEMDESC" ng-model="account.PROBLEMDESC" ng-minlength="6" id="PROBLEMDESC" required/>
-                    <div ng-show="uploadMaterialsForm.PROBLEMDESC.$invalid && uploadMaterialsForm.PROBLEMDESC.$touched" >The password must be at least 6 characters long</div>
+                    <div ng-show="uploadMaterialsForm.PROBLEMDESC.$invalid && uploadMaterialsForm.PROBLEMDESC.$touched" >Please add a problem description</div>
                 </div>
                 
                 <!-- problem file-->
@@ -75,13 +76,13 @@
                 <div class="form-group" ng-class="{ 'text-danger': uploadMaterialsForm.PROBLEMFILE.$invalid && uploadMaterialsForm.PROBLEMFILE.$touched, 'text-success': !uploadMaterialsForm.PROBLEMFILE.$invalid && uploadMaterialsForm.PROBLEMFILE.$touched }">
                     <label class="form-control-label" for="PROBLEMFILE"> Upload File:  </label>
                     <input type="text" class="form-control" ng-class="{ 'is-invalid': uploadMaterialsForm.PROBLEMFILE.$invalid && uploadMaterialsForm.PROBLEMFILE.$touched, 'is-valid': !uploadMaterialsForm.PROBLEMFILE.$invalid && uploadMaterialsForm.PROBLEMFILE.$touched }" name="PROBLEMFILE" ng-model="account.PROBLEMFILE" ng-minlength="2" id="PROBLEMFILE" required/>
-                    <div ng-show="uploadMaterialsForm.PROBLEMFILE.$invalid && uploadMaterialsForm.PROBLEMFILE.$touched" >The first name must be at least 2 characters long</div>
+                    <div ng-show="uploadMaterialsForm.PROBLEMFILE.$invalid && uploadMaterialsForm.PROBLEMFILE.$touched" >Please add a file</div>
                 </div>
                 
                          
                 
                 <!-- newAccount is a function in the controller. account refers to the word we used under ng-model in the input fields -->
-                <button class="btn btn-default" ng-click="newAccount(account)" ng-disabled="uploadMaterialsForm.$invalid">Add account</button>
+                <button class="btn btn-default" ng-click="newAccount(account)" ng-disabled="uploadMaterialsForm.$invalid">Upload problem set</button>
             </form>
             
         

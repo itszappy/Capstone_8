@@ -10,11 +10,11 @@ $db = connectDB($DBHost, $DBUser, $DBPassword, $DBName);
 
 session_start();
 $SLOTS = "SLOTS";
-$TUTORHAWKID = $_SESSION['HAWKID'];
-$STUDENTHAWKID = 'STUDENTHAWKID';
+$STUDENTHAWKID = $_SESSION['HAWKID'];
+
 
 // set up a query to get information on the slots 
-$slotquery = "SELECT * FROM SLOTS WHERE '$STUDENTHAWKID'=NULL AND '$STUDENTHAWKID' = 'STUDENTHAWKID';";
+$slotquery = "SELECT * FROM SLOTS WHERE STUDENTHAWKID=NULL;";
 
 // run the query to get info on players
 $slotresult = queryDB($slotquery, $db);
