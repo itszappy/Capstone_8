@@ -22,27 +22,14 @@ $errorMessage = "";
 // check if they are logged in
 session_start();
 if (!isset($_SESSION['user'])) {
-    // if the session variable username is not set, then the user is not logged in and should not edit the player
+    // if the session variable username is not set, then the user is not logged in and should not edit the 
     $isComplete = false;
     $errorMessage .= "User is not logged in.";
 }
-//
-// Validation
-//
-if ($isComplete) {
-    // check if STUDENTHAWKID meets criteria
-    if (!isset($STUDENTHAWKID) || (strlen($STUDENTHAWKID) < 2)) {
-        $isComplete = false;
-        $errorMessage .= "Please enter a HAWK ID with at least two characters. ";
-    } else {
-        $STUDENTHAWKID = makeStringSafe($db, $STUDENTHAWKID);
-    }
-}
 
 
-// if we got this far and $isComplete is true it means we should edit the player in the database
 if ($isComplete) {
-    // we will set up the insert statement to add this new record to the database
+    // updating the slot record with the logged in students hawkid 
     $updatequery = "UPDATE SLOTS SET STUDENTHAWKID='$STUDENTHAWKID' WHERE SLOTID='$SLOTID'";
     
     // run the update statement
@@ -51,6 +38,7 @@ if ($isComplete) {
     // send a response back to angular
     $response = array();
     $response['status'] = 'success';
+    $response['hawkid'] = $HAWKID;
     header('Content-Type: application/json');
     echo(json_encode($response));    
 } else {

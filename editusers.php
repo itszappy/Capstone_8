@@ -91,7 +91,7 @@ if ($isComplete) {
 	//run the insert statement
 	queryDB($updatequery, $db);
 
-	//get the id of the player we just entered
+	//get the hawkid
 	$HAWKID = mysqli_insert_id($db);
 
 	//send a response back to angular

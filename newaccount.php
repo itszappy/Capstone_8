@@ -93,7 +93,7 @@ if ($isComplete) {
 
 
 
-// if we got this far and $isComplete is true it means we should add the player to the database
+
 if ($isComplete) {
     // create a hashed version of the password
     $HASHED_PSSWRD = crypt($PASSWORD, getSalt());

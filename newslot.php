@@ -86,7 +86,7 @@ if ($isComplete) {
 
 
 
-// if we got this far and $isComplete is true it means we should add the player to the database
+
 if ($isComplete) {
     
     // we will set up the insert statement to add this new record to the database
