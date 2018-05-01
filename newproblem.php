@@ -33,9 +33,9 @@ $errorMessage = "";
 //
 //
 
-// check if we already have a username that matches the one the user entered
+// check if we already have a problem id that matches the one the user entered
 if ($isComplete) {
-    // set up a query to check if this username is in the database already
+    // set up a query to check if this problem id is in the database already
     $slotquery = "SELECT * FROM PROBLEMS WHERE PROBLEMSETID='$PROBLEMSETID';";
     
     // we need to run the query
@@ -49,7 +49,7 @@ if ($isComplete) {
     }
 }
 
-// check for the tutor's course
+// check for the professor's course
 if ($isComplete) {
     $problemquery = "SELECT COURSEID FROM PROFESSOR WHERE PROFESSORHAWKID = '$PROFESSORHAWKID';";
     
@@ -58,12 +58,12 @@ if ($isComplete) {
     
     // check on the number of records returned
     if (nTuples($result) > 0) {
-        // get the course they are tutoring
+        // get the course they are teaching
         $row = nextTuple($result);
         $COURSEID = $row['COURSEID'];
         
     } else {
-        // this tutor has no courses
+        // this professor has no courses
         $isComplete = false;
         $errorMessage .= "You don't have any courses assigned to you. Go talk to Dr. Segre!";
     }
@@ -71,11 +71,11 @@ if ($isComplete) {
 
 
 
-// if we got this far and $isComplete is true it means we should add the player to the database
+// if we got this far and $isComplete is true it means we should add the problem to the database
 if ($isComplete) {
     
     // we will set up the insert statement to add this new record to the database
-    $insertproblem = "INSERT INTO PROBLEMS (PROBLEMSETID, PROBLEMSETNAME, PROBLEMDESC, PROBLEMFILE, COURSEID) VALUES ($PROBLEMSETID, $PROBLEMSETNAME, $PROBLEMDESC, $PROBLEMFILE , $COURSEID)";
+    $insertproblem = "INSERT INTO PROBLEMS (PROBLEMSETID, PROBLEMSETNAME, PROBLEMDESC, PROBLEMFILE, COURSEID) VALUES ($PROBLEMSETID, $PROBLEMSETNAME, $PROBLEMDESC, $PROBLEMFILE , $COURSEID)'";
     
     // run the insert statement
     queryDB($insertproblem, $db);
