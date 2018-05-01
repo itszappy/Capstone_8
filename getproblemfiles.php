@@ -27,7 +27,7 @@ while ($currProblem = nextTuple($problemresult)) {
     $i++;
 }
 
-// put together a JSON object to send back the data on the players
+// put together a JSON object to send back the data on the problem
 $response = array();
 $response['status'] = 'success';
 

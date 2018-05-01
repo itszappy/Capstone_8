@@ -30,7 +30,7 @@ while ($currCourse = nextTuple($result)) {
 $response = array();
 $response['status'] = 'success';
 
-// 'value' corresponds to response.data.value in data.soccer.controller.js
+// 'value' corresponds to response.data.value in data.capstone.controller.js
 // 'cours corresponds to ng-repeat="course in data.course" 
 $response['value']['course'] = $course;
 header('Content-Type: application/json');
