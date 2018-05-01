@@ -33,7 +33,7 @@
 
  <div class="sidenav">
   <div style="text-align: center;"><img src="quickherky.png" alt="hawkeye" style="width:100px;height:100px;"></div>
-  <a href="https://webdev.cs.uiowa.edu/~bzaputil/Capstone_8/Student_Landing.html">Capstone_8</a>
+  <a href="Student_Landing.html">Capstone_8</a>
   <a href="Admin_Profile.html">Profile</a>
   <a href="Student_Schedule.html">Schedules</a>
    <a href="#">Materials</a>
@@ -50,13 +50,13 @@
            <div class="row-1" ng-repeat="user in data.userarray">
                  <h2>Welcome, {{user.FIRSTNAME}} </h2>
                  <p>Please select a tutoring session!</p>
-                 <div class="card m-1" style="width: 28rem" ng-repeat="slot in data.value">
+                 <div class="card m-1" style="width: 28rem" ng-repeat="slot in data.slotsarray">
                       <div class="card-body">
                            <p> <b>SlotID: </b> {{slot.SLOTID}}</p><br>
                            <p><b>Date: </b>{{slot.SLOTDATE}}</p><br>
                            <p><b>Slot Start: </b> {{slot.SLOTSTART}}</p><br>
                            <p><b>Slot End: </b> {{slot.SLOTEND}}</p> <br>
-                           <p><b>Location: </b> {{slot.location}}</p> <br>
+                           <p><b>Location: </b> {{slot.LOCATION}}</p> <br>
                       </div>
                  </div>
            </div>
