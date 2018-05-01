@@ -1,6 +1,6 @@
 <?php
 
-// We need to include these two files in order to work with the database
+/// We need to include these two files in order to work with the database
 include_once('config.php');
 include_once('dbutils.php');
 
