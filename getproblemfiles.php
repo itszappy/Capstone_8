@@ -7,21 +7,23 @@ include_once('dbutils.php');
 // get a connection to the database
 $db = connectDB($DBHost, $DBUser, $DBPassword, $DBName);
 
-$tablename = "USERTABLE";
+session_start();
+$PROFESSORHAWKID = $_SESSION['HAWKID'];
+$PROBLEMS = "PROBLEMS";
 
-// set up a query to get information on players
-$query = "SELECT * FROM $tablename;";
+// set up a query to get information on all the problems sets
+$query = "SELECT * FROM PROBLEMS;";
 
-// run the query to get info on players
-$result = queryDB($query, $db);
+// run the query to get all the information on the problem sets
+$problemresult = queryDB($query, $db);
 
 // assign results to an array we can then send back to whomever called
-$user = array();
+$problem = array();
 $i = 0;
 
 // go through the results one by one
-while ($currUser = nextTuple($result)) {
-    $user[$i] = $currUser;
+while ($currProblem = nextTuple($problemresult)) {
+    $problem[$i] = $currProblem;
     $i++;
 }
 
@@ -29,9 +31,9 @@ while ($currUser = nextTuple($result)) {
 $response = array();
 $response['status'] = 'success';
 
-// 'value' corresponds to response.data.value in data.soccer.controller.js
-// 'players' corresponds to ng-repeat="player in data.players | filter:query" in the index.html file
-$response['value']['USERTABLE'] = $user;
+// 'value' corresponds to response.data.value in data.capstone.controller.js
+// 'problem' corresponds to ng-repeat="problem in data.problem"
+$response['value']['problem'] = $problem;
 header('Content-Type: application/json');
 echo(json_encode($response));
 
