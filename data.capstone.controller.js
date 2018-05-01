@@ -74,6 +74,31 @@
         };        
         
         
+        //Function to send materials information to dtabase
+         $scope.newProblem = function(problemDetails) {
+          var problemupload = angular.copy(problemDetails);
+          
+          $http.post("newproblem.php", problemupload)
+            .then(function (response) {
+               if (response.status == 200) {
+                    if (response.data.status == 'error') {
+                        alert('error: ' + response.data.message);
+                    } else {
+                        // successful
+                        // send user back to home page
+                        $window.location.href = "Teacher_Landing.html";
+                    }
+               } else {
+                    alert('unexpected error');
+               }
+            });                        
+        };        
+        
+        
+        
+        
+        
+        
         // function to send new account information to web api to add it to the database
         $scope.login = function(accountDetails) {
           var accountupload = angular.copy(accountDetails);

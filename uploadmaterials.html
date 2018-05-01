@@ -60,14 +60,14 @@
                 <!-- problem set name -->
                 <div class="form-group" ng-class="{ 'text-danger': uploadMaterialsForm.PROBLEMSETNAME.$invalid && uploadMaterialsForm.PROBLEMSETNAME.$touched, 'text-success': !uploadMaterialsForm.PROBLEMSETNAME.$invalid && uploadMaterialsForm.PROBLEMSETNAME.$touched }">
                     <label class="form-control-label" for="PROBLEMSETNAME"> Name for Problemset </label>
-                    <input type="text" class="form-control" ng-class="{ 'is-invalid': uploadMaterialsForm.PROBLEMSETNAME.$invalid && uploadMaterialsForm.PROBLEMSETNAME.$touched, 'is-valid': !uploadMaterialsForm.PROBLEMSETNAME.$invalid && uploadMaterialsForm.PROBLEMSETNAME.$touched }" name="PROBLEMSETNAME" ng-model="account.PROBLEMSETNAME" ng-minlength="2" id="PROBLEMSETNAME" required/>
+                    <input type="text" class="form-control" ng-class="{ 'is-invalid': uploadMaterialsForm.PROBLEMSETNAME.$invalid && uploadMaterialsForm.PROBLEMSETNAME.$touched, 'is-valid': !uploadMaterialsForm.PROBLEMSETNAME.$invalid && uploadMaterialsForm.PROBLEMSETNAME.$touched }" name="PROBLEMSETNAME" ng-model="problem.PROBLEMSETNAME" ng-minlength="2" id="PROBLEMSETNAME" required/>
                     <div ng-show="uploadMaterialsForm.PROBLEMSETNAME.$invalid && uploadMaterialsForm.PROBLEMSETNAME.$touched" >Please finish the name for this problem set!</div>
                 </div>
                 
                 <!-- Problem Description -->
                 <div class="form-group" ng-class="{ 'text-danger': uploadMaterialsForm.PROBLEMDESC.$invalid && uploadMaterialsForm.PROBLEMDESC.$touched, 'text-success': !uploadMaterialsForm.PROBLEMDESC.$invalid && uploadMaterialsForm.PROBLEMDESC.$touched }">
                     <label class="form-control-label" for="PROBLEMDESC">Problem Set Description</label>
-                    <input type="text" class="form-control" ng-class="{ 'is-invalid': uploadMaterialsForm.PROBLEMDESC.$invalid && uploadMaterialsForm.PROBLEMDESC.$touched, 'is-valid': !uploadMaterialsForm.PROBLEMDESC.$invalid && uploadMaterialsForm.PROBLEMDESC.$touched }" name="PROBLEMDESC" ng-model="account.PROBLEMDESC" ng-minlength="6" id="PROBLEMDESC" required/>
+                    <input type="text" class="form-control" ng-class="{ 'is-invalid': uploadMaterialsForm.PROBLEMDESC.$invalid && uploadMaterialsForm.PROBLEMDESC.$touched, 'is-valid': !uploadMaterialsForm.PROBLEMDESC.$invalid && uploadMaterialsForm.PROBLEMDESC.$touched }" name="PROBLEMDESC" ng-model="problem.PROBLEMDESC" ng-minlength="6" id="PROBLEMDESC" required/>
                     <div ng-show="uploadMaterialsForm.PROBLEMDESC.$invalid && uploadMaterialsForm.PROBLEMDESC.$touched" >Please add a problem description</div>
                 </div>
                 
@@ -75,14 +75,14 @@
                 
                 <div class="form-group" ng-class="{ 'text-danger': uploadMaterialsForm.PROBLEMFILE.$invalid && uploadMaterialsForm.PROBLEMFILE.$touched, 'text-success': !uploadMaterialsForm.PROBLEMFILE.$invalid && uploadMaterialsForm.PROBLEMFILE.$touched }">
                     <label class="form-control-label" for="PROBLEMFILE"> Upload File:  </label>
-                    <input type="text" class="form-control" ng-class="{ 'is-invalid': uploadMaterialsForm.PROBLEMFILE.$invalid && uploadMaterialsForm.PROBLEMFILE.$touched, 'is-valid': !uploadMaterialsForm.PROBLEMFILE.$invalid && uploadMaterialsForm.PROBLEMFILE.$touched }" name="PROBLEMFILE" ng-model="account.PROBLEMFILE" ng-minlength="2" id="PROBLEMFILE" required/>
+                    <input type="text" class="form-control" ng-class="{ 'is-invalid': uploadMaterialsForm.PROBLEMFILE.$invalid && uploadMaterialsForm.PROBLEMFILE.$touched, 'is-valid': !uploadMaterialsForm.PROBLEMFILE.$invalid && uploadMaterialsForm.PROBLEMFILE.$touched }" name="PROBLEMFILE" ng-model="problem.PROBLEMFILE" ng-minlength="2" id="PROBLEMFILE" required/>
                     <div ng-show="uploadMaterialsForm.PROBLEMFILE.$invalid && uploadMaterialsForm.PROBLEMFILE.$touched" >Please add a file</div>
                 </div>
                 
                          
                 
                 <!-- newAccount is a function in the controller. account refers to the word we used under ng-model in the input fields -->
-                <button class="btn btn-default" ng-click="newAccount(account)" ng-disabled="uploadMaterialsForm.$invalid">Upload problem set</button>
+                <button class="btn btn-default" ng-click="newProblem(problem)" ng-disabled="uploadMaterialsForm.$invalid">Upload problem set</button>
             </form>
             
         
