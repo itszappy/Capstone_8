@@ -47,21 +47,30 @@
     <div ng-include ng-init="menuHighlight = 2;" src="'Admin_Header.html'"></div>
         <div class="main">
 <!-- Content -->
-           <div class="row-1" ng-repeat="user in data.userarray">
+
+      <div class="row-1" ng-repeat="user in data.userarray">
                  <h2>Welcome, {{user.FIRSTNAME}} </h2>
                  <p>Please select a tutoring session!</p>
-                 <div class="card m-1" style="width: 28rem" ng-repeat="slot in data.slotsarray">
-                      <div class="card-body">
-                           <p> <b>SlotID: </b> {{slot.SLOTID}}</p><br>
-                           <p><b>Date: </b>{{slot.SLOTDATE}}</p><br>
-                           <p><b>Slot Start: </b> {{slot.SLOTSTART}}</p><br>
-                           <p><b>Slot End: </b> {{slot.SLOTEND}}</p> <br>
-                           <p><b>Location: </b> {{slot.LOCATION}}</p> <br>
-                      </div>
-                 </div>
-           </div>
-        </div>
-  </div>
+                 
+             
+      <div class="card m-1" style="width: 28rem" ng-repeat="slot in data.slotsarray" align="center">
+                
+              <div class="card-body">
+                 
+                 <p><b>SlotID: </b> {{slot.SLOTID}}</p><br>
+                 <p><b>Date: </b>{{slot.SLOTDATE}}</p><br>
+                 <p><b>Slot Start: </b> {{slot.SLOTSTART}}</p><br>
+                 <p><b>Slot End: </b> {{slot.SLOTEND}}</p> <br>
+                 <p><b>Location: </b> {{slot.LOCATION}}</p> <br>
+                    
+              <button class="btn btn-dark">Schedule</button>
+            </div>       
+       </div>           
+   
+                 
+     </div>
+     </div>
+</div>
 
 
 
