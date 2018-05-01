@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+
+<!-- ng-app="soccer" defines the angular app that we are using. The name is defined under soccer.module.js -->
+<html lang="en" ng-app="capstone">
+<head>
+    <!-- this is what shows up in the tabs in your browser and if you bookmark the page -->
+    <title> Create a new account!  </title>
+
+    <!-- These are the links to bootstrap code -->
+    <!-- we got the links from http://getbootstrap.com/docs/4.0/getting-started/introduction/ -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+    
+    <!-- link to angular -->
+    <!-- you can download it from https://angularjs.org/ then you need to upload it to the webdev server. -->
+    <script src="angular.min.js"></script>
+    
+    <!-- angular code we wrote -->
+    <!-- soccer.module.js is where we define the angular app called 'soccer'. We use the name of the app in the html element at the top of the file -->
+    <script src="capstone.module.js"></script>
+    <!-- data.soccer.controller.js is where we are getting the data from. It defines a controller under the 'soccer' app called 'dataControl', and data is under $scope.data -->
+    <script src="data.capstone.controller.js"></script>
+    <!-- soccer.filter.js enables us to display html code -->
+    <script src="capstone.filter.js"></script>
+    
+    <link rel="stylesheet" href="styles_1.css">
+
+</head>
+<body>
+    
+ <div class="sidenav">
+  <div style="text-align: center;"><img src="quickherky.png" alt="hawkeye" style="width:100px;height:100px;"></div>
+  <a href="Admin_Landing.html">Capstone_8</a>
+  <a href="Admin_Profile.html">Profile</a>
+  <a href="newaccount.html">Accounts</a>
+  <a href="#">Schedules</a>
+   <a href="#">Materials</a>
+</div>
+
+<!--- keep these together, but separate-->
+<div class="container" ng-controller="dataControl">
+<!--header-->
+<div ng-include ng-init="menuHighlight = 2;" src="'Admin_Header.html'"></div>
+<div class="main">
+            <div class="row-1" align="center">
+            <h2>Create New Account</h2>
+            <p>Fill out form to create new account</p><br>
+            </div>
+
+        
+        <!-- form for entering new account -->
+        <div class="row">
+            
+              
+            <form  name="newAccountForm" novalidate>
+                
+                <!-- username for account -->
+                <div class="form-group" ng-class="{ 'text-danger': newAccountForm.HAWKID.$invalid && newAccountForm.HAWKID.$touched, 'text-success': !newAccountForm.HAWKID.$invalid && newAccountForm.HAWKID.$touched }">
+                    <label class="form-control-label" for="HAWKID">Username (at least 2 characters long): </label>
+                    <input type="text" class="form-control" ng-class="{ 'is-invalid': newAccountForm.HAWKID.$invalid && newAccountForm.HAWKID.$touched, 'is-valid': !newAccountForm.HAWKID.$invalid && newAccountForm.HAWKID.$touched }" name="HAWKID" ng-model="account.HAWKID" ng-minlength="2" id="HAWKID" required/>
+                    <div ng-show="newAccountForm.HAWKID.$invalid && newAccountForm.HAWKID.$touched" >The username must be at least 2 characters long</div>
+                </div>
+                
+                <!-- password for account -->
+                <div class="form-group" ng-class="{ 'text-danger': newAccountForm.PASSWORD.$invalid && newAccountForm.PASSWORD.$touched, 'text-success': !newAccountForm.PASSWORD.$invalid && newAccountForm.PASSWORD.$touched }">
+                    <label class="form-control-label" for="PASSWORD">Password (at least 6 characters long; may not include anything related to hawkeyes): </label>
+                    <input type="password" class="form-control" ng-class="{ 'is-invalid': newAccountForm.PASSWORD.$invalid && newAccountForm.PASSWORD.$touched, 'is-valid': !newAccountForm.PASSWORD.$invalid && newAccountForm.PASSWORD.$touched }" name="PASSWORD" ng-model="account.PASSWORD" ng-minlength="6" id="PASSWORD" required/>
+                    <div ng-show="newAccountForm.PASSWORD.$invalid && newAccountForm.PASSWORD.$touched" >The password must be at least 6 characters long</div>
+                </div>
+                
+                <!-- first name for account-->
+                
+                <div class="form-group" ng-class="{ 'text-danger': newAccountForm.FIRSTNAME.$invalid && newAccountForm.FIRSTNAME.$touched, 'text-success': !newAccountForm.FIRSTNAME.$invalid && newAccountForm.FIRSTNAME.$touched }">
+                    <label class="form-control-label" for="FIRSTNAME">First Name:  </label>
+                    <input type="FIRSTNAME" class="form-control" ng-class="{ 'is-invalid': newAccountForm.FIRSTNAME.$invalid && newAccountForm.FIRSTNAME.$touched, 'is-valid': !newAccountForm.FIRSTNAME.$invalid && newAccountForm.FIRSTNAME.$touched }" name="FIRSTNAME" ng-model="account.FIRSTNAME" ng-minlength="2" id="FIRSTNAME" required/>
+                    <div ng-show="newAccountForm.FIRSTNAME.$invalid && newAccountForm.FIRSTNAME.$touched" >The first name must be at least 2 characters long</div>
+                </div>
+                
+                <!-- last name for account-->
+                
+                <div class="form-group" ng-class="{ 'text-danger': newAccountForm.LASTNAME.$invalid && newAccountForm.LASTNAME.$touched, 'text-success': !newAccountForm.LASTNAME.$invalid && newAccountForm.LASTNAME.$touched }">
+                    <label class="form-control-label" for="LASTNAME">Last Name:  </label>
+                    <input type="LASTNAME" class="form-control" ng-class="{ 'is-invalid': newAccountForm.LASTNAME.$invalid && newAccountForm.LASTNAME.$touched, 'is-valid': !newAccountForm.LASTNAME.$invalid && newAccountForm.LASTNAME .$touched }" name="LASTNAME" ng-model="account.LASTNAME" ng-minlength="2" id="LASTNAME" required/>
+                    <div ng-show="newAccountForm.LASTNAME.$invalid && newAccountForm.LASTNAME.$touched" >The Last Name must be at least 2 characters long</div>
+                </div>
+                
+                <!-- User Role for account-->
+                
+                <div class="form-group" ng-class="{ 'text-danger': newAccountForm.USERROLE.$invalid && newAccountForm.USERROLE.$touched, 'text-success': !newAccountForm.USERROLE.$invalid && newAccountForm.USERROLE.$touched }">
+                    <label class="form-control-label" for="USERROLE">User Role:  </label>
+                    <input type="USERROLE" class="form-control" ng-class="{ 'is-invalid': newAccountForm.USERROLE.$invalid && newAccountForm.USERROLE.$touched, 'is-valid': !newAccountForm.USERROLE.$invalid && newAccountForm.USERROLE .$touched }" name="USERROLE" ng-model="account.USERROLE" ng-minlength="1" id="USERROLE" required/>
+                    <div ng-show="newAccountForm.USERROLE.$invalid && newAccountForm.USERROLE.$touched" >The User Role must be only 1 character long</div>
+                </div>
+                
+                <!-- Email for account-->
+                
+                <div class="form-group" ng-class="{ 'text-danger': newAccountForm.EMAIL.$invalid && newAccountForm.EMAIL.$touched, 'text-success': !newAccountForm.EMAIL.$invalid && newAccountForm.EMAIL.$touched }">
+                    <label class="form-control-label" for="EMAIL">User Email:  </label>
+                    <input type="EMAIL" class="form-control" ng-class="{ 'is-invalid': newAccountForm.EMAIL.$invalid && newAccountForm.EMAIL.$touched, 'is-valid': !newAccountForm.EMAIL.$invalid && newAccountForm.EMAIL .$touched }" name="EMAIL" ng-model="account.EMAIL" ng-minlength="6" id="EMAIL" required/>
+                    <div ng-show="newAccountForm.EMAIL.$invalid && newAccountForm.EMAIL.$touched" >The User's Email must be 9 characters long</div>
+                </div>
+                
+                 <!-- Phone Number for account-->
+                
+                <div class="form-group" ng-class="{ 'text-danger': newAccountForm.PHONE.$invalid && newAccountForm.PHONE.$touched, 'text-success': !newAccountForm.PHONE.$invalid && newAccountForm.PHONE.$touched }">
+                    <label class="form-control-label" for="PHONE">User Phone Number:  </label>
+                    <input type="PHONE" class="form-control" ng-class="{ 'is-invalid': newAccountForm.PHONE.$invalid && newAccountForm.PHONE.$touched, 'is-valid': !newAccountForm.PHONE.$invalid && newAccountForm.PHONE .$touched }" name="PHONE" ng-model="account.PHONE" ng-minlength="10" id="PHONE" required/>
+                    <div ng-show="newAccountForm.PHONE.$invalid && newAccountForm.PHONE.$touched" >The User's phone number must be 10 digits</div>
+                </div>
+                
+                <!-- newAccount is a function in the controller. account refers to the word we used under ng-model in the input fields -->
+                <button class="btn btn-default" ng-click="newAccount(account)" ng-disabled="newAccountForm.$invalid">Add account</button>
+            </form>
+            
+        
+        </div> <!-- close row -->
+        
+        <!-- Footer -->
+        <div ng-include src="'footer.html'"></div>
+        
+    </div>
+</body>
+</html>

@@ -34,7 +34,7 @@
  <div class="sidenav">
   <div style="text-align: center;"><img src="quickherky.png" alt="hawkeye" style="width:100px;height:100px;"></div>
   <a href="Student_Landing.html">Capstone_8</a>
-  <a href="Admin_Profile.html">Profile</a>
+  <a href="Student_Profile.html">Profile</a>
   <a href="Student_Schedule.html">Schedules</a>
    <a href="#">Materials</a>
 </div>
@@ -45,7 +45,7 @@
 <div class="container" ng-controller="dataControl"> 
 <!--header-->
     <div ng-include ng-init="menuHighlight = 2;" src="'Admin_Header.html'"></div>
-        <div class="main">
+       
 <!-- Content -->
 
       <div class="row-1" ng-repeat="user in data.userarray">
@@ -53,7 +53,7 @@
                  <p>Please select a tutoring session!</p>
                  
              
-      <div class="card m-1" style="width: 28rem" ng-repeat="slot in data.slotsarray" align="center">
+      <div class="card m-1" style="width: 28rem" ng-repeat="slot in data.slotsarray">
                 
               <div class="card-body">
                  
@@ -65,8 +65,8 @@
                     
               <button class="btn btn-dark">Schedule</button>
             </div>       
-       </div>           
-   
+                
+    
                  
      </div>
      </div>
