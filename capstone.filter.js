@@ -4,7 +4,7 @@
 (function() {
     'use strict';
     
-    // the 'capstone' here matches the name of the app under soccer.module.js
+    // the 'capstone' here matches the name of the app
     var myApp = angular.module("capstone");
     
     // use use 'trustHtml' in the html file as the name of the filter 
