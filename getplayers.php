@@ -9,10 +9,10 @@ $db = connectDB($DBHost, $DBUser, $DBPassword, $DBName);
 
 $tablename = "USERTABLE";
 
-// set up a query to get information on players
+// set up a query to get information on users
 $query = "SELECT * FROM $tablename;";
 
-// run the query to get info on players
+// run the query to get info on users
 $result = queryDB($query, $db);
 
 // assign results to an array we can then send back to whomever called
@@ -25,12 +25,12 @@ while ($currUser = nextTuple($result)) {
     $i++;
 }
 
-// put together a JSON object to send back the data on the players
+// put together a JSON object to send back the data on the users
 $response = array();
 $response['status'] = 'success';
 
-// 'value' corresponds to response.data.value in data.soccer.controller.js
-// 'players' corresponds to ng-repeat="player in data.players | filter:query" in the index.html file
+// 'value' corresponds to response.data.value in capstone js file
+// 'user' corresponds to ng-repeat="user in the index.html file
 $response['value']['USERTABLE'] = $user;
 header('Content-Type: application/json');
 echo(json_encode($response));
