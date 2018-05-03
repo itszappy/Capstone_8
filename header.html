@@ -1,6 +1,6 @@
 
         <!-- This is the menu bar -->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark" ng-init="checkifloggedin()">
+        <nav class="navbar navbar-expand-lg navbar-inverse navbar-dark" ng-init="checkifloggedin()">
           
           <!-- definition of the buton you see if the screen is too small and you can't fit the full menu -->
           <!-- make sure the data-target and aria-controls match the div with the content you want to show -->
@@ -13,17 +13,18 @@
             
             <!-- this is where we define menu items -->
             <!-- mr-auto makes it so the next element will be aligned on the right side -->
-            <ul class="navbar-nav mr-auto">
+            <ul class="navbar-nav ml-auto">
 
             <!-- log in / log out -->
             <ul class="navbar-nav">
               <!-- menu item for logging in, active if menuHighlight is equal to 3 -->
               <li class="nav-item" ng-class="{'active' : (menuHighlight == 3)}" ng-show="!isloggedin">
-                <a class="nav-link" href="login.html">Log in</a>
+                <a class="nav-link" href="index.html">Log in</a>
               </li>
               
               <li class="nav-item" ng-show="isloggedin">
-                <a class="nav-link" href="" ng-click="logout()">Log out</a>
+                <div class="row" ng-repeat="user in users.userarray">
+                <a class="nav-link" href="index.html" ng-click="logout()">Log out of {{user.HAWKID}}</a></div>
               </li>                              
 
             </ul>

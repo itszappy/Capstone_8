@@ -44,16 +44,16 @@
 <!--div class must ALWAYS be container-->
 <div class="container" ng-controller="dataControl"> 
 <!--header-->
-    <div ng-include ng-init="menuHighlight = 2;" src="'Header.html'"></div>
+    <div ng-include ng-init="menuHighlight = 2;" src="'header.html'"></div>
        
 <!-- Content -->
 
-      <div class="row-1" ng-repeat="user in data.userarray">
+      <div class="row-1" ng-repeat="user in users.userarray">
                  <h2>Welcome, {{user.FIRSTNAME}} </h2>
                  <p>Please select a tutoring session!</p>
                  
              
-      <div class="card m-1" style="width: 28rem" ng-repeat="slot in data.slotsarray">
+      <div class="card m-1" style="width: 10rem" ng-repeat="slot in slots.slotsarray">
                 
               <div class="card-body">
                  
