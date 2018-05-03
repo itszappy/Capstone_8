@@ -12,7 +12,9 @@ $tablename = "SLOTS";
 $data = json_decode(file_get_contents('php://input'), true);
 // get each piece of data
 // 'name' matches the name attribute in the form
+session_start();
 $STUDENTHAWKID = $_SESSION['STUDENTHAWKID'];
+$SLOTID = $data['SLOTID'];
 
 // set up variables to handle errors
 // is complete will be false if we find any problems when checking on the data
@@ -20,12 +22,12 @@ $isComplete = true;
 // error message we'll send back to angular if we run into any problems
 $errorMessage = "";
 // check if they are logged in
-session_start();
+
 
 
 if ($isComplete) {
     // updating the slot record with the logged in students hawkid 
-    $updatequery = "UPDATE SLOTS SET STUDENTHAWKID='$STUDENTHAWKID' WHERE SLOTID='$SLOTID'";
+    $updatequery = "UPDATE SLOTS SET STUDENTHAWKID='$STUDENTHAWKID' WHERE SLOTID='$SLOTID';";
     
     // run the update statement
     queryDB($updatequery, $db);

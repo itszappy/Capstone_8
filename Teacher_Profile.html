@@ -36,18 +36,16 @@
   <div style="text-align: center;"><img src="quickherky.png" alt="hawkeye" style="width:100px;height:100px;"></div>
   <a href="Teacher_Landing.html">Capstone_8</a>
   <a href="Teacher_Profile.html">Profile</a>
-  <a href="#">Account</a>
-  <a href="">Schedules</a>
-   <a href="#">Materials</a>
+   <a href="uploadmaterials.html">Materials</a>
 </div>
 
 
 <!--- keep these together, but separate-->
 <div class="container" ng-controller="dataControl"> 
 <!--header-->
-<div ng-include ng-init="menuHighlight = 2;" src="'Admin_Header.html'"></div>
+<div ng-include ng-init="menuHighlight = 2;" src="'header.html'"></div>
 <div class="main">
-<div class="row-1" ng-repeat="user in data.userarray">
+<div class="row-1" ng-repeat="user in users.userarray">
 <h2>User Profile </h2>
 <p>Click to edit your profile</p>
 </div>
@@ -57,7 +55,7 @@
             <!-- Profile for Admin -->
             <!-- WE are getting our data from $scope.data in capstone.controller.js. the JSON object we get has the data under "user"-->
             <!--WE are defining each row of data as Admin Details-->
-            <div class="card m-1" style="width: 28rem" ng-repeat="user in data.userarray" align="center">
+            <div class="card m-1" style="width: 28rem" ng-repeat="user in users.userarray" align="center">
                 
                 <div ng-init="setEditMode(false, user);"></div>
                     
