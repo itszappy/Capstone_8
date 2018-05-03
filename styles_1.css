@@ -93,7 +93,7 @@ body {
 }
 
 .main {
-    margin-left: 200px; /* Same as the width of the sidenav */
+    margin-left: 100px; /* Same as the width of the sidenav */
 }
 
 @media screen and (max-height: 450px) {
@@ -103,4 +103,7 @@ body {
 
 .container {
   padding-left: 40px;
+}
+
+.card {display: inline-block;
 }

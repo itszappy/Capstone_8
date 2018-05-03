@@ -78,7 +78,27 @@
                     alert('unexpected error');
                }
             });                        
-        };        
+        };
+        
+        // Function to update slot info to database
+        $scope.updateSlot = function(slotUpdateDetails) {
+          var slotupdateupload = angular.copy(slotUpdateDetails);
+          
+          $http.post("StudentSchedule.php", slotupdateupload)
+            .then(function (response) {
+               if (response.status == 200) {
+                    if (response.data.status == 'error') {
+                        alert('error: ' + response.data.message);
+                    } else {
+                        // successful
+                        // send user back to home page
+                        $window.location.href = "Student_Landing.html";
+                    }
+               } else {
+                    alert('unexpected error');
+               }
+            });                        
+        };   
         
         
         //Function to send materials information to database

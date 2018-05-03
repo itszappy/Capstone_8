@@ -52,10 +52,10 @@
                  <h2>Welcome, {{user.FIRSTNAME}} </h2>
                  <p>Please select a tutoring session!</p>
                  
-             
-      <div class="card m-1" style="width: 10rem" ng-repeat="slot in slots.slotsarray">
+    <div class = "main">      
+      <div class="card m-1" style="width: 15rem" ng-repeat="slot in slots.slotsarray">
                 
-              <div class="card-body">
+              <div class="card-body" align="center">
                  
                  <p><b>SlotID: </b> {{slot.SLOTID}}</p><br>
                  <p><b>Date: </b>{{slot.SLOTDATE}}</p><br>
@@ -63,11 +63,11 @@
                  <p><b>Slot End: </b> {{slot.SLOTEND}}</p> <br>
                  <p><b>Location: </b> {{slot.LOCATION}}</p> <br>
                     
-              <button class="btn btn-dark">Schedule</button>
+              <button class="btn btn-dark" ng-click="updateSlot(updateslot)">Schedule</button>
             </div>       
                 
     
-                 
+     </div>               
      </div>
      </div>
 </div>

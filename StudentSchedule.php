@@ -21,11 +21,6 @@ $isComplete = true;
 $errorMessage = "";
 // check if they are logged in
 session_start();
-if (!isset($_SESSION['user'])) {
-    // if the session variable username is not set, then the user is not logged in and should not edit the 
-    $isComplete = false;
-    $errorMessage .= "User is not logged in.";
-}
 
 
 if ($isComplete) {
