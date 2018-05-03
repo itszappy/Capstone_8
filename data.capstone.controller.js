@@ -11,7 +11,7 @@
     myApp.controller("dataControl", function($scope, $http, $window) {
         
         // define data for the app
-        // in the html code we will refer to data.players. The data part comes from $scope.data, the players part comes from the JSON object below
+        // in the html code we will refer to capstone.js file The data part comes from $scope.data, the users part comes from the JSON object below
         
         $http.get("getusers.php")
             .then(function(response) {
@@ -81,7 +81,7 @@
         };        
         
         
-        //Function to send materials information to dtabase
+        //Function to send materials information to database
          $scope.newProblem = function(problemDetails) {
           var problemupload = angular.copy(problemDetails);
           
@@ -172,9 +172,7 @@
         
         $scope.setEditMode = function(on, user) {
             if (on) {
-                // if player had a birth, for example, you'd include the line below
-                // player.birthyear = parseInt(player.birthyear);
-                //edit movie matches the ng-model used in the form we use to edit movie information 
+                //edit user matches the ng-model used in the form we use to edit user information 
                 $scope.edituser = angular.copy(user);
                 user.editMode = true;
             } else {
@@ -183,13 +181,13 @@
             }
         };
         /*
-         * Gets the edit mode for a particular player
+         * Gets the edit mode for a particular user
          */
         $scope.getEditMode = function(user) {
             return user.editMode;
         };
         
-        //function to edit movie data and send it to web api to edit the movie in the database
+        //function to edit user data and send it to web api to edit the profile in the database
         $scope.editUser = function(userDetails) {
           var userupload = angular.copy(userDetails);
           
