@@ -12,10 +12,10 @@ session_start();
 
 $HAWKID = $_SESSION['HAWKID'];
 
-// set up a query to get information on players
+// set up a query to get information on user
 $queryuser = "SELECT * FROM USERTABLE WHERE HAWKID = '$HAWKID';";
 
-// run the query to get info on players
+// run the query to get info on user
 $resultuser = queryDB($queryuser, $db);
 
 // assign results to an array we can then send back to whomever called
@@ -28,7 +28,7 @@ while ($currUser = nextTuple($resultuser)) {
     $i++;
 }
 
-// put together a JSON object to send back the data on the players
+// put together a JSON object to send back the data on the users
 $response = array();
 $response['status'] = 'success';
 $response['value']['userarray'] = $userarray;
