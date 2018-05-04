@@ -54,11 +54,12 @@
          <div class="card m-1" style="width: 20rem" ng-repeat="problem in problems.problemarray">
           <br>
          
+          <p><b>Course Title: </b>{{problem.TITLE}}</p><br>
           <p><b>Problem ID: </b> {{problem.PROBLEMSETID}}</p><br>
-          <p><b>Date: </b>{{problem.PROBLEMSETNAME}}</p><br>
+          <p><b>Name: </b>{{problem.PROBLEMSETNAME}}</p><br>
           <p><b>Description: </b>{{problem.PROBLEMDESC}}</p><br>
-          <p><b>File Name: </b>{{problem.PROBLEMFILE}}</p><br>
-          <p><b>Course ID: </b>{{problem.COURSEID}}</p><br>
+          <p><b>File Name: </b> <a href="#">{{problem.PROBLEMFILE}}</a></p><br>
+         
 
             
         </div>
