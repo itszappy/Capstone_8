@@ -18,7 +18,7 @@ $problemquery = "SELECT * FROM PROBLEMS;";
 $problemresult = queryDB($problemquery, $db);
 
 // assign results to an array we can then send back to whomever called
-$problem = array();
+$problemarray = array();
 $i = 0;
 
 // go through the results one by one
