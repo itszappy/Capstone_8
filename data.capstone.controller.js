@@ -84,7 +84,7 @@
         $scope.updateSlot = function(slotUpdateDetails) {
           var slotupdateupload = angular.copy(slotUpdateDetails);
           
-          $http.post("StudentSchedule.php", slotupdateupload)
+          $http.post("StudentSchedule.php", {"SLOTID": slotupdateupload})
             .then(function (response) {
                if (response.status == 200) {
                     if (response.data.status == 'error') {

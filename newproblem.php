@@ -21,7 +21,7 @@ $PROBLEMSETNAME = $data['PROBLEMSETNAME'];
 $PROBLEMDESC = $data['PROBLEMDESC'];
 $PROBLEMFILE = $data['PROBLEMFILE'];
 $COURSEID = $data['COURSEID'];
-$PROFESSORHAWKID = $_SESSION['$HAWKID'];
+$PROFESSORHAWKID = $_SESSION['HAWKID'];
 
 // set up variables to handle errors
 // is complete will be false if we find any problems when checking on the data
@@ -60,7 +60,7 @@ if ($isComplete) {
 if ($isComplete) {
     
     // we will set up the insert statement to add this new record to the database
-    $insertproblem = "INSERT INTO PROBLEMS (PROBLEMSETNAME, PROBLEMDESC, PROBLEMFILE, COURSEID) VALUES ('$PROBLEMSETNAME', '$PROBLEMDESC', '$PROBLEMFILE', '$COURSEID')'";
+    $insertproblem = "INSERT INTO PROBLEMS (PROBLEMSETNAME, PROBLEMDESC, PROBLEMFILE, COURSEID) VALUES ('$PROBLEMSETNAME', '$PROBLEMDESC', '$PROBLEMFILE', $COURSEID)";
     
     // run the insert statement
     queryDB($insertproblem, $db);
