@@ -15,7 +15,7 @@ $PROBLEMS = "PROBLEMS";
 $problemquery = "SELECT * FROM PROBLEMS;";
 
 // run the query to get all the information on the problem sets
-$problemresult = queryDB($query, $db);
+$problemresult = queryDB($problemquery, $db);
 
 // assign results to an array we can then send back to whomever called
 $problem = array();
