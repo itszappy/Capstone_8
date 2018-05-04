@@ -41,7 +41,7 @@ if ($isComplete) {
     // send a response back to angular
     $response = array();
     $response['status'] = 'success';
-    $response['studenthawkid'] = $STUDENTHAWKID;
+    $response['value']['studentslotarray'] = $studentslotarray;
     header('Content-Type: application/json');
     echo(json_encode($response));    
 } else {
