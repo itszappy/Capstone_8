@@ -12,7 +12,7 @@ $PROFESSORHAWKID = $_SESSION['HAWKID'];
 $PROBLEMS = "PROBLEMS";
 
 // set up a query to get information on all the problems sets
-$problemquery = "SELECT * FROM $PROBLEMS;";
+$problemquery = "SELECT * FROM PROBLEMS;";
 
 // run the query to get all the information on the problem sets
 $problemresult = queryDB($query, $db);
@@ -33,7 +33,7 @@ $response['status'] = 'success';
 
 // 'value' corresponds to response.data.value in data.capstone.controller.js
 // 'problem' corresponds to ng-repeat="problem in data.problem"
-$response['value']['problem'] = $problem;
+$response['value']['problemarray'] = $problemarray;
 header('Content-Type: application/json');
 echo(json_encode($response));
 
