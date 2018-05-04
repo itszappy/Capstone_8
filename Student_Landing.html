@@ -27,7 +27,6 @@
     <link rel="stylesheet" href="styles_1.css">
 
 
-
 </head>
 
 <body>
@@ -37,7 +36,7 @@
   <a href="Student_Landing.html">Capstone_8</a>
   <a href="Student_Profile.html">Profile</a>
   <a href="Student_Schedule.html">Schedules</a>
-   <a href="Student_getmaterials.html">Materials</a>
+   <a href="getmaterials.html">Materials</a>
 </div>
 
 
@@ -52,6 +51,20 @@
  <h2>Welcome, {{user.FIRSTNAME}} </h2>
  <p>What would you like to do today?</p>
 </div>
+
+<div class="main">
+    <div class="card m-1" style="width: 18rem" ng-repeat="studentslot in studentslots.studentslotarray">
+          <br>
+          <p><b>SlotID: </b> {{studentslot.SLOTID}}</p><br>
+          <p><b>Date: </b>{{studentslot.SLOTDATE}}</p><br>
+          <p><b>Slot Start: </b> {{studentslot.SLOTSTART}}</p><br>
+          <p><b>Slot End: </b> {{studentslot.SLOTEND}}</p> <br>
+          <p><b>Student Hawk ID: </b> {{studentslot.STUDENTHAWKID}}</p> <br>
+          <p><b>Location: </b> {{studentslot.LOCATION}}</p> <br>
+          <br>
+    
+    
+   </div>
   
 </div>
 
