@@ -12,7 +12,7 @@ $PROFESSORHAWKID = $_SESSION['HAWKID'];
 $PROBLEMS = "PROBLEMS";
 
 // set up a query to get information on all the problems sets
-$problemquery = "SELECT * FROM PROBLEMS;";
+$problemquery = "SELECT COURSE.TITLE, PROBLEMS.PROBLEMSETID,PROBLEMS.PROBLEMSETNAME, PROBLEMS.PROBLEMDESC, PROBLEMS.PROBLEMFILE FROM PROBLEMS, COURSE WHERE PROBLEMS.COURSEID = COURSE.COURSEID;";
 
 // run the query to get all the information on the problem sets
 $problemresult = queryDB($problemquery, $db);
