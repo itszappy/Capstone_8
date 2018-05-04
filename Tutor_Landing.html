@@ -49,10 +49,8 @@
  <p>What would you like to do today?</p>
 </div>
 <div class="main">
-   <div class="row" ng-repeat="slottutor in tutorslots">
-    
-    
-    <p> {{slottutor.SLOTID}}</p>
+    <div class="card m-1" style="width: 15rem" ng-repeat="tutorslot in tutorslots.slottutorsarray">
+          <p> {{slottutor.SLOTID}}</p>
     
     
    </div>
