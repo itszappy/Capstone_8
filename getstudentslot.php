@@ -5,7 +5,6 @@ include_once('dbutils.php');
 // get a handle to the database
 $db = connectDB($DBHost, $DBUser, $DBPassword, $DBName);
 
-$SLOTS = "SLOTS";
 
 // get data from the angular controller
 // decode the json object
@@ -14,13 +13,8 @@ $data = json_decode(file_get_contents('php://input'), true);
 // get each piece of data
 // 'name' matches the name attribute in the form
 session_start();
+$SLOTS = "SLOTS";
 $STUDENTHAWKID = $_SESSION['HAWKID'];
-$SLOTID = $data['SLOTID'];
-$SLOTDATE = $data['SLOTDATE'];
-$SLOTSTART = $data['SLOTSTART'];
-$SLOTEND = $data['SLOTEND'];
-$COURSEID = $data['COURSEID'];
-$LOCATION = $data['LOCATION'];
 
 // set up variables to handle errors
 // is complete will be false if we find any problems when checking on the data
@@ -31,12 +25,20 @@ $errorMessage = "";
 
 
 
-if ($isComplete) {
+
     // Selecting the slot record to show the students upcoming appointments
-    $studentslotquery = "SELECT * FROM SLOTS WHERE STUDENTHAWKID='$STUDENTHAWKID';";
+    $studentslotquery = "SELECT * FROM SLOTS WHERE STUDENTHAWKID = '$STUDENTHAKID';";
     
     // run the update statement
-    queryDB($studentslotquery, $db);
+    $studentslotresult = queryDB($studentslotquery, $db);
+    
+    $studentslotarray = array();
+    $i = 0;
+    
+    while ($currStudentSlot = nextTuple($studentslotresult)) {
+    $studentslotarray[$i] = $currStudentSlot;
+    $i++;
+    }
     
     // send a response back to angular
     $response = array();
@@ -44,19 +46,6 @@ if ($isComplete) {
     $response['value']['studentslotarray'] = $studentslotarray;
     header('Content-Type: application/json');
     echo(json_encode($response));    
-} else {
-    // there's been an error. We need to report it to the angular controller.
-    
-    // one of the things we want to send back is the data that his php file received
-    ob_start();
-    var_dump($data);
-    $postdump = ob_get_clean();
-    
-    // set up our response array
-    $response = array();
-    $response['status'] = 'error';
-    $response['message'] = $errorMessage . $postdump;
-    header('Content-Type: application/json');
-    echo(json_encode($response));    
-}
+   
+
 ?>
