@@ -23,7 +23,7 @@ $i = 0;
 
 // go through the results one by one
 while ($currProblem = nextTuple($problemresult)) {
-    $problem[$i] = $currProblem;
+    $problemarray[$i] = $currProblem;
     $i++;
 }
 
