@@ -33,21 +33,6 @@ $errorMessage = "";
 //
 //
 
-// check if we already have a problem id that matches the one the user entered
-if ($isComplete) {
-    // set up a query to check if this problem id is in the database already
-    $slotquery = "SELECT * FROM PROBLEMS WHERE PROBLEMSETID='$PROBLEMSETID';";
-    
-    // we need to run the query
-    $result = queryDB($slotquery, $db);
-    
-    // check on the number of records returned
-    if (nTuples($result) > 0) {
-        // if we get at least one record back it means the username is taken
-        $isComplete = false;
-        $errorMessage .= "The problem set $PROBLEMSETID is already posted. Please chose another. ";
-    }
-}
 
 // check for the professor's course
 if ($isComplete) {
@@ -65,7 +50,7 @@ if ($isComplete) {
     } else {
         // this professor has no courses
         $isComplete = false;
-        $errorMessage .= "You don't have any courses assigned to you. Go talk to Dr. Segre!";
+        $errorMessage .= "You don't have any courses assigned to you. Bad teacher.";
     }
 }
 
@@ -75,7 +60,7 @@ if ($isComplete) {
 if ($isComplete) {
     
     // we will set up the insert statement to add this new record to the database
-    $insertproblem = "INSERT INTO PROBLEMS (PROBLEMSETID, PROBLEMSETNAME, PROBLEMDESC, PROBLEMFILE, COURSEID) VALUES ($PROBLEMSETID, $PROBLEMSETNAME, $PROBLEMDESC, $PROBLEMFILE , $COURSEID)'";
+    $insertproblem = "INSERT INTO PROBLEMS (PROBLEMSETNAME, PROBLEMDESC, PROBLEMFILE, COURSEID) VALUES ('$PROBLEMSETNAME', '$PROBLEMDESC', '$PROBLEMFILE', '$COURSEID')'";
     
     // run the insert statement
     queryDB($insertproblem, $db);

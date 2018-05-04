@@ -5,15 +5,16 @@ include_once('dbutils.php');
 // get a handle to the database
 $db = connectDB($DBHost, $DBUser, $DBPassword, $DBName);
 
-$tablename = "SLOTS";
+$SLOTS = "SLOTS";
 
 // get data from the angular controller
 // decode the json object
 $data = json_decode(file_get_contents('php://input'), true);
+
 // get each piece of data
 // 'name' matches the name attribute in the form
 session_start();
-$STUDENTHAWKID = $_SESSION['STUDENTHAWKID'];
+$STUDENTHAWKID = $_SESSION['HAWKID'];
 $SLOTID = $data['SLOTID'];
 
 // set up variables to handle errors
@@ -35,7 +36,7 @@ if ($isComplete) {
     // send a response back to angular
     $response = array();
     $response['status'] = 'success';
-    $response['hawkid'] = $HAWKID;
+    $response['studenthawkid'] = $STUDENTHAWKID;
     header('Content-Type: application/json');
     echo(json_encode($response));    
 } else {
