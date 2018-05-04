@@ -32,6 +32,21 @@
                 // response.data.value has value come from the getslots.php file $response['value']['slots'] = $slots;
                 $scope.problems = response.data.value;
             }
+                   );
+            
+            
+        $http.get("getstudentslot.php")
+            .then(function(response) {
+                // response.data.value has value come from the getslots.php file $response['value']['slots'] = $slots;
+                $scope.studentslots = response.data.value;
+            }
+                   );
+            
+        $http.get("gettutorslots.php")
+            .then(function(response) {
+                // response.data.value has value come from the getslots.php file $response['value']['slots'] = $slots;
+                $scope.tutorslots = response.data.value;
+            }
                    ); 
     
        
