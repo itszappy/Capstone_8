@@ -16,36 +16,27 @@ session_start();
 $SLOTS = "SLOTS";
 $STUDENTHAWKID = $_SESSION['HAWKID'];
 
-// set up variables to handle errors
-// is complete will be false if we find any problems when checking on the data
-$isComplete = true;
-// error message we'll send back to angular if we run into any problems
-$errorMessage = "";
-// check if they are logged in
 
+// Selecting the slot record to show the students upcoming appointments
+$studentslotquery = "SELECT * FROM SLOTS WHERE STUDENTHAWKID = '$STUDENTHAWKID';";
 
+// run the update statement
+$studentslotresult = queryDB($studentslotquery, $db);
 
+$studentslotarray = array();
+$i = 0;
 
-    // Selecting the slot record to show the students upcoming appointments
-    $studentslotquery = "SELECT * FROM SLOTS WHERE STUDENTHAWKID = '$STUDENTHAKID';";
-    
-    // run the update statement
-    $studentslotresult = queryDB($studentslotquery, $db);
-    
-    $studentslotarray = array();
-    $i = 0;
-    
-    while ($currStudentSlot = nextTuple($studentslotresult)) {
+while ($currStudentSlot = nextTuple($studentslotresult)) {
     $studentslotarray[$i] = $currStudentSlot;
     $i++;
-    }
-    
-    // send a response back to angular
-    $response = array();
-    $response['status'] = 'success';
-    $response['value']['studentslotarray'] = $studentslotarray;
-    header('Content-Type: application/json');
-    echo(json_encode($response));    
-   
+}
+
+// send a response back to angular
+$response = array();
+$response['status'] = 'success';
+$response['value']['studentslotarray'] = $studentslotarray;
+header('Content-Type: application/json');
+echo(json_encode($response));    
+
 
 ?>
