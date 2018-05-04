@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 
+<!-- ng-app="capstone" defines the angular app that we are using. The name is defined under capstone.module.js -->
 <html lang="en" ng-app="capstone">
 <head>
     <!-- this is what shows up in the tabs in your browser and if you bookmark the page -->
-    <title>Welcome to Capstone8</title>
+    <title> Download your Problem Set!  </title>
 
     <!-- These are the links to bootstrap code -->
     <!-- we got the links from http://getbootstrap.com/docs/4.0/getting-started/introduction/ -->
@@ -23,37 +24,48 @@
     <script src="data.capstone.controller.js"></script>
     <!-- capstone.filter.js enables us to display html code -->
     <script src="capstone.filter.js"></script>
- 
+    
     <link rel="stylesheet" href="styles_1.css">
 
-
-
 </head>
-
 <body>
-
+    
  <div class="sidenav">
   <div style="text-align: center;"><img src="quickherky.png" alt="hawkeye" style="width:100px;height:100px;"></div>
   <a href="Student_Landing.html">Capstone_8</a>
   <a href="Student_Profile.html">Profile</a>
-  <a href="Student_Schedule.html">Schedules</a>
+  <a href="Student_Scheduling.html">Schedules</a>
    <a href="Student_getmaterials.html">Materials</a>
 </div>
 
-
+  
 <!--- keep these together, but separate-->
-<!--div class must ALWAYS be container-->
-<div class="container" ng-controller="dataControl"> 
+<div class="container" ng-controller="dataControl">
 <!--header-->
 <div ng-include ng-init="menuHighlight = 2;" src="'header.html'"></div>
 
-<!-- Content -->
-<div class="row-1" ng-repeat="user in users.userarray">
- <h2>Welcome, {{user.FIRSTNAME}} </h2>
- <p>What would you like to do today?</p>
-</div>
-  
-</div>
+            <div class="row-1" align="center">
+            <h2>Problem Sets</h2>
+            <p> Grab your materials here </p><br>
+            </div>
 
+        <div class="main">
+        <!-- get the materials-->
+         <div class="card m-1" style="width: 20rem" ng-repeat="problem in problems.problemarray">
+          <br>
+         
+          <p><b>Problem ID: </b> {{problem.PROBLEMSETID}}</p><br>
+          <p><b>Date: </b>{{problem.PROBLEMSETNAME}}</p><br>
+          <p><b>Description: </b>{{problem.PROBLEMDESC}}</p><br>
+          <p><b>File Name: </b>{{problem.PROBLEMFILE}}</p><br>
+          <p><b>Course ID: </b>{{problem.COURSEID}}</p><br>
+
+            
+        </div>
+        </div> <!-- close row -->
+        
+        
+        
+    </div>
 </body>
 </html>
