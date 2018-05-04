@@ -16,6 +16,11 @@ $data = json_decode(file_get_contents('php://input'), true);
 session_start();
 $STUDENTHAWKID = $_SESSION['HAWKID'];
 $SLOTID = $data['SLOTID'];
+$SLOTDATE = $data['SLOTDATE'];
+$SLOTSTART = $data['SLOTSTART'];
+$SLOTEND = $data['SLOTEND'];
+$COURSEID = $data['COURSEID'];
+$LOCATION = $data['LOCATION'];
 
 // set up variables to handle errors
 // is complete will be false if we find any problems when checking on the data
@@ -31,7 +36,7 @@ if ($isComplete) {
     $studentslotquery = "SELECT * FROM SLOTS WHERE STUDENTHAWKID='$STUDENTHAWKID';";
     
     // run the update statement
-    queryDB($updatequery, $db);
+    queryDB($studentslotquery, $db);
     
     // send a response back to angular
     $response = array();
