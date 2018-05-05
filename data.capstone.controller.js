@@ -48,7 +48,14 @@
                 $scope.tutorslots = response.data.value;
             }
                    ); 
-    
+
+        $http.get("gettuserlist.php")
+            .then(function(response) {
+                // response.data.value has value come from the getslots.php file $response['value']['slots'] = $slots;
+                $scope.userlist = response.data.value;
+            }
+                   ); 
+        
        
         $scope.query = {};
         $scope.queryBy = "$";

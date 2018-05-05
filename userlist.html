@@ -49,8 +49,8 @@
 <div ng-include ng-init="menuHighlight = 2;" src="'header.html'"></div>
 <div class="main">
 <div class="row-1" ng-repeat="user in users.userarray">
-<h2>User Profile </h2>
-<p>Click to edit your profile</p>
+<h2>User List </h2>
+<p>Click to edit a profile</p>
 </div>
 
         <div class="row-1" align="center">
@@ -58,7 +58,7 @@
             <!-- Profile for Admin -->
             <!-- WE are getting our data from $scope.data in capstone.controller.js. the JSON object we get has the data under "user"-->
             <!--WE are defining each row of data as Admin Details-->
-            <div class="card m-1" style="width: 28rem" ng-repeat="user in users.userarray" align="center">
+            <div class="card m-1" style="width: 28rem" ng-repeat="userlist in userlist.userlistarray" align="center">
                 
                 <div ng-init="setEditMode(false, user);"></div>
                     
@@ -67,11 +67,11 @@
                 <div class="card-body">
                     <img src="Iowa-Logo-Black_2_e1a087a8-9a96-4f9f-8243-249744d38e79_1800x.jpg" alt="hawkeye" style="width:200px;height:200px;">
                     <br><br>
-                    <p> <b>HawkID: </b> {{user.HAWKID}}</p><br>
-                    <p><b>First Name: </b>{{user.FIRSTNAME}}</p><br>
-                    <p><b>Last Name: </b> {{user.LASTNAME}}</p><br>
-                    <p><b>Email: </b> {{user.EMAIL}}</p> <br>
-                    <p><b>Phone: </b> {{user.PHONE}}</p> <br>
+                    <p> <b>HawkID: </b> {{userlist.HAWKID}}</p><br>
+                    <p><b>First Name: </b>{{userlist.FIRSTNAME}}</p><br>
+                    <p><b>Last Name: </b> {{userlist.LASTNAME}}</p><br>
+                    <p><b>Email: </b> {{userlist.EMAIL}}</p> <br>
+                    <p><b>Phone: </b> {{userlist.PHONE}}</p> <br>
                     
                     <button class="btn btn-dark" ng-click="setEditMode(true, user)" ng-disabled="edituser != null">Edit</button>
                 </div>       
