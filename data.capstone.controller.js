@@ -249,23 +249,7 @@
             });
         };
 
-          $http.post("edituserlist.php", userlistupload)
-            .then(function (response) {
-               if (response.status == 200) {
-                    if (response.data.status == 'error') {
-                        alert('error: ' + response.data.message);
-                    } else {
-                        // successful
-                        // send user back to home page
-                        $window.location.href = "Admin_Profile.html";
-                    }
-               } else {
-                    alert('unexpected error');
-               }
-            });
-        });
-        
-        
+    });
 
         
     
