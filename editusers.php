@@ -27,11 +27,11 @@ $errorMessage = "";
 
 
 if ($isComplete) {
-    // deletes the slot record with the logged in students hawkid 
-    $deletequery = "DELETE FROM SLOTS WHERE STUDENTHAWKID='$STUDENTHAWKID' AND SLOTID='$SLOTID';";
+    // updating the slot record with the logged in students hawkid 
+    $updatequery = "UPDATE SLOTS SET STUDENTHAWKID='$STUDENTHAWKID' WHERE SLOTID='$SLOTID';";
     
     // run the update statement
-    queryDB($deletequery, $db);
+    queryDB($updatequery, $db);
     
     // send a response back to angular
     $response = array();
