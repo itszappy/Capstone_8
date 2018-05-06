@@ -249,6 +249,27 @@
             });
         };
         
+        // function to delete a user from the user list page. it receives the users hawkID and call a php web api to complete deletion from the database
+        $scope.deleteUser = function(HAWKID) {
+            if (confirm("Are you sure you want to delete " + HAWKID + "?")) {
+          
+                $http.post("deleteuser.php", {"HAWKID" : HAWKID})
+                  .then(function (response) {
+                     if (response.status == 200) {
+                          if (response.data.status == 'error') {
+                              alert('error: ' + response.data.message);
+                          } else {
+                              // successful
+                              // send user back to home page
+                              $window.location.href = "userlist.html";
+                          }
+                     } else {
+                          alert('unexpected error');
+                     }
+                  }
+                );
+            }
+        };
         
         
         

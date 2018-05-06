@@ -59,14 +59,17 @@
             <!-- WE are getting our data from $scope.data in capstone.controller.js. the JSON object we get has the data under "user"-->
             <!--WE are defining each row of data as Admin Details-->
             <div class="card body">
-            <div class="card body" style="width: 50rem; height: 5rem; padding: 5px" ng-repeat="userrow in userlists.userlistarray" align="left">
+            <div class="card body" style="width: 55rem; height: 5rem; padding: 5px" ng-repeat="userrow in userlists.userlistarray" align="left">
             
                 <div ng-init="setEditModeList(false, userrow);"></div>
                     
                 <div ng-if="!getEditModeList(userrow)">
 
                 <div class="card-body">
-                    <div class="p2"> <b>HawkID: </b> {{userrow.HAWKID}} &nbsp;&nbsp;&nbsp;&nbsp; <b>First Name: </b>{{userrow.FIRSTNAME}}  &nbsp;&nbsp;&nbsp;&nbsp;  <b>Last Name: </b> {{userrow.LASTNAME}} &nbsp;&nbsp;&nbsp;&nbsp; <b> User Role:</b> {{userrow.USERROLE}} &nbsp;&nbsp;&nbsp;&nbsp; <button class="btn btn-dark float-right" ng-click="setEditModeList(true, userrow)" ng-disabled="edituserlist != null">Edit</button></div>
+                    <div class="p2"> <b>HawkID: </b> {{userrow.HAWKID}} &nbsp;&nbsp;&nbsp;&nbsp; <b>First Name: </b>{{userrow.FIRSTNAME}}  &nbsp;&nbsp;&nbsp;&nbsp;  <b>Last Name: </b> {{userrow.LASTNAME}} &nbsp;&nbsp;&nbsp;&nbsp; <b> User Role:</b> {{userrow.USERROLE}}
+                    <button class="btn btn-danger float-right" ng-click="deleteUser(userrow.HAWKID)">Delete</button>
+                    <button class="btn btn-info float-right" ng-click="setEditModeList(true, userrow)" ng-disabled="edituserlist != null">Edit</button> &nbsp;&nbsp;&nbsp;&nbsp;
+                </div>
                     
                 </div>       
             </div>
@@ -99,11 +102,9 @@
                     <input type="text" class="form-control" ng-class="{ 'is-invalid': newAccountForm.USERROLE.$invalid && newAccountForm.USERROLE.$touched, 'is-valid': !newAccountForm.USERROLE.$invalid && newAccountForm.USERROLE .$touched }" name="USERROLE" ng-model="edituserlist.USERROLE" ng-minlength="1" id="USERROLE" required/>
                     <div ng-show="newAccountForm.USERROLE.$invalid && newAccountForm.USERROLE.$touched" >User Role must only be ONE character long.</div>
                 </div>
-                
-                
-                
-                
-                <button button class="btn btn-dark" ng-click="editUserList(edituserlist)">Save</button>
+
+
+               <button button class="btn btn-dark" ng-click="editUserList(edituserlist)">Save</button>
                <button button class="btn btn-dark" ng-click="setEditModeList(false, userrow)">Cancel</button>
                         
                     </form>
