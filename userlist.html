@@ -58,63 +58,53 @@
             <!-- Profile for Admin -->
             <!-- WE are getting our data from $scope.data in capstone.controller.js. the JSON object we get has the data under "user"-->
             <!--WE are defining each row of data as Admin Details-->
-            <div class="card m-1" style="width: 28rem" ng-repeat="userlist in userlists.userlistarray" align="center">
-                
-                <div ng-init="setEditMode(false, user);"></div>
+            <div class="card body">
+            <div class="card body" style="width: 50rem; height: 5rem; padding: 5px" ng-repeat="userrow in userlists.userlistarray" align="left">
+            
+                <div ng-init="setEditModeList(false, userrow);"></div>
                     
-                <div ng-if="!getEditMode(user)">
+                <div ng-if="!getEditModeList(userrow)">
 
                 <div class="card-body">
-                    <img src="Iowa-Logo-Black_2_e1a087a8-9a96-4f9f-8243-249744d38e79_1800x.jpg" alt="hawkeye" style="width:200px;height:200px;">
-                    <br><br>
-                    <p> <b>HawkID: </b> {{userlist.HAWKID}}</p><br>
-                    <p><b>First Name: </b>{{userlist.FIRSTNAME}}</p><br>
-                    <p><b>Last Name: </b> {{userlist.LASTNAME}}</p><br>
-                    <p><b>Email: </b> {{userlist.EMAIL}}</p> <br>
-                    <p><b>Phone: </b> {{userlist.PHONE}}</p> <br>
+                    <div class="p2"> <b>HawkID: </b> {{userrow.HAWKID}} &nbsp;&nbsp;&nbsp;&nbsp; <b>First Name: </b>{{userrow.FIRSTNAME}}  &nbsp;&nbsp;&nbsp;&nbsp;  <b>Last Name: </b> {{userrow.LASTNAME}} &nbsp;&nbsp;&nbsp;&nbsp; <b> User Role:</b> {{userrow.USERROLE}} &nbsp;&nbsp;&nbsp;&nbsp; <button class="btn btn-dark float-right" ng-click="setEditModeList(true, userrow)" ng-disabled="edituserlist != null">Edit</button></div>
                     
-                    <button class="btn btn-dark" ng-click="setEditMode(true, user)" ng-disabled="edituser != null">Edit</button>
                 </div>       
             </div>
             
-            <div ng-if="getEditMode(user)">
+            <div ng-if="getEditModeList(userrow)">
                 <!-- edit mode -->
                 <div>
                     <form  name="newAccountForm" novalidate>
-                        <div class="card-body">
+                        <div class="card-body" style="width: 50rem; height: 2rem; padding: 6px" >
                 
+                <!--First Name-->
                 <div class="form-group" ng-class="{ 'text-danger': newAccountForm.FIRSTNAME.$invalid && newAccountForm.FIRSTNAME.$touched, 'text-success': !newAccountForm.FIRSTNAME.$invalid && newwAccountForm.FIRSTNAME.$touched}">
                     <label>First Name:  </label>
-                    <input type="text" class="form-control" ng-class="{ 'is-invalid': newAccountForm.FIRSTNAME.$invalid && newAccountForm.director.$touched, 'is-valid': !newAccountForm.FIRSTNAME.$invalid && newAccountForm.FIRSTNAME.$touched}" name="FIRSTNAME" ng-model="edituser.FIRSTNAME" ng-minlength="2" required/>
-                    <p ng-show="newAccountForm.FIRSTNAME.$invalid && newAccountForm.FIRSTNAME.$touched" >First Name</p>
+                    <input type="text" class="form-control" ng-class="{ 'is-invalid': newAccountForm.FIRSTNAME.$invalid && newAccountForm.director.$touched, 'is-valid': !newAccountForm.FIRSTNAME.$invalid && newAccountForm.FIRSTNAME.$touched}" name="FIRSTNAME" ng-model="edituserlist.FIRSTNAME" ng-minlength="2" required/>
+                    <p ng-show="newAccountForm.FIRSTNAME.$invalid && newAccountForm.FIRSTNAME.$touched" >The First Name must beat least 2 characters long</p>
                 </div> 
                 
                 <!-- last name for account-->
                 
                 <div class="form-group" ng-class="{ 'text-danger': newAccountForm.LASTNAME.$invalid && newAccountForm.LASTNAME.$touched, 'text-success': !newAccountForm.LASTNAME.$invalid && newAccountForm.LASTNAME.$touched }">
                     <label class="form-control-label" for="LASTNAME">Last Name:  </label>
-                    <input type="text" class="form-control" ng-class="{ 'is-invalid': newAccountForm.LASTNAME.$invalid && newAccountForm.LASTNAME.$touched, 'is-valid': !newAccountForm.LASTNAME.$invalid && newAccountForm.LASTNAME .$touched }" name="LASTNAME" ng-model="edituser.LASTNAME" ng-minlength="2" id="LASTNAME" required/>
+                    <input type="text" class="form-control" ng-class="{ 'is-invalid': newAccountForm.LASTNAME.$invalid && newAccountForm.LASTNAME.$touched, 'is-valid': !newAccountForm.LASTNAME.$invalid && newAccountForm.LASTNAME .$touched }" name="LASTNAME" ng-model="edituserlist.LASTNAME" ng-minlength="2" id="LASTNAME" required/>
                     <div ng-show="newAccountForm.LASTNAME.$invalid && newAccountForm.LASTNAME.$touched" >The Last Name must be at least 2 characters long</div>
                 </div>
                 
-               <!-- Email for account-->
+               <!-- Userrole for account-->
                 
-                <div class="form-group" ng-class="{ 'text-danger': newAccountForm.EMAIL.$invalid && newAccountForm.EMAIL.$touched, 'text-success': !newAccountForm.EMAIL.$invalid && newAccountForm.EMAIL.$touched }">
-                    <label class="form-control-label" for="EMAIL">User Email:  </label>
-                    <input type="text" class="form-control" ng-class="{ 'is-invalid': newAccountForm.EMAIL.$invalid && newAccountForm.EMAIL.$touched, 'is-valid': !newAccountForm.EMAIL.$invalid && newAccountForm.EMAIL .$touched }" name="EMAIL" ng-model="edituser.EMAIL" ng-minlength="6" id="EMAIL" required/>
-                    <div ng-show="newAccountForm.EMAIL.$invalid && newAccountForm.EMAIL.$touched" >The User's Email must be 9 characters long</div>
+                <div class="form-group" ng-class="{ 'text-danger': newAccountForm.USERROLE.$invalid && newAccountForm.USERROLE.$touched, 'text-success': !newAccountForm.USERROLE.$invalid && newAccountForm.USERROLE.$touched }">
+                    <label class="form-control-label" for="USERROLE">User Role:  </label>
+                    <input type="text" class="form-control" ng-class="{ 'is-invalid': newAccountForm.USERROLE.$invalid && newAccountForm.USERROLE.$touched, 'is-valid': !newAccountForm.USERROLE.$invalid && newAccountForm.USERROLE .$touched }" name="USERROLE" ng-model="edituserlist.USERROLE" ng-minlength="1" id="USERROLE" required/>
+                    <div ng-show="newAccountForm.USERROLE.$invalid && newAccountForm.USERROLE.$touched" >User Role must only be ONE character long.</div>
                 </div>
                 
-                 <!-- Phone Number for account-->
                 
-                <div class="form-group" ng-class="{ 'text-danger': newAccountForm.PHONE.$invalid && newAccountForm.PHONE.$touched, 'text-success': !newAccountForm.PHONE.$invalid && newAccountForm.PHONE.$touched }">
-                    <label class="form-control-label" for="PHONE">User Phone Number:  </label>
-                    <input type="text" class="form-control" ng-class="{ 'is-invalid': newAccountForm.PHONE.$invalid && newAccountForm.PHONE.$touched, 'is-valid': !newAccountForm.PHONE.$invalid && newAccountForm.PHONE .$touched }" name="PHONE" ng-model="edituser.PHONE" ng-minlength="10" id="PHONE" required/>
-                    <div ng-show="newAccountForm.PHONE.$invalid && newAccountForm.PHONE.$touched" >The User's phone number must be 10 digits</div>
-                </div>
-                <button button class="btn btn-dark" ng-click="editUser(edituser)">Save</button>
-               <button button class="btn btn-dark" ng-click="setEditMode(false, user)">Cancel</button>
-                        </div>
+                
+                
+                <button button class="btn btn-dark" ng-click="editUserList(edituserrow)">Save</button>
+               <button button class="btn btn-dark" ng-click="setEditModeList(false, userrow)">Cancel</button>
                         
                     </form>
                 </div>

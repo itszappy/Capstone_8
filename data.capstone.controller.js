@@ -248,7 +248,51 @@
                }
             });
         };
+        
+        
+        
+        
+        
+        //userList edit mode option
+        $scope.setEditModeList = function(on, userrow) {
+            if (on) {
+                //edit user matches the ng-model used in the form we use to edit user information 
+                $scope.edituserlist = angular.copy(userrow);
+                userrow.editModeList = true;
+            } else {
+                $scope.edituserlist = null;
+                userrow.editModeList = false;
+            }
+        };
+        /*
+         * Gets the edit mode for a particular user
+         */
+        $scope.getEditModeList = function(userrow) {
+            return userrow.editModeList;
+        };
+        
+        //function to edit userlistdata and send it to web api to edit the profile in the database
+        $scope.editUserList = function(userListDetails) {
+          var userrowupload = angular.copy(userListDetails);
+          
+          $http.post("edituserlist.php", userrowupload)
+            .then(function (response) {
+               if (response.status == 200) {
+                    if (response.data.status == 'error') {
+                        alert('error: ' + response.data.message);
+                    } else {
+                        // successful
+                        // send user back to home page
+                        $window.location.href = "userlist.html";
+                    }
+               } else {
+                    alert('unexpected error');
+               }
+            });
+        };
 
+        
+        ///dont touch these
     });
 
         
