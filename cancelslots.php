@@ -17,6 +17,7 @@ session_start();
 $STUDENTHAWKID = $_SESSION['HAWKID'];
 $SLOTID = $data['SLOTID'];
 
+
 // set up variables to handle errors
 // is complete will be false if we find any problems when checking on the data
 $isComplete = true;
@@ -28,10 +29,10 @@ $errorMessage = "";
 
 if ($isComplete) {
     // updating the slot record with the logged in students hawkid 
-    $updatequery = "UPDATE SLOTS SET STUDENTHAWKID='$STUDENTHAWKID' WHERE SLOTID='$SLOTID';";
+    $updatestudentslotquery = "UPDATE SLOTS SET STUDENTHAWKID='NULL' WHERE SLOTID='$SLOTID';";
     
     // run the update statement
-    queryDB($updatequery, $db);
+    queryDB($updatestudentslotquery, $db);
     
     // send a response back to angular
     $response = array();

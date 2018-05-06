@@ -14,7 +14,7 @@ $data = json_decode(file_get_contents('php://input'), true);
 // get each piece of data
 // 'name' matches the name attribute in the form
 session_start();
-$STUDENTHAWKID = $_SESSION['HAWKID'];
+$STUDENTHAWKID = ['STUDENTHAWKID'];
 $SLOTID = $data['SLOTID'];
 
 // set up variables to handle errors
@@ -28,7 +28,7 @@ $errorMessage = "";
 
 if ($isComplete) {
     // updating the slot record with the logged in students hawkid 
-    $updatestutorslotquery = "UPDATE SLOTS SET STUDENTHAWKID='NULL' WHERE SLOTID='$SLOTID';";
+    $updatetutorslotquery = "UPDATE SLOTS SET STUDENTHAWKID='NULL' WHERE SLOTID='$SLOTID';";
     
     // run the update statement
     queryDB($updatetutorslotquery, $db);
