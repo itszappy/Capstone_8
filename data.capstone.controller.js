@@ -49,7 +49,7 @@
             }
                    ); 
 
-        $http.get("gettuserlist.php")
+        $http.get("getuserlist.php")
             .then(function(response) {
                 // response.data.value has value come from the getslots.php file $response['value']['slots'] = $slots;
                 $scope.userlists = response.data.value;

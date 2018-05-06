@@ -49,6 +49,13 @@
     <div class="row-1" ng-repeat="user in users.userarray">
         <h2>Welcome, {{user.FIRSTNAME}} </h2>
         <p>What would you like to do today?</p>
+        
+        <br> <br>
+    </div>
+<div class="main">
+   <div class="card" style="width: 50rem" style="height: 5px" ng-repeat="userrow in userlists.userlistarray" align="left">
+          <p> <b>HawkID: </b> {{userrow.HAWKID}}    <b>First Name: </b>{{userrow.FIRSTNAME}}    <b>Last Name: </b> {{userrow.LASTNAME}} <b> User Role:</b> {{userrow.USERROLE }}</p>
+
     </div>
 
 </div>
