@@ -1,0 +1,71 @@
+
+<!DOCTYPE html>
+
+<html lang="en" ng-app="capstone">
+<head>
+    <!-- this is what shows up in the tabs in your browser and if you bookmark the page -->
+    <title>Your Profile</title>
+
+    <!-- These are the links to bootstrap code -->
+    <!-- we got the links from http://getbootstrap.com/docs/4.0/getting-started/introduction/ -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+    
+    <!-- link to angular -->
+    <!-- you can download it from https://angularjs.org/ then you need to upload it to the webdev server. -->
+    <script src="angular.min.js"></script>
+    
+    <!-- angular code we wrote -->
+    <!-- capstone.module.js is where we define the angular app called 'capstone'. We use the name of the app in the html element at the top of the file -->
+    <script src="capstone.module.js"></script>
+    <!-- data.capstone.controller.js is where we are getting the data from. It defines a controller under the 'capstone' app called 'dataControl', and data is under $scope.data -->
+    <script src="data.capstone.controller.js"></script>
+    <!-- capstone.filter.js enables us to display html code -->
+    <script src="capstone.filter.js"></script>
+ 
+    <link rel="stylesheet" href="styles_1.css">
+   
+
+</head>
+
+<body>
+
+ <div class="sidenav">
+  <div style="text-align: center;"><img src="quickherky.png" alt="hawkeye" style="width:100px;height:100px;"></div>
+  <a href="Teacher_Landing.html">Capstone_8</a>
+  <a href="Teacher_Profile.html">Profile</a>
+   <a href="uploadmaterials.html">Upload Materials</a>
+   <a href="Teacher_newaccount.html">Create Account</a>
+   <a href="studentlist.html">Students </a>
+</div>
+
+
+<!--- keep these together, but separate-->
+<div class="container" ng-controller="dataControl"> 
+<!--header-->
+<div ng-include ng-init="menuHighlight = 2;" src="'header.html'"></div>
+<div class="main">
+<div class="row-1" ng-repeat="user in users.userarray">
+<h2>Students </h2>
+<p>Here are your students in your courses</p><br>
+</div>
+ <div class="row-1" align="center">
+            
+            <!-- Profile for Admin -->
+            <!-- WE are getting our data from $scope.data in capstone.controller.js. the JSON object we get has the data under "user"-->
+            <!--WE are defining each row of data as Admin Details-->
+            <div class="card body">
+            <div class="card body" style="width: 52rem; height: 4rem; padding: 5px" ng-repeat="studentrow in studentlists.studentlistarray" align="left">
+             
+             <div class="card-body">
+                <div class="p2"> <b>HawkID: </b> {{studentrow.HAWKID}} &nbsp;&nbsp;&nbsp;&nbsp; <b>First Name: </b>{{studentrow.FIRSTNAME}}  &nbsp;&nbsp;&nbsp;&nbsp;  <b>Last Name: </b> {{studentrow.LASTNAME}} &nbsp;&nbsp;&nbsp;&nbsp;
+                <b> Course:</b> {{studentrow.TITLE}} 
+                </div>
+           
+            
+
+
+</body>
+</html>

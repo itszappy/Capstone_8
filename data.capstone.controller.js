@@ -54,7 +54,14 @@
                 // response.data.value has value come from the getslots.php file $response['value']['slots'] = $slots;
                 $scope.userlists = response.data.value;
             }
-                   ); 
+                   );
+            
+        $http.get("getstudentlist.php")
+            .then(function(response) {
+                // response.data.value has value come from the getslots.php file $response['value']['slots'] = $slots;
+                $scope.studentlists = response.data.value;
+            }
+                   );     
         
        
         $scope.query = {};
