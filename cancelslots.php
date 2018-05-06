@@ -30,7 +30,7 @@ $errorMessage = "";
 
 if ($isComplete) {
     // updating the slot record with the logged in students hawkid 
-    $updatestudentslotquery = "UPDATE SLOTS SET STUDENTHAWKID = '$STUDENTHAWKID' = NULL WHERE SLOTID = $SLOTID;";
+    $updatestudentslotquery = "UPDATE SLOTS SET STUDENTHAWKID = '$STUDENTHAWKID' = NULL WHERE SLOTID = '$SLOTID';";
     
     // run the update statement
     queryDB($updatestudentslotquery, $db);
