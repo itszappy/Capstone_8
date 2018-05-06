@@ -54,14 +54,7 @@
                 // response.data.value has value come from the getslots.php file $response['value']['slots'] = $slots;
                 $scope.userlists = response.data.value;
             }
-                   );
-            
-        $http.get("getstudentlist.php")
-            .then(function(response) {
-                // response.data.value has value come from the getslots.php file $response['value']['slots'] = $slots;
-                $scope.studentlists = response.data.value;
-            }
-                   );     
+                   ); 
         
        
         $scope.query = {};
@@ -278,6 +271,52 @@
             }
         };
         
+        // function to update a slot from the student landing page. it receives the users hawkID and call a php web api to complete update from the database
+        $scope.updateStudentSlot = function(slotDetails){
+            var slotUpload = angular.copy(slotDetails);
+            if (confirm("Are you sure you want to cancel this slot? ")) {
+          
+                $http.post("cancelslots.php", slotUpload)
+                  .then(function (response) {
+                     if (response.status == 200) {
+                          if (response.data.status == 'error') {
+                              alert('error: ' + response.data.message);
+                          } else {
+                              // successful
+                              // send user back to home page
+                              $window.location.href = "Student_Landing.html";
+                          }
+                     } else {
+                          alert('unexpected error');
+                     }
+                  }
+                );
+            }
+        };
+
+        // function to update a slot from the student landing page. it receives the users hawkID and call a php web api to complete update from the database
+        $scope.updateTutorSlot = function(tutorSlotDetails){
+            var tutorSlotUpload = angular.copy(tutorSlotDetails);
+            if (confirm("Are you sure you want to cancel this slot? ")) {
+          
+                $http.post("canceltutorslot.php", tutorSlotUpload)
+                  .then(function (response) {
+                     if (response.status == 200) {
+                          if (response.data.status == 'error') {
+                              alert('error: ' + response.data.message);
+                          } else {
+                              // successful
+                              // send user back to home page
+                              $window.location.href = "Tutor_Landing.html";
+                          }
+                     } else {
+                          alert('unexpected error');
+                     }
+                  }
+                );
+            }
+        };        
+                
         
         
         
