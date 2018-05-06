@@ -27,6 +27,12 @@ $errorMessage = "";
 //
 if ($isComplete) {
     // check if username meets criteria
+    if (!isset($HAWKID) || (strlen($HAWKID) < 2)) {
+        $isComplete = false;
+        $errorMessage .= "Please enter a hawkid with at least two characters. ";
+    } else {
+        $HAWKID = makeStringSafe($db, $HAWKID);
+    }
      
         if (!isset($FIRSTNAME) || (strlen($FIRSTNAME) < 2)) {
         $isComplete = false;
@@ -38,7 +44,7 @@ if ($isComplete) {
         $errorMessage .= "Please enter a last name with at least two characters!! ";
     }
     
-        if (!isset($USERROLE) || (strlen($USERROLE) < 0)) {
+        if (!isset($USERROLE) || (strlen($USERROLE) != 1)) {
         $isComplete = false;
         $errorMessage .= "Please enter a role with only one character!! ";
     }
@@ -53,7 +59,7 @@ if ($isComplete) {
 }
 if ($isComplete) {
 	//we willl setup the insert statement to add this new record to the database
-	$updatequery = "UPDATE USERTABLE SET FIRSTNAME='$FIRSTNAME', LASTNAME='$LASTNAME', USERROLE='$USERROLE' WHERE HAWKID='$HAWKID'";
+	$updatequery = "UPDATE USERTABLE SET HAWKID='$HAWKID', FIRSTNAME='$FIRSTNAME', LASTNAME='$LASTNAME', USERROLE='$USERROLE' WHERE HAWKID='$HAWKID'";
 	//run the insert statement
 	queryDB($updatequery, $db);
 	//get the hawkid
