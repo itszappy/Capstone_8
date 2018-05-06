@@ -24,7 +24,7 @@ $errorMessage = "";
 // check if they are logged in
 session_start();
 if (!isset($_SESSION['HAWKID'])) {
-    // if the session variable username is not set, then the user is not logged in and should not delete the player
+    // if the session variable username is not set, then the user is not logged in and should not delete the User
     $isComplete = false;
     $errorMessage .= "User is not logged in.";
 }
@@ -44,9 +44,9 @@ if ($isComplete) {
         $errorMessage .= "This Hawkid '$HAWKID' is missing ";
     }
 }
-// if we got this far and $isComplete is true it means we should delete the player from the database
+// if we got this far and $isComplete is true it means we should delete the user from the database
 if ($isComplete) {
-    // we will set up the delate statement to remove the player from the database
+    // we will set up the delate statement to remove the user from the database
     $deletequery = "DELETE FROM USERTABLE WHERE HAWKID='$HAWKID'";
     
     // run the delete statement
