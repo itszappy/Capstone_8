@@ -50,7 +50,7 @@
  <br>
 </div>
 <div class="main">
-    <div class="card m-1" style="width: 18rem" ng-repeat="tutorslot in tutorslots.slottutorsarray">
+    <div class="card m-1" style="width: 18rem; padding: 5px" ng-repeat="tutorslot in tutorslots.slottutorsarray" align="center">
           <br>
           <p><b>SlotID: </b> {{tutorslot.SLOTID}}</p><br>
           <p><b>Date: </b>{{tutorslot.SLOTDATE}}</p><br>
@@ -58,7 +58,8 @@
           <p><b>Slot End: </b> {{tutorslot.SLOTEND}}</p> <br>
           <p><b>Student: </b> {{tutorslot.FIRSTNAME}}</p> <br>
           <p><b>Location: </b> {{tutorslot.LOCATION}}</p> <br>
-          <button class="btn btn-danger" ng-click="updateTutorSlot(tutorSlotDetails)">Cancel</button> 
+          <button class="btn btn-danger float-center" ng-click="updateTutorSlot(tutorslot.SLOTID))">Cancel</button>
+          
           <br>
     
     
