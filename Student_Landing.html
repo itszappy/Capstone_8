@@ -53,15 +53,15 @@
 </div>
 
 <div class="main">
-    <div class="card m-1" style="width: 18rem" ng-repeat="studentslot in studentslots.studentslotarray">
+    <div class="card m-1" style="width: 18rem; padding: 5px" ng-repeat="studentslot in studentslots.studentslotarray" align="center">
           <br>
           <p><b>Tutor: </b> {{studentslot.FIRSTNAME}}</p><br>
           <p><b>Date: </b>{{studentslot.SLOTDATE}}</p><br>
           <p><b>Slot Start: </b> {{studentslot.SLOTSTART}}</p><br>
           <p><b>Slot End: </b> {{studentslot.SLOTEND}}</p> <br>
           <p><b>Location: </b> {{studentslot.LOCATION}}</p> <br>
-          <p><b>Slot ID: </b> {{studentslot.SLOTID}}</p> <br>
-          <button class="btn btn-danger" ng-click="updateStudentSlot(userrow.SLOTID)">Cancel</button> 
+          <p><b>Slot ID: </b> {{studentslot.SLOTID}}</p> 
+          <button class="btn btn-danger float-center" ng-click="updateStudentSlot(studentslot.SLOTID)">Cancel</button>
           <br>    
     
    </div>

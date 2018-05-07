@@ -47,7 +47,7 @@
     <div ng-include ng-init="menuHighlight = 2;" src="'header.html'"></div>
        
 <!-- Content -->
-
+<div class="main">
       <div class="row-1" ng-repeat="user in users.userarray">
                  <h2>Welcome, {{user.FIRSTNAME}} </h2>
                  <p>Please select a tutoring session!</p>
@@ -62,11 +62,10 @@
                  <p><b>Slot Start: </b> {{slot.SLOTSTART}}</p><br>
                  <p><b>Slot End: </b> {{slot.SLOTEND}}</p> <br>
                  <p><b>Location: </b> {{slot.LOCATION}}</p> <br>
-                    
-              <button class="btn btn-dark" ng-click="updateSlot(slot.SLOTID)">Schedule</button>
+                 <div class="p2"><button class="btn btn-dark" ng-click="updateSlot(slot.SLOTID)">Schedule</button></div>
             </div>       
                 
-    
+     </div>
      </div>               
      </div>
      </div>
