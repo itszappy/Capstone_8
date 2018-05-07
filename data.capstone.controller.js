@@ -294,11 +294,10 @@
         };
 
         // function to update a slot from the student landing page. it receives the users hawkID and call a php web api to complete update from the database
-        $scope.updateTutorSlot = function(tutorSlotDetails){
-            var tutorSlotUpload = angular.copy(tutorSlotDetails);
+        $scope.updateTutorSlot = function(SLOTID){
             if (confirm("Are you sure you want to cancel this slot? ")) {
           
-                $http.post("canceltutorslot.php", tutorSlotUpload)
+                $http.post("canceltutorslot.php", {"SLOTID": SLOTID})
                   .then(function (response) {
                      if (response.status == 200) {
                           if (response.data.status == 'error') {

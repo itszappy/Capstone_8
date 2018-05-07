@@ -5,7 +5,7 @@ include_once('dbutils.php');
 // get a handle to the database
 $db = connectDB($DBHost, $DBUser, $DBPassword, $DBName);
 
-$SLOTS = "SLOTS";
+
 
 // get data from the angular controller
 // decode the json object
@@ -14,9 +14,9 @@ $data = json_decode(file_get_contents('php://input'), true);
 // get each piece of data
 // 'name' matches the name attribute in the form
 session_start();
-$STUDENTHAWKID = ['STUDENTHAWKID'];
+$STUDENTHAWKID = $data['STUDENTHAWKID'];
 $SLOTID = $data['SLOTID'];
-
+$SLOTS = "SLOTS";
 // set up variables to handle errors
 // is complete will be false if we find any problems when checking on the data
 $isComplete = true;
@@ -28,7 +28,7 @@ $errorMessage = "";
 
 if ($isComplete) {
     // updating the slot record with the logged in students hawkid 
-    $updatetutorslotquery = "UPDATE SLOTS SET STUDENTHAWKID='NULL' WHERE SLOTID='$SLOTID';";
+    $updatetutorslotquery = "UPDATE SLOTS SET STUDENTHAWKID = NULL WHERE SLOTID='$SLOTID';";
     
     // run the update statement
     queryDB($updatetutorslotquery, $db);
@@ -36,7 +36,7 @@ if ($isComplete) {
     // send a response back to angular
     $response = array();
     $response['status'] = 'success';
-    $response['studenthawkid'] = $STUDENTHAWKID;
+    $response['STUDENTHAWKID'] = $STUDENTHAWKID;
     header('Content-Type: application/json');
     echo(json_encode($response));    
 } else {
