@@ -86,20 +86,19 @@
                     <div ng-show="newAccountForm.LASTNAME.$invalid && newAccountForm.LASTNAME.$touched" >The Last Name must be at least 2 characters long</div>
                 </div>
                 
-                <!-- User Role for account-->
-                
+                 <!-- User Role for account-->
                 <div class="form-group" ng-class="{ 'text-danger': newAccountForm.USERROLE.$invalid && newAccountForm.USERROLE.$touched, 'text-success': !newAccountForm.USERROLE.$invalid && newAccountForm.USERROLE.$touched }">
                     <label class="form-control-label" for="USERROLE">User Role:  </label>
                     <input type="USERROLE" class="form-control" ng-class="{ 'is-invalid': newAccountForm.USERROLE.$invalid && newAccountForm.USERROLE.$touched, 'is-valid': !newAccountForm.USERROLE.$invalid && newAccountForm.USERROLE .$touched }" name="USERROLE" ng-model="account.USERROLE" ng-minlength="1" id="USERROLE" required/>
-                    <div ng-show="newAccountForm.USERROLE.$invalid && newAccountForm.USERROLE.$touched" >The User Role must be only 1 character long</div>
+                    <div ng-show="newAccountForm.USERROLE.$invalid && newAccountForm.USERROLE.$touched" >The user role must be only 1 characters long</div>
                 </div>
+               
                 
                 <!-- Email for account-->
-                
-                <div class="form-group" ng-class="{ 'text-danger': newAccountForm.USERROLE.$invalid && newAccountForm.USERROLE.$touched, 'text-success': !newAccountForm.USERROLE.$invalid && newAccountForm.USERROLE.$touched }">
-                    <label class="form-control-label" for="USERROLE">User Email:  </label>
-                    <input type="USERROLE" class="form-control" ng-class="{ 'is-invalid': newAccountForm.USERROLE.$invalid && newAccountForm.USERROLE.$touched, 'is-valid': !newAccountForm.USERROLE.$invalid && newAccountForm.USERROLE .$touched }" name="USERROLE" ng-model="account.USERROLE" ng-minlength="6" id="USERROLE" required/>
-                    <div ng-show="newAccountForm.USERROLE.$invalid && newAccountForm.USERROLE.$touched" >The User's Email must be 9 characters long</div>
+                <div class="form-group" ng-class="{ 'text-danger': newAccountForm.EMAIL.$invalid && newAccountForm.EMAIL.$touched, 'text-success': !newAccountForm.EMAIL.$invalid && newAccountForm.EMAIL.$touched }">
+                    <label class="form-control-label" for="EMAIL">Email:  </label>
+                    <input type="EMAIL" class="form-control" ng-class="{ 'is-invalid': newAccountForm.EMAIL.$invalid && newAccountForm.EMAIL.$touched, 'is-valid': !newAccountForm.EMAIL.$invalid && newAccountForm.EMAIL .$touched }" name="EMAIL" ng-model="account.EMAIL" ng-minlength="2" id="EMAIL" required/>
+                    <div ng-show="newAccountForm.EMAIL.$invalid && newAccountForm.EMAIL.$touched" >The email must be at least 2 characters long</div>
                 </div>
                 
                  <!-- Phone Number for account-->
